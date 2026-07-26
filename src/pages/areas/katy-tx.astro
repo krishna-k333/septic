@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import { services } from '../../data/services';
+import { areas } from '../../data/areas';
+
+const area = areas.find(a => a.slug === 'katy-tx')!;
+const nearby = areas.filter(a => area.nearbyAreas.includes(a.slug));
+---
+
+<BaseLayout
+  title={`Septic Tank Service in ${area.fullName} | Pumping & Repair`}
+  description={`Professional septic tank service in ${area.fullName}. Pumping, repair, installation, and inspection. ${area.county} County. Licensed and insured. Free estimates.`}
+  canonicalPath={`/areas/${area.slug}/`}
+>
+  <SchemaHead type="LocalBusiness" data={{ areaServed: area.fullName }} />
+  <SchemaHead type="FAQPage" faqs={area.faqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }, { name: area.name }]} />
+
+  <Hero
+    h1={`Septic Tank Service in ${area.fullName}`}
+    lead={`Professional septic tank repair, pumping, installation, and inspection in ${area.fullName}. Serving ${area.county} County with same-day service and 24/7 emergency response.`}
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Systems in {area.name}</h2>
+      <p>{area.localContext}</p>
+      <p><strong>ZIP codes covered:</strong> {area.zipCodes.join(', ')}</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Pumping in {area.name}</h2>
+      <p>Regular septic pumping is essential in Katy where clay-heavy Gulf Coast Prairie soils increase system stress and accelerate sludge buildup. Most Katy homes on septic should be pumped every 3 to 5 years, though households with more than four people benefit from the shorter interval. Our crews service the 77449, 77450, 77493, and 77494 ZIP codes with same-day scheduling available for most addresses.</p>
+      <a href="/services/septic-pumping/" class="btn-hero" style="display:inline-block;">More on Septic Tank Pumping</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Repair in {area.name}</h2>
+      <p>Katy's clay-heavy soils shift seasonally as the ground expands and contracts, which can crack tank walls and separate pipe joints over time. We repair baffles, lids, distribution boxes, and drain fields across all three counties that make up the Katy area — Harris, Fort Bend, and Waller. Many repairs that other companies quote for full replacement can be fixed with targeted work for a fraction of the cost.</p>
+      <a href="/services/septic-repair/" class="btn-hero" style="display:inline-block;">More on Septic Tank Repair</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Installation in {area.name}</h2>
+      <p>New construction in Katy's rapidly growing subdivisions often requires septic installation where city sewer has not yet reached. We design and install systems that account for the clay-heavy soils common along the Katy Prairie corridor, selecting the right tank and drain field configuration for your lot. Permitting is handled through Harris County Public Health, Fort Bend County, or Waller County depending on your exact address.</p>
+      <a href="/services/septic-installation/" class="btn-hero" style="display:inline-block;">More on Septic Tank Installation</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Inspection in {area.name}</h2>
+      <p>Whether you are buying or selling a home in Katy or need a routine health check on your system, our inspections cover the full evaluation — tank condition, baffle integrity, sludge levels, drain field performance, and distribution box function. Katy straddles three counties, and we know the specific inspection and reporting requirements for Harris County, Fort Bend County, and Waller County. Written reports with photos are delivered within 48 hours.</p>
+      <a href="/services/septic-inspection/" class="btn-hero" style="display:inline-block;">More on Septic Tank Inspection</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Maintenance in {area.name}</h2>
+      <p>Preventive maintenance is especially important in Katy where the Gulf Coast Prairie clay soils put extra stress on septic components year-round. Our maintenance service includes sludge measurement, baffle inspection, effluent filter cleaning, and a drain field evaluation — all documented with a written report. Regular maintenance every 1 to 2 years helps Katy homeowners avoid costly emergency repairs and extends the life of their systems.</p>
+      <a href="/services/septic-maintenance/" class="btn-hero" style="display:inline-block;">More on Septic Tank Maintenance</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Emergency Septic Service in {area.name}</h2>
+      <p>Sewage backups, overflows, and total system failures cannot wait for a scheduled appointment. We provide 24/7 emergency septic service throughout Katy with dispatch typically within 90 to 120 minutes. Our emergency crews carry the equipment needed to diagnose and address the most common urgent septic problems on the first visit across all of our Katy service areas.</p>
+      <a href="/services/emergency-septic/" class="btn-hero" style="display:inline-block;">More on Emergency Septic Service</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Services Available in {area.name}</h2>
+      <div class="grid grid-3">
+        {services.map(s => (
+          <ServiceCard slug={s.slug} name={s.name} icon={s.icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Nearby Service Areas</h2>
+      <div class="chips">
+        {nearby.map(n => (
+          <a href={`/areas/${n.slug}/`} class="chip">Septic Service in {n.fullName}</a>
+        ))}
+        <a href="/service-areas/" class="chip">View All Service Areas</a>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection heading={`Septic Service Questions for ${area.name}`} faqs={area.faqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <CTABand heading={`Need Septic Service in ${area.name}?`} text="Licensed, insured, and available 24/7 for emergencies. Free estimates." />
+</BaseLayout>

@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import { services } from '../../data/services';
+import { areas } from '../../data/areas';
+
+const area = areas.find(a => a.slug === 'humble-tx')!;
+const nearby = areas.filter(a => area.nearbyAreas.includes(a.slug));
+---
+
+<BaseLayout
+  title={`Septic Tank Service in ${area.fullName} | Pumping & Repair`}
+  description={`Professional septic tank service in ${area.fullName}. Pumping, repair, installation, and inspection. ${area.county} County. Licensed and insured. Free estimates.`}
+  canonicalPath={`/areas/${area.slug}/`}
+>
+  <SchemaHead type="LocalBusiness" data={{ areaServed: area.fullName }} />
+  <SchemaHead type="FAQPage" faqs={area.faqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }, { name: area.name }]} />
+
+  <Hero
+    h1={`Septic Tank Service in ${area.fullName}`}
+    lead={`Professional septic tank repair, pumping, installation, and inspection in ${area.fullName}. Serving ${area.county} County with same-day service and 24/7 emergency response.`}
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Systems in {area.name}</h2>
+      <p>{area.localContext}</p>
+      <p><strong>ZIP codes covered:</strong> {area.zipCodes.join(', ')}</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Pumping in {area.name}</h2>
+      <p>Humble's proximity to the San Jacinto River and Lake Houston means many properties face high water table conditions that can affect septic system performance and accelerate sludge accumulation. Regular pumping every 3 to 5 years is essential, with properties closest to the river and lake benefiting from the shorter interval. Our crews service all Humble ZIP codes — 77338, 77346, and 77396 — with same-day scheduling available for most addresses in Harris County.</p>
+      <a href="/services/septic-pumping/" class="btn-hero" style="display:inline-block;">More on Septic Tank Pumping</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Repair in {area.name}</h2>
+      <p>Humble properties near the San Jacinto River and Lake Houston often deal with high water table conditions that saturate drain fields and stress system components, especially during heavy rains and hurricane season. Many older systems in the area are reaching the age where baffle deterioration and drain field rehabilitation are needed. We handle targeted repairs across all Harris County Humble addresses, documenting every fix with photos and recommending only what your system actually needs.</p>
+      <a href="/services/septic-repair/" class="btn-hero" style="display:inline-block;">More on Septic Tank Repair</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Installation in {area.name}</h2>
+      <p>Properties on the southern and western edges of Humble — particularly near the San Jacinto River and Lake Houston watershed — often require engineered septic systems due to the high water table. We design and install systems that handle these challenging conditions, including aerobic treatment units and engineered drain fields that meet Harris County Public Health requirements. From soil evaluation through final inspection, we manage the entire installation process for Humble homeowners.</p>
+      <a href="/services/septic-installation/" class="btn-hero" style="display:inline-block;">More on Septic Tank Installation</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Inspection in {area.name}</h2>
+      <p>Humble's mix of older rural properties on septic and newer subdivisions makes inspection valuable for both real estate transactions and routine system health checks. Our inspections evaluate tank condition, baffle integrity, sludge levels, drain field performance, and water table impact — particularly important for properties near the San Jacinto River and Lake Houston. All reporting is formatted to Harris County Public Health standards, with written reports and photos delivered within 48 hours.</p>
+      <a href="/services/septic-inspection/" class="btn-hero" style="display:inline-block;">More on Septic Tank Inspection</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Maintenance in {area.name}</h2>
+      <p>Humble's proximity to the San Jacinto River and Lake Houston creates ongoing water table challenges that make preventive maintenance especially important for septic system longevity. Our maintenance visits include sludge measurement, baffle inspection, effluent filter cleaning, water table assessment, and a drain field evaluation — all documented with a written report. Many older Humble systems are reaching the age where annual or biennial professional attention prevents the kind of failures that lead to expensive emergency repairs.</p>
+      <a href="/services/septic-maintenance/" class="btn-hero" style="display:inline-block;">More on Septic Tank Maintenance</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Emergency Septic Service in {area.name}</h2>
+      <p>Humble's location near the San Jacinto River and Lake Houston means septic emergencies can be triggered by sudden water table rises during heavy rains and tropical storms. We provide 24/7 emergency septic service across all three Humble ZIP codes with dispatch typically within 90 to 120 minutes throughout Harris County. Our emergency crews carry equipment to address water table overloads, flood-related damage, and backup situations on the first visit.</p>
+      <a href="/services/emergency-septic/" class="btn-hero" style="display:inline-block;">More on Emergency Septic Service</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Services Available in {area.name}</h2>
+      <div class="grid grid-3">
+        {services.map(s => (
+          <ServiceCard slug={s.slug} name={s.name} icon={s.icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Nearby Service Areas</h2>
+      <div class="chips">
+        {nearby.map(n => (
+          <a href={`/areas/${n.slug}/`} class="chip">Septic Service in {n.fullName}</a>
+        ))}
+        <a href="/service-areas/" class="chip">View All Service Areas</a>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection heading={`Septic Service Questions for ${area.name}`} faqs={area.faqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <CTABand heading={`Need Septic Service in ${area.name}?`} text="Licensed, insured, and available 24/7 for emergencies. Free estimates." />
+</BaseLayout>

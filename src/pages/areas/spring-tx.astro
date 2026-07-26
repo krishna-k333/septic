@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import { services } from '../../data/services';
+import { areas } from '../../data/areas';
+
+const area = areas.find(a => a.slug === 'spring-tx')!;
+const nearby = areas.filter(a => area.nearbyAreas.includes(a.slug));
+---
+
+<BaseLayout
+  title={`Septic Tank Service in ${area.fullName} | Pumping & Repair`}
+  description={`Professional septic tank service in ${area.fullName}. Pumping, repair, installation, and inspection. ${area.county} County. Licensed and insured. Free estimates.`}
+  canonicalPath={`/areas/${area.slug}/`}
+>
+  <SchemaHead type="LocalBusiness" data={{ areaServed: area.fullName }} />
+  <SchemaHead type="FAQPage" faqs={area.faqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }, { name: area.name }]} />
+
+  <Hero
+    h1={`Septic Tank Service in ${area.fullName}`}
+    lead={`Professional septic tank repair, pumping, installation, and inspection in ${area.fullName}. Serving ${area.county} County with same-day service and 24/7 emergency response.`}
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Systems in {area.name}</h2>
+      <p>{area.localContext}</p>
+      <p><strong>ZIP codes covered:</strong> {area.zipCodes.join(', ')}</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Pumping in {area.name}</h2>
+      <p>Spring's older neighborhoods near Spring Creek have septic systems that are 20 to 40 years old, making regular pumping essential to prevent solids from overwhelming aging drain fields. The mix of sandy loam near the creek and clay-heavy upland soils means pumping intervals can vary by location — we recommend every 3 to 5 years with more frequent service for older systems. Our crews cover all Spring ZIP codes — 77373, 77379, 77388, and 77389 — with same-day scheduling available.</p>
+      <a href="/services/septic-pumping/" class="btn-hero" style="display:inline-block;">More on Septic Tank Pumping</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Repair in {area.name}</h2>
+      <p>Spring's older systems near the I-45 corridor and Spring Creek commonly need baffle repair, drain field rehabilitation, and root intrusion removal as they age past 20 to 30 years of service. The dense tree cover throughout northern Harris County drives aggressive root growth into tanks and lines that we address with targeted repair rather than full system replacement. Our technicians document every repair with photos and explain exactly what needs fixing before any work begins.</p>
+      <a href="/services/septic-repair/" class="btn-hero" style="display:inline-block;">More on Septic Tank Repair</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Installation in {area.name}</h2>
+      <p>Spring's mix of sandy loam near Spring Creek and clay-heavy upland soils means the right septic system depends heavily on your specific lot location in northern Harris County. We perform soil evaluations and percolation testing to design the optimal system for your property, whether that is a conventional gravity drain field or an engineered alternative. All permitting is handled through Harris County Public Health from application through final inspection.</p>
+      <a href="/services/septic-installation/" class="btn-hero" style="display:inline-block;">More on Septic Tank Installation</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Inspection in {area.name}</h2>
+      <p>Spring's high concentration of older septic systems makes professional inspection especially valuable for real estate transactions and routine system health checks. Our inspections evaluate tank condition, baffle integrity, root intrusion, sludge levels, and drain field performance with reporting formatted to Harris County Public Health standards. Given the 20 to 40 year age of many systems in the Spring Creek area, we pay special attention to age-related deterioration. Written reports with photos are delivered within 48 hours.</p>
+      <a href="/services/septic-inspection/" class="btn-hero" style="display:inline-block;">More on Septic Tank Inspection</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Maintenance in {area.name}</h2>
+      <p>Spring's older neighborhoods near Spring Creek and the I-45 corridor have systems that need more frequent professional attention as they age past the 20-year mark. Our maintenance visits include sludge measurement, baffle inspection, effluent filter cleaning, root intrusion screening, and a drain field evaluation — all documented for Harris County records. Regular maintenance every 1 to 2 years is critical for catching baffle deterioration and root intrusion before they become expensive emergencies in the Spring area.</p>
+      <a href="/services/septic-maintenance/" class="btn-hero" style="display:inline-block;">More on Septic Tank Maintenance</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Emergency Septic Service in {area.name}</h2>
+      <p>Older septic systems in Spring are more prone to sudden failures from baffle deterioration, root intrusion, and drain field saturation. When a backup or overflow happens, we dispatch emergency crews across all four Spring ZIP codes within 90 to 120 minutes, 24 hours a day, 7 days a week. Our emergency teams carry equipment to address the most common urgent septic failures — including root blockage removal and baffle emergencies — on the first visit.</p>
+      <a href="/services/emergency-septic/" class="btn-hero" style="display:inline-block;">More on Emergency Septic Service</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Services Available in {area.name}</h2>
+      <div class="grid grid-3">
+        {services.map(s => (
+          <ServiceCard slug={s.slug} name={s.name} icon={s.icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Nearby Service Areas</h2>
+      <div class="chips">
+        {nearby.map(n => (
+          <a href={`/areas/${n.slug}/`} class="chip">Septic Service in {n.fullName}</a>
+        ))}
+        <a href="/service-areas/" class="chip">View All Service Areas</a>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection heading={`Septic Service Questions for ${area.name}`} faqs={area.faqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <CTABand heading={`Need Septic Service in ${area.name}?`} text="Licensed, insured, and available 24/7 for emergencies. Free estimates." />
+</BaseLayout>

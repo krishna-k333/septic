@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import AuthorBox from '../../components/AuthorBox.astro';
+import Hero from '../../components/Hero.astro';
+import FAQSection from '../../components/FAQSection.astro';
+
+const blogFaqs = [
+  {
+    question: 'What is TCEQ and why does it matter for my septic system?',
+    answer: 'TCEQ is the Texas Commission on Environmental Quality. They set the rules for on-site sewage facilities (septic systems) in Texas under 30 TAC Chapter 285. Any septic installation, repair, or modification must comply with their standards.',
+  },
+  {
+    question: 'Do I need a permit to install a septic system in Houston?',
+    answer: 'Yes. Harris County, Fort Bend County, Montgomery County, and all surrounding counties require permits for new septic system installation. Your installer should handle the permit application as part of the installation process.',
+  },
+  {
+    question: 'Does Texas have a Time-of-Transfer septic inspection law?',
+    answer: 'Texas does not have a statewide Time-of-Transfer law. However, many lenders, buyers, and local jurisdictions require a septic inspection before a property sale closes. Check with your county and your lender.',
+  },
+  {
+    question: 'What happens if my septic system does not meet TCEQ standards?',
+    answer: 'Non-compliant systems may need to be upgraded or replaced. Common issues include systems that are too small, drain fields that do not meet setback requirements, or systems installed without permits. A licensed installer can bring the system into compliance.',
+  },
+  {
+    question: 'Who handles septic permits in Harris County?',
+    answer: 'Harris County Public Health handles septic permitting for Harris County addresses. Fort Bend County Environmental Health and Montgomery County Environmental Health handle their respective areas.',
+  },
+];
+
+const howToSteps = [
+  { name: 'Site Evaluation', text: 'A licensed site evaluator checks soil conditions, lot size, and setbacks to determine what system type is allowed.' },
+  { name: 'Permit Application', text: 'Your installer submits the application to the county health department with the site evaluation and system design.' },
+  { name: 'Permit Approval', text: 'The county reviews the application. Approval typically takes 1 to 2 weeks.' },
+  { name: 'Installation', text: 'A licensed installer builds the system according to the approved plans.' },
+  { name: 'Final Inspection', text: 'The county inspects the installation before the system is put into service.' },
+];
+---
+
+<BaseLayout
+  title="Texas Septic Tank Regulations: What Houston Homeowners Need to Know"
+  description="Texas septic tank regulations explained. TCEQ Chapter 285, county permits, installation rules, and what Houston homeowners need to know before selling or buying."
+  canonicalPath="/blog/texas-septic-tank-regulations/"
+>
+  <SchemaHead type="BlogPosting" blogTitle="Texas Septic Tank Regulations: What Houston Homeowners Need to Know" blogDate="2025-07-26" />
+  <SchemaHead type="FAQPage" faqs={blogFaqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog/' }, { name: 'Texas Septic Tank Regulations' }]} />
+
+  <Hero
+    h1="Texas Septic Tank Regulations: What Houston Homeowners Need to Know"
+    lead="A plain-language guide to the TCEQ rules, county permit requirements, and what you need to know if you are installing, repairing, or selling a home with a septic system in Texas."
+  />
+
+  <section class="section">
+    <div class="container" style="max-width:780px;">
+      <AuthorBox datePublished="2025-07-26" dateModified="2025-07-26" />
+
+      <p>If you own a home with a septic system in Texas, there are rules you need to follow. Most homeowners never think about these rules until something goes wrong, or until they try to sell the house and the buyer's lender asks for a septic inspection. Here is what you need to know, written for homeowners, not lawyers.</p>
+
+      <h2>TCEQ Chapter 285: The Rulebook</h2>
+      <p>The Texas Commission on Environmental Quality (TCEQ) regulates on-site sewage facilities (that is the official term for septic systems) under Title 30, Texas Administrative Code, Chapter 285. This is the state-level rulebook that sets minimum standards for how septic systems are designed, installed, and maintained in Texas.</p>
+
+      <p>Chapter 285 covers things like:</p>
+      <ul>
+        <li>Minimum lot sizes for different system types</li>
+        <li>Setback distances from property lines, wells, and waterways</li>
+        <li>Soil requirements and percolation testing</li>
+        <li>Tank sizing based on the number of bedrooms</li>
+        <li>Drain field design and sizing</li>
+        <li>Licensing requirements for installers and site evaluators</li>
+      </ul>
+
+      <p>The full text of Chapter 285 is available on the TCEQ website, but it runs over 60 pages. For most homeowners, the important thing to know is that your system must be designed by a licensed professional, installed by a licensed installer, and inspected by the county before it goes into service.</p>
+
+      <h2>County-Level Requirements</h2>
+      <p>Texas counties handle the actual permitting and inspection. The state sets the rules, but your county health department is the one that reviews your permit application, inspects the installation, and signs off on it. Here is how it works in the Houston area:</p>
+
+      <h3>Harris County</h3>
+      <p>Harris County Public Health manages septic permits for addresses in unincorporated Harris County and certain municipalities. They require a site evaluation, a system design, and a permit application before any work begins. After installation, a county inspector verifies the system matches the approved plans.</p>
+
+      <h3>Fort Bend County</h3>
+      <p>Fort Bend County Environmental Health handles permitting for areas including Sugar Land, Richmond, Rosenberg, and surrounding communities. Their process is similar to Harris County but may have specific local requirements for lot sizes or system types.</p>
+
+      <h3>Montgomery County</h3>
+      <p>Montgomery County Environmental Health covers Conroe, The Woodlands, and surrounding areas. Properties near Lake Conroe may have additional setback requirements from the water. Montgomery County also has specific rules about aerobic spray irrigation systems.</p>
+
+      <h3>Other Houston-Area Counties</h3>
+      <p>Brazoria County, Chambers County, Waller County, and Liberty County each have their own environmental health departments. The basic process is the same, but details vary. Your installer should handle the permit for whichever county your property is in. If you need <a href="/services/septic-inspection/">a septic inspection</a>, make sure the inspector is familiar with your county's specific requirements.</p>
+
+      <h2>Installing a New Septic System</h2>
+      <p>If you are building a new home or replacing an old septic system, here is the process:</p>
+
+      <ul>
+        <li><strong>Site evaluation.</strong> A licensed site evaluator visits the property, checks soil conditions (percolation test or soil profile), measures lot size, and determines what system type your property can support.</li>
+        <li><strong>System design.</strong> A licensed installer or engineer designs the system based on the site evaluation. The design includes tank size, drain field layout, and any special requirements for your soil type.</li>
+        <li><strong>Permit application.</strong> Your installer submits the application to the county health department. Fees vary by county but typically run $200 to $500.</li>
+        <li><strong>Installation.</strong> After the permit is approved, your installer builds the system. This usually takes 2 to 5 days for a residential system.</li>
+        <li><strong>Final inspection.</strong> A county inspector visits the site to verify the installation matches the approved plans. The system cannot be used until it passes inspection.</li>
+      </ul>
+
+      <p>Full installation costs in the Houston area run $4,500 to $15,000 depending on system type. Conventional gravity systems are the least expensive. Aerobic treatment units and engineered drain fields cost more but may be required for difficult soil conditions.</p>
+
+      <h2>Repairing an Existing System</h2>
+      <p>Minor repairs like replacing a baffle, fixing a broken lid, or installing risers generally do not require a permit. But if you are replacing the drain field, changing the system type, or making modifications that alter the system's capacity, you may need a permit and inspection. When in doubt, call your county health department or ask your installer. Our <a href="/services/septic-repair/">septic repair</a> team handles permit coordination for jobs that require it.</p>
+
+      <h2>Selling a Home with a Septic System</h2>
+      <p>Texas does not have a statewide Time-of-Transfer law (some states require a septic inspection and certification before any property sale). However, that does not mean you are off the hook:</p>
+      <ul>
+        <li><strong>Lenders often require it.</strong> Many mortgage lenders, especially FHA and VA lenders, require a septic inspection before closing.</li>
+        <li><strong>Buyers request it.</strong> Even without a lender requirement, most buyers (or their agents) will request a septic inspection as part of the due diligence period.</li>
+        <li><strong>Local rules may apply.</strong> Some counties or municipalities may have their own inspection requirements for property transfers.</li>
+      </ul>
+
+      <p>A <a href="/services/septic-inspection/">septic inspection</a> for a real estate transaction in Houston typically costs $295 to $425. The inspector opens the tank, measures sludge levels, checks baffles, evaluates the drain field, and provides a written report. If the system passes, you are clear for closing. If it fails, the report details what needs to be fixed.</p>
+
+      <p>Most failed inspections can be resolved before closing. The repair is negotiated between buyer and seller, often with the seller covering the cost as part of the sale agreement. The key is having the inspection done early enough in the process to allow time for repairs.</p>
+
+      <h2>Aerobic Systems Have Extra Rules</h2>
+      <p>If your property uses an aerobic treatment unit (common on smaller lots in the Houston area), there are additional TCEQ requirements. Aerobic systems have mechanical components (pumps, aerators, chlorinators) that need regular maintenance. TCEQ requires a maintenance contract with a licensed provider, and some counties require annual reporting. If your aerobic system has an alarm, it must be functional.</p>
+
+      <h2>Licensing Requirements</h2>
+      <p>In Texas, the people who design, install, and inspect septic systems must be licensed by TCEQ. This includes:</p>
+      <ul>
+        <li><strong>Authorized On-Site Sewage Facility (OSSF) Installer</strong> - Licensed to install and repair systems</li>
+        <li><strong>Site Evaluator</strong> - Licensed to evaluate soil and site conditions</li>
+        <li><strong>Designated Representative</strong> - Licensed to represent a county in inspections</li>
+        <li><strong> Maintenance Provider</strong> - Licensed to maintain aerobic systems</li>
+      </ul>
+
+      <p>Always verify that the company working on your system has the appropriate licenses. A license number should be available on their website or provided upon request. We are TCEQ licensed and can provide our credentials on any job.</p>
+
+      <h2>What This Means for You</h2>
+      <p>For most Houston homeowners with an existing septic system that is working fine, the practical takeaway is: keep up with regular pumping and maintenance, and make sure any work done on your system is permitted and inspected. If you are buying or selling a home, get the inspection done early. If you are installing a new system, work with a licensed installer who handles the permit process from start to finish.</p>
+
+      <p>Questions about how regulations apply to your specific property? Call us. We work with every county in the Houston area and can tell you what applies to your address.</p>
+    </div>
+  </section>
+
+  <FAQSection heading="Texas Septic Regulations FAQs" faqs={blogFaqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm heading="Schedule a Septic Inspection" />
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Related Posts</h2>
+      <ul>
+        <li><a href="/blog/how-to-choose-septic-company-houston/">How to Choose a Septic Company in Houston</a></li>
+        <li><a href="/blog/signs-septic-tank-needs-repair/">Signs Your Septic Tank Needs Repair</a></li>
+        <li><a href="/blog/how-often-pump-septic-tank-texas/">How Often Should You Pump a Septic Tank in Texas?</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <CTABand heading="Need a Septic Inspection?" text="Licensed inspectors. County-compliant reports. Fast scheduling." />
+</BaseLayout>

@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Hero from '../components/Hero.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTABand from '../components/CTABand.astro';
+import LeadForm from '../components/LeadForm.astro';
+import SchemaHead from '../components/SchemaHead.astro';
+import { services } from '../data/services';
+
+const allFaqs = [
+  {
+    question: 'How much does septic tank repair cost in Houston?',
+    answer: 'Most septic repairs in Houston run $500 to $2,500 depending on the issue. Baffle repair is typically $250 to $600. Drain field rehabilitation runs $800 to $2,500. Full system replacement is only needed when the tank is structurally failed.',
+  },
+  {
+    question: 'How often should a septic tank be pumped in Houston?',
+    answer: 'Most Houston area homes should pump every 3 to 5 years. Houston-area clay-heavy soils put extra stress on systems, so we recommend leaning toward the shorter end if you have more than 4 people in the home.',
+  },
+  {
+    question: 'What are signs my septic tank is full?',
+    answer: 'Slow drains throughout the house, sewage smell indoors or in the yard, gurgling pipes, standing water or bright green grass over the drain field, or sewage backing up into tubs and floor drains.',
+  },
+  {
+    question: 'What are signs my septic tank needs repair?',
+    answer: 'Slow drains, sewage smell, gurgling pipes, standing water over the drain field, or sewage backing up. If you notice any of these, schedule an inspection before the problem gets worse.',
+  },
+  {
+    question: 'Do you offer emergency septic service in Houston?',
+    answer: 'Yes. We provide 24/7 emergency septic service across the Houston metro. We typically dispatch within 90 to 120 minutes for emergency calls including sewage backups, overflows, and system failures.',
+  },
+  {
+    question: 'How much does septic tank pumping cost in Houston?',
+    answer: 'Standard residential septic pumping in Houston runs $350 to $600 depending on tank size and access. We confirm the final price before sending a truck. No surprise charges.',
+  },
+  {
+    question: 'How long does septic tank pumping take?',
+    answer: 'A standard residential pump takes 45 to 90 minutes from arrival to cleanup, depending on tank size and access. If we need to dig up the lid, add 30 minutes.',
+  },
+  {
+    question: 'What is the difference between septic pumping and septic cleaning?',
+    answer: 'Pumping removes the liquid and sludge from the tank. Cleaning includes pumping plus a high-pressure wash of the tank walls, baffle inspection, and effluent filter cleaning. We recommend full cleaning every other pump.',
+  },
+  {
+    question: 'Do you service both residential and commercial septic systems?',
+    answer: 'Yes. We handle residential septic in Houston plus commercial septic, grease trap pumping, and hydro-jetting for restaurants and businesses across the greater Houston area.',
+  },
+  {
+    question: 'What areas around Houston do you serve?',
+    answer: 'We serve Houston, Katy, Sugar Land, Pearland, The Woodlands, Cypress, Spring, Conroe, Baytown, Humble, Tomball, and surrounding Harris, Fort Bend, Montgomery, Brazoria, and Chambers County addresses.',
+  },
+  {
+    question: 'How do I know if I need septic repair or replacement?',
+    answer: 'Most septic problems are repairable. We inspect, document, and explain what is actually wrong before recommending any work. Only structural tank failure or complete drain field failure typically requires full replacement.',
+  },
+  {
+    question: 'Do you handle drain field repair in Houston?',
+    answer: 'Yes. We do drain field jetting, aeration, biological treatment, and partial replacement. Most drain fields that homeowners are told to replace can be rehabilitated for a fraction of the cost if caught in time.',
+  },
+  {
+    question: 'Are there permits needed for septic repair in Houston?',
+    answer: 'Some septic repairs require permits from the local health department. Harris County Public Health handles permits for most Houston addresses. We handle all permit paperwork as part of our service.',
+  },
+  {
+    question: 'Can I do septic maintenance myself?',
+    answer: 'Homeowners can help by conserving water, avoiding harsh chemicals, and not flushing non-biodegradable items. But professional pumping and inspection require specialized equipment and TCEQ licensing.',
+  },
+  {
+    question: 'How fast can you get out for a repair?',
+    answer: 'For non-emergency repair inspections, typically 2 to 4 business days. For active leaks, backups, or system failure, we dispatch same-day.',
+  },
+];
+---
+<BaseLayout
+  title="Septic Tank FAQ | Houston, TX"
+  description="Frequently asked questions about septic tank repair, pumping, cost, and maintenance in Houston, TX. Get answers from local septic experts."
+  canonicalPath="/faq/"
+>
+  <SchemaHead type="FAQPage" faqs={allFaqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'FAQ' }]} />
+
+  <Hero
+    h1="Septic Tank FAQ"
+    lead="Get answers to the most common questions about septic tank repair, pumping, installation, and maintenance in Houston, TX."
+  />
+  <TrustBar />
+
+  <FAQSection heading="Septic Service Questions, Answered" faqs={allFaqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <CTABand heading="Still Have Questions?" text="Contact us and we will get you the answers you need. Free estimates for every job." />
+</BaseLayout>

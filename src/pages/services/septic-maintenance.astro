@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreas from '../../components/ServiceAreas.astro';
+import { services } from '../../data/services';
+
+const service = services.find(s => s.slug === 'septic-maintenance')!;
+
+const pageFaqs = [
+  ...service.faqs,
+  {
+    question: 'How much does septic maintenance cost in Houston?',
+    answer: 'A routine maintenance visit — including sludge measurement, baffle inspection, effluent filter cleaning, and written report — runs $175 to $275. This is separate from pumping, which is $350 to $600. Combining a maintenance visit with pumping is the most cost-effective approach.',
+  },
+  {
+    question: 'Do you offer septic maintenance plans in Houston?',
+    answer: 'Yes. We offer scheduled maintenance plans that include annual or biennial inspections, priority scheduling, and discounted pumping rates. Maintenance plan customers get same-day scheduling and a dedicated service history file for their property.',
+  },
+  {
+    question: 'What should I avoid to keep my septic system healthy?',
+    answer: 'Avoid flushing non-biodegradable items (wipes, feminine products, cat litter), pouring grease or harsh chemicals down the drain, using excessive bleach or antibacterial products, parking or driving over the drain field, and planting trees within 25 feet of the tank or drain field. These are the most common causes of premature septic system failure.',
+  },
+  {
+    question: 'Does a garbage disposal affect my septic system?',
+    answer: 'Yes. Garbage disposals add significantly more solids to the tank, which shortens the time between pumping. If you use a garbage disposal regularly, we recommend pumping every 2 to 3 years instead of every 3 to 5 years. Some counties in the Houston area require larger tanks for homes with disposals.',
+  },
+];
+
+const steps = [
+  { name: 'Schedule a Maintenance Visit', text: 'Contact us to schedule your maintenance appointment. We recommend annual inspections for systems over 10 years old and biennial inspections for newer systems.' },
+  { name: 'Open and Measure the Tank', text: 'Our technician opens the tank, measures sludge and scum levels using a calibrated probe, and determines how close the tank is to needing a pump.' },
+  { name: 'Inspect All Components', text: 'We inspect inlet and outlet baffles, check the effluent filter, examine risers and lids, and look for cracks, root intrusion, or corrosion.' },
+  { name: 'Clean the Effluent Filter', text: 'If your system has an effluent filter — and it should — we remove it, clean it thoroughly, and reinstall it. A clogged filter causes slow drains and backups.' },
+  { name: 'Evaluate the Drain Field', text: 'We walk the drain field checking for standing water, odor, soil compaction, and surfacing effluent. Early detection of drain field issues saves thousands in repair costs.' },
+  { name: 'Deliver a Maintenance Report', text: 'You receive a written report with measurements, photos, current system condition, and a prioritized list of recommended actions with cost estimates.' },
+];
+---
+<BaseLayout
+  title={service.title}
+  description={service.metaDescription}
+  canonicalPath="/services/septic-maintenance/"
+>
+  <SchemaHead
+    type="Service"
+    data={{ serviceType: 'Septic Tank Maintenance' }}
+  />
+  <SchemaHead
+    type="FAQPage"
+    faqs={pageFaqs}
+  />
+  <SchemaHead
+    type="HowTo"
+    data={{ name: 'Septic Tank Maintenance Process in Houston' }}
+    howToSteps={steps}
+  />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Services', href: '/services/' }, { name: 'Septic Tank Maintenance' }]} />
+
+  <Hero
+    h1={service.h1}
+    lead="Septic Tank Repair Houston provides preventive septic tank maintenance in Houston, TX to keep your system running efficiently and avoid costly emergency repairs. Our maintenance service includes sludge measurement, baffle inspection, effluent filter cleaning, drain field evaluation, and a written report with recommendations. Houston-area clay soils put extra stress on septic systems, making regular professional maintenance essential. We serve homeowners across Houston, Katy, Sugar Land, Pearland, The Woodlands, and surrounding communities."
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Professional Septic Tank Maintenance for Houston Homes</h2>
+      <p>The best septic repair is the one you never need. Preventive maintenance is the difference between a septic system that lasts 25 years and one that fails in 10. Most homeowners do not think about their septic system until something goes wrong — a slow drain, a bad smell, a backup into the house. By that point, the problem has usually been building for months or years, and the repair cost is many times what preventive maintenance would have cost.</p>
+      <p>Our septic maintenance service is designed to catch problems early. We measure sludge and scum levels to tell you exactly how full your tank is and when you will need pumping — before solids overflow into the drain field. We inspect baffles for cracks and deterioration, which is the most common failure point in Houston-area systems. We clean the effluent filter, which many homeowners do not even know they have. And we walk the drain field looking for early signs of saturation or failure.</p>
+      <p>In the Houston metro, Gulf Coast Prairie clay soils expand and contract with seasonal moisture changes. This soil movement puts stress on tank walls, pipe joints, and drain field trenches. Tree roots from the region's dense canopy aggressively seek moisture and nutrients from septic systems. Add in the chemical stress from household cleaning products, and you have an environment where septic systems need regular professional attention to stay healthy. Our maintenance service accounts for these local conditions and provides targeted recommendations to extend the life of your system.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>What Septic Maintenance Costs in Houston</h2>
+      <p>A routine maintenance visit runs <strong>$175 to $275</strong> and includes sludge measurement, baffle inspection, effluent filter cleaning, drain field evaluation, and a written report. This is a standalone inspection visit — not a pumping appointment — focused on assessing system health and catching problems before they become emergencies.</p>
+      <p>Many Houston homeowners combine maintenance with pumping for the most cost-effective approach. A combined maintenance and pumping visit runs <strong>$425 to $750</strong> depending on tank size and access. We recommend this combined service every 3 to 5 years, with a standalone maintenance check in between pumping cycles. For homeowners on a maintenance plan, we offer priority scheduling, discounted rates, and a complete service history file that is valuable for insurance and resale purposes.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Our Septic Maintenance Process</h2>
+      <div class="grid grid-3" style="margin-top:1.5rem;">
+        {steps.map((step, i) => (
+          <div style="background:var(--color-white);border:1px solid var(--color-gray-200);border-radius:10px;padding:1.25rem;">
+            <div style="font-size:1.5rem;font-weight:800;color:var(--color-green);margin-bottom:0.5rem;">{i + 1}</div>
+            <h3>{step.name}</h3>
+            <p style="font-size:0.9rem;color:var(--color-gray-600);margin-bottom:0;">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Signs You Need Septic Maintenance in Houston</h2>
+      <ol style="margin-top:1rem;line-height:1.9;">
+        <li><strong>It has been more than a year since your last professional check.</strong> Annual inspections are the standard recommendation for systems over 10 years old. If you have not had a professional look at your system recently, schedule a maintenance visit.</li>
+        <li><strong>You cannot remember the last time the tank was pumped.</strong> If pumping history is unknown, a maintenance visit establishes your current baseline — how full the tank is and what condition the system is in.</li>
+        <li><strong>Your household size has changed.</strong> More people in the home means more water use and more solids entering the tank. A maintenance visit recalibrates your pumping schedule for current usage.</li>
+        <li><strong>You have started using a garbage disposal.</strong> Garbage disposals add significant solids to the tank. If you recently installed one or started using it more, your pumping interval needs to shorten.</li>
+        <li><strong>Drains are slightly slower than usual.</strong> Not a full backup, but noticeably slower. This can indicate a clogged effluent filter or early tank fullness — both easy fixes during a maintenance visit.</li>
+        <li><strong>You have planted trees near the septic system.</strong> New tree plantings within 25 feet of the tank or drain field should trigger an evaluation of root intrusion risk and the installation of root barriers if needed.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Why Choose Septic Tank Repair Houston for Maintenance</h2>
+      <ul class="checks" style="margin-top:1rem;">
+        <li><strong>Proactive, not reactive.</strong> We help you prevent problems instead of just fixing them after they happen.</li>
+        <li><strong>Complete system evaluation.</strong> Every maintenance visit covers the tank, baffles, effluent filter, distribution box, drain field, and all access points.</li>
+        <li><strong>Written reports with recommendations.</strong> You receive a documented assessment with prioritized actions so you can plan and budget for any needed work.</li>
+        <li><strong>Maintenance plan options.</strong> Scheduled plans with priority service, discounted rates, and complete property service records.</li>
+        <li><strong>Service history tracking.</strong> We maintain a complete record of all visits, measurements, and recommendations for your property — invaluable for insurance claims and resale.</li>
+        <li><strong>Honest assessment.</strong> If your system is in good shape, we will tell you. We recommend only the work that is actually needed.</li>
+        <li><strong>Local Houston expertise.</strong> We understand the specific soil, weather, and code conditions that affect septic systems across the Houston metro.</li>
+      </ul>
+    </div>
+  </section>
+
+  <ServiceAreas heading="Septic Maintenance Near Me: Houston Metro" />
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices currentSlug="septic-maintenance" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <FAQSection heading="Septic Maintenance Questions, Answered" faqs={pageFaqs} />
+  <CTABand heading="Protect Your Septic System" text="Preventive maintenance saves thousands. Schedule your septic health check today. Free estimates." />
+</BaseLayout>

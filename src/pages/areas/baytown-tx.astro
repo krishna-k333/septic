@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import { services } from '../../data/services';
+import { areas } from '../../data/areas';
+
+const area = areas.find(a => a.slug === 'baytown-tx')!;
+const nearby = areas.filter(a => area.nearbyAreas.includes(a.slug));
+---
+
+<BaseLayout
+  title={`Septic Tank Service in ${area.fullName} | Pumping & Repair`}
+  description={`Professional septic tank service in ${area.fullName}. Pumping, repair, installation, and inspection. ${area.county} County. Licensed and insured. Free estimates.`}
+  canonicalPath={`/areas/${area.slug}/`}
+>
+  <SchemaHead type="LocalBusiness" data={{ areaServed: area.fullName }} />
+  <SchemaHead type="FAQPage" faqs={area.faqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }, { name: area.name }]} />
+
+  <Hero
+    h1={`Septic Tank Service in ${area.fullName}`}
+    lead={`Professional septic tank repair, pumping, installation, and inspection in ${area.fullName}. Serving ${area.county} County with same-day service and 24/7 emergency response.`}
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Systems in {area.name}</h2>
+      <p>{area.localContext}</p>
+      <p><strong>ZIP codes covered:</strong> {area.zipCodes.join(', ')}</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Pumping in {area.name}</h2>
+      <p>Baytown's flat, low-lying terrain along the Houston Ship Channel means high water tables that can affect how efficiently septic systems process waste, making regular pumping essential to prevent overloading. We recommend pumping every 3 to 5 years for most Baytown households, with more frequent service for properties closest to Galveston Bay. Our crews cover all Baytown ZIP codes — 77520, 77521, and 77523 — across both Harris and Chambers Counties with same-day scheduling available.</p>
+      <a href="/services/septic-pumping/" class="btn-hero" style="display:inline-block;">More on Septic Tank Pumping</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Repair in {area.name}</h2>
+      <p>Baytown's proximity to Galveston Bay and the Houston Ship Channel creates persistent high water table conditions that can saturate drain fields and accelerate component wear in septic systems. Hurricane and tropical storm flooding adds additional stress, sometimes requiring post-storm system evaluation and repair. We handle drain field rehabilitation, baffle repair, water table mitigation, and flood damage assessment across all Baytown addresses in Harris and Chambers Counties.</p>
+      <a href="/services/septic-repair/" class="btn-hero" style="display:inline-block;">More on Septic Tank Repair</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Installation in {area.name}</h2>
+      <p>Baytown's low-lying terrain and high water tables mean new septic installations often require engineered drain fields or aerobic treatment units rather than conventional gravity systems. We design systems that account for the water table conditions and proximity to Galveston Bay, meeting the permitting requirements of both Harris County Public Health and Chambers County Environmental Health depending on your exact address. Proper system design from the start prevents premature failure in these challenging coastal conditions.</p>
+      <a href="/services/septic-installation/" class="btn-hero" style="display:inline-block;">More on Septic Tank Installation</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Inspection in {area.name}</h2>
+      <p>Baytown properties benefit from inspection that specifically evaluates water table impact on system function — a critical factor given the area's low elevation and proximity to Galveston Bay. Our inspections cover tank condition, baffle integrity, sludge levels, drain field performance, and water table assessment, with reporting formatted to the appropriate county standard for Harris or Chambers County addresses. Written reports with photos are delivered within 48 hours for real estate transactions or post-flood system evaluations.</p>
+      <a href="/services/septic-inspection/" class="btn-hero" style="display:inline-block;">More on Septic Tank Inspection</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Maintenance in {area.name}</h2>
+      <p>Baytown's high water table and proximity to the Houston Ship Channel create conditions where regular professional maintenance is not optional — it is essential for preventing system failures. Our maintenance visits include sludge measurement, baffle inspection, effluent filter cleaning, water table assessment, and a drain field evaluation, all documented with a written report. We recommend annual inspections for Baytown properties closest to the bay and waterways where water table fluctuations are most pronounced.</p>
+      <a href="/services/septic-maintenance/" class="btn-hero" style="display:inline-block;">More on Septic Tank Maintenance</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Emergency Septic Service in {area.name}</h2>
+      <p>Baytown's low-lying coastal location makes septic emergencies more common during heavy rains and hurricane season when rising water tables can overwhelm systems quickly. We provide 24/7 emergency septic service across all three Baytown ZIP codes with dispatch typically within 90 to 120 minutes in Harris and Chambers Counties. Our emergency crews carry equipment to address water table-related overloads, flood damage, and backup situations on the first visit.</p>
+      <a href="/services/emergency-septic/" class="btn-hero" style="display:inline-block;">More on Emergency Septic Service</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Services Available in {area.name}</h2>
+      <div class="grid grid-3">
+        {services.map(s => (
+          <ServiceCard slug={s.slug} name={s.name} icon={s.icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Nearby Service Areas</h2>
+      <div class="chips">
+        {nearby.map(n => (
+          <a href={`/areas/${n.slug}/`} class="chip">Septic Service in {n.fullName}</a>
+        ))}
+        <a href="/service-areas/" class="chip">View All Service Areas</a>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection heading={`Septic Service Questions for ${area.name}`} faqs={area.faqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <CTABand heading={`Need Septic Service in ${area.name}?`} text="Licensed, insured, and available 24/7 for emergencies. Free estimates." />
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CTABand from '../components/CTABand.astro';
+import SchemaHead from '../components/SchemaHead.astro';
+---
+<BaseLayout
+  title="About Septic Tank Repair Houston"
+  description="Learn about Septic Tank Repair Houston. Licensed, insured septic professionals serving Houston, TX and surrounding counties with repair, pumping, and installation."
+  canonicalPath="/about/"
+>
+  <SchemaHead type="AboutPage" data={{ name: "About Septic Tank Repair Houston" }} />
+  <SchemaHead type="Organization" />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'About' }]} />
+
+  <section class="hero" style="padding:2.5rem 0;">
+    <div class="container">
+      <h1>About Septic Tank Repair Houston</h1>
+      <p class="lead">Local septic professionals serving Houston, TX and surrounding counties with honest, reliable service since day one.</p>
+    </div>
+  </section>
+  <TrustBar />
+
+  <section class="section">
+    <div class="container" style="max-width:800px;">
+      <h2>Who We Are</h2>
+      <p>Septic Tank Repair Houston is a locally owned and operated septic service company serving the greater Houston metro area. We provide septic tank repair, pumping, installation, inspection, maintenance, and emergency service to residential and commercial customers across Harris, Fort Bend, Montgomery, Brazoria, Chambers, and surrounding counties.</p>
+      <p>Our team is TCEQ licensed and follows all Texas Commission on Environmental Quality regulations for onsite sewage facilities. We carry full liability insurance and proper septage hauler licensing.</p>
+
+      <h2>What We Do</h2>
+      <p>We handle every aspect of septic system care, from routine pumping and maintenance to complex drain field rehabilitation and new system installation. Our approach is simple: inspect first, explain what we find, and recommend only what your system actually needs.</p>
+      <p>We do not upsell replacements when a repair will do the job. Most septic problems are repairable, and we take the time to show you the evidence before recommending any work.</p>
+
+      <h2>Why Houston Homeowners Trust Us</h2>
+      <ul class="checks">
+        <li><strong>Local team.</strong> We know Houston-area soils, county regulations, and the specific challenges that Gulf Coast climate puts on septic systems.</li>
+        <li><strong>TCEQ licensed.</strong> We follow all Texas Commission on Environmental Quality Chapter 285 regulations for onsite sewage facilities.</li>
+        <li><strong>Honest pricing.</strong> We confirm pricing before we send a truck. No surprise charges on site.</li>
+        <li><strong>24/7 emergency service.</strong> Septic emergencies do not wait for business hours. Neither do we.</li>
+        <li><strong>Licensed and insured.</strong> Full liability coverage and proper septage hauler licensing.</li>
+        <li><strong>Residential and commercial.</strong> From single-family homes to restaurants and commercial properties.</li>
+      </ul>
+
+      <h2>Our Service Area</h2>
+      <p>We serve the entire Houston metro area including Houston, Katy, Sugar Land, Pearland, The Woodlands, Cypress, Spring, Conroe, Baytown, Humble, Tomball, and surrounding communities. Whether your property is on Harris County clay soils or Montgomery County sandy loam, we have the experience to handle your septic system.</p>
+    </div>
+  </section>
+
+  <CTABand heading="Ready to Get Started?" text="Contact us for a free estimate on any septic service." />
+</BaseLayout>

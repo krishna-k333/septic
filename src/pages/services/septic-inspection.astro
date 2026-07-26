@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreas from '../../components/ServiceAreas.astro';
+import { services } from '../../data/services';
+
+const service = services.find(s => s.slug === 'septic-inspection')!;
+
+const pageFaqs = [
+  ...service.faqs,
+  {
+    question: 'What is included in a septic tank inspection in Houston?',
+    answer: 'Our inspection includes locating and opening the tank, measuring sludge and scum levels, inspecting inlet and outlet baffles, checking the effluent filter, evaluating the distribution box, visually assessing the drain field, checking risers and lids, and delivering a written report with photos and recommendations.',
+  },
+  {
+    question: 'How often should I have my septic system inspected?',
+    answer: 'We recommend a professional inspection every 1 to 2 years for most Houston homes, and always before buying or selling a property. Regular inspections catch small issues before they become expensive failures.',
+  },
+  {
+    question: 'Do you provide septic inspections for real estate transactions?',
+    answer: 'Yes. We provide septic inspection in Houston for buyers, sellers, lenders, and real estate agents. Our reports meet lender and title company requirements and include photo documentation of system condition.',
+  },
+  {
+    question: 'Can you inspect a septic system if I do not have the original installation records?',
+    answer: 'Yes. We use probing equipment, county records, and experience to locate your tank and drain field even without installation records. Many Houston-area homes from the 1970s through 2000s have limited or no documentation on file.',
+  },
+];
+
+const steps = [
+  { name: 'Schedule Your Inspection', text: 'Call us or fill out our online form. We typically schedule septic inspections within 2 to 5 business days. Same-week availability is common.' },
+  { name: 'Locate and Access the System', text: 'Our inspector locates the tank, distribution box, and drain field using probing equipment and county records. We dig up lids if needed.' },
+  { name: 'Open and Inspect the Tank', text: 'We open both tank compartments, measure sludge and scum levels, inspect baffles for deterioration, check the effluent filter, and look for cracks, root intrusion, or other defects.' },
+  { name: 'Evaluate the Drain Field', text: 'We walk the drain field looking for standing water, odor, surfacing effluent, and soil condition. We check the distribution box for cracks, tilting, or root intrusion.' },
+  { name: 'Deliver the Report', text: 'You receive a written report within 48 hours with photos of all findings, measurements, system condition assessment, and a clear list of recommendations with cost estimates if repairs are needed.' },
+];
+---
+<BaseLayout
+  title={service.title}
+  description={service.metaDescription}
+  canonicalPath="/services/septic-inspection/"
+>
+  <SchemaHead
+    type="Service"
+    data={{ serviceType: 'Septic Tank Inspection' }}
+  />
+  <SchemaHead
+    type="FAQPage"
+    faqs={pageFaqs}
+  />
+  <SchemaHead
+    type="HowTo"
+    data={{ name: 'Septic Tank Inspection Process in Houston' }}
+    howToSteps={steps}
+  />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Services', href: '/services/' }, { name: 'Septic Tank Inspection' }]} />
+
+  <Hero
+    h1={service.h1}
+    lead="Septic Tank Repair Houston provides thorough septic tank inspection in Houston, TX for real estate transactions, pre-purchase evaluations, and routine system health checks. Our licensed inspectors open the tank, measure sludge levels, check baffles and filters, evaluate the drain field, and deliver a detailed written report with photos. Whether you are buying a home in Katy, selling in Sugar Land, or want to know the condition of your system in The Woodlands, we give you honest answers and clear next steps."
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Professional Septic Tank Inspection for Houston Homes</h2>
+      <p>A septic system is one of the most expensive components of any home that is not on municipal sewer — and it is the one homeowners know the least about. Unlike a roof or HVAC system, a septic tank is buried underground and out of sight. Problems build silently for years until they surface as a sewage backup, drain field failure, or contamination issue that costs thousands to fix. A professional septic inspection is the only way to know the actual condition of your system.</p>
+      <p>Our inspection covers every accessible component of your septic system. We locate and open the tank, measure the sludge and scum layers to determine how full the tank is, inspect the inlet and outlet baffles for cracks or deterioration, check the effluent filter for clogs, evaluate the distribution box for structural integrity, walk the drain field looking for signs of failure, and check all lids, risers, and access points. The result is a complete picture of your system's current health and a prioritized list of any needed maintenance or repairs.</p>
+      <p>In the Houston metro area, we see a predictable pattern in septic inspections. Homes built in the 1970s through 1990s often have aging concrete tanks with deteriorating baffles, missing or buried lids, and drain fields that are nearing the end of their useful life. Newer homes from the 2000s building boom in Katy, Cypress, and Pearland are now hitting their first major service cycle — many have never been pumped or inspected since installation. Real estate inspections frequently uncover deferred maintenance that, caught early, can be addressed with pumping and minor repairs rather than full system replacement.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>What Septic Inspection Costs in Houston</h2>
+      <p>A standard residential septic inspection in Houston runs <strong>$295 to $425</strong> depending on tank size, the number of compartments, and how accessible the lids are. This price includes locating the tank, opening it, all measurements and visual inspections, and a written report with photos delivered within 48 hours. A typical single-family home with a 1,000-gallon tank and accessible lids comes in around <strong>$295 to $350</strong>.</p>
+      <p>If the lids are buried and require digging to access, there may be an additional charge of <strong>$75 to $150</strong>. Homes with multiple tanks, larger commercial systems, or systems that require extensive probing to locate may also run higher. We confirm the total inspection cost when you schedule — no surprise charges at the property. For real estate transactions, we can coordinate timing with your closing schedule and deliver the report directly to your agent or lender if needed.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Our Septic Inspection Process</h2>
+      <div class="grid grid-3" style="margin-top:1.5rem;">
+        {steps.map((step, i) => (
+          <div style="background:var(--color-white);border:1px solid var(--color-gray-200);border-radius:10px;padding:1.25rem;">
+            <div style="font-size:1.5rem;font-weight:800;color:var(--color-green);margin-bottom:0.5rem;">{i + 1}</div>
+            <h3>{step.name}</h3>
+            <p style="font-size:0.9rem;color:var(--color-gray-600);margin-bottom:0;">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Signs You Need a Septic Inspection in Houston</h2>
+      <ol style="margin-top:1rem;line-height:1.9;">
+        <li><strong>You are buying or selling a home with a septic system.</strong> A septic inspection protects both parties — buyers learn the true condition, and sellers avoid last-minute surprises that can delay or kill a closing.</li>
+        <li><strong>It has been more than 2 years since your last inspection.</strong> Regular inspections catch problems early. A $300 inspection today can prevent a $5,000 drain field replacement next year.</li>
+        <li><strong>You have never had the system inspected.</strong> Many Houston homeowners have never opened their tank. If you do not know the condition of your system, now is the time to find out.</li>
+        <li><strong>You notice slow drains, odors, or wet spots.</strong> These symptoms indicate a potential issue that a professional inspection can diagnose precisely.</li>
+        <li><strong>You are planning a home addition or renovation.</strong> Increased water usage from added bedrooms or bathrooms may require system upgrades. An inspection determines if your current system can handle the load.</li>
+        <li><strong>Your lender or insurance company requires it.</strong> Some lenders and insurance providers require a septic inspection report before approving a mortgage or policy on a home with a private septic system.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Why Choose Septic Tank Repair Houston for Inspections</h2>
+      <ul class="checks" style="margin-top:1rem;">
+        <li><strong>Licensed, trained inspectors.</strong> Our inspectors are TCEQ licensed and trained to evaluate all septic system types common in the Houston area.</li>
+        <li><strong>Detailed written reports with photos.</strong> You receive a clear, documented report within 48 hours — not a hand-scratched checklist.</li>
+        <li><strong>Real estate transaction expertise.</strong> We coordinate with agents, lenders, and title companies to keep your closing on schedule.</li>
+        <li><strong>Honest assessment, no upselling.</strong> We document what we find and explain what it means. We recommend only the work that is actually needed.</li>
+        <li><strong>Fast scheduling.</strong> Most inspections are scheduled within 2 to 5 business days. Rush scheduling is available for time-sensitive closings.</li>
+        <li><strong>Full-service follow-up.</strong> If the inspection reveals needed repairs or pumping, we can handle the work immediately — no need to hire a second contractor.</li>
+        <li><strong>Serving the entire Houston metro.</strong> We inspect systems in Houston, Katy, Sugar Land, Pearland, The Woodlands, Cypress, Spring, Conroe, Baytown, Humble, and Tomball.</li>
+      </ul>
+    </div>
+  </section>
+
+  <ServiceAreas heading="Septic Tank Inspection Near Me: Houston Metro" />
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices currentSlug="septic-inspection" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <FAQSection heading="Septic Inspection Questions, Answered" faqs={pageFaqs} />
+  <CTABand heading="Schedule Your Septic Inspection" text="Real estate inspections, routine health checks, and pre-purchase evaluations. Licensed inspectors. Fast scheduling." />
+</BaseLayout>

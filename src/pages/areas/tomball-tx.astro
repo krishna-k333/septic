@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import { services } from '../../data/services';
+import { areas } from '../../data/areas';
+
+const area = areas.find(a => a.slug === 'tomball-tx')!;
+const nearby = areas.filter(a => area.nearbyAreas.includes(a.slug));
+---
+
+<BaseLayout
+  title={`Septic Tank Service in ${area.fullName} | Pumping & Repair`}
+  description={`Professional septic tank service in ${area.fullName}. Pumping, repair, installation, and inspection. ${area.county} County. Licensed and insured. Free estimates.`}
+  canonicalPath={`/areas/${area.slug}/`}
+>
+  <SchemaHead type="LocalBusiness" data={{ areaServed: area.fullName }} />
+  <SchemaHead type="FAQPage" faqs={area.faqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }, { name: area.name }]} />
+
+  <Hero
+    h1={`Septic Tank Service in ${area.fullName}`}
+    lead={`Professional septic tank repair, pumping, installation, and inspection in ${area.fullName}. Serving ${area.county} County with same-day service and 24/7 emergency response.`}
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Systems in {area.name}</h2>
+      <p>{area.localContext}</p>
+      <p><strong>ZIP codes covered:</strong> {area.zipCodes.join(', ')}</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Pumping in {area.name}</h2>
+      <p>Tomball's rural acreages outside the city center have older septic systems where regular pumping is critical for preventing solids from overwhelming aging drain fields on Harris County's clay-heavy Gulf Coast Prairie soils. The sandy loam near Spring Creek tributaries drains differently than the surrounding clay, making location-specific pumping intervals important. We service both Tomball ZIP codes — 77375 and 77377 — with same-day scheduling available for most addresses.</p>
+      <a href="/services/septic-pumping/" class="btn-hero" style="display:inline-block;">More on Septic Tank Pumping</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Repair in {area.name}</h2>
+      <p>Many Tomball acreages have septic systems that were installed when the area was more rural, and as these systems age, baffle wear, drain field saturation, and root intrusion become increasingly common. The clay-heavy Gulf Coast Prairie soils put extra stress on tanks and pipe connections that other areas with sandier soils do not experience. We handle targeted repairs that address the specific failure point — often for a fraction of what full system replacement would cost — across both Harris County ZIP codes.</p>
+      <a href="/services/septic-repair/" class="btn-hero" style="display:inline-block;">More on Septic Tank Repair</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Installation in {area.name}</h2>
+      <p>Tomball's surrounding rural acreages and growing edges often need new septic installations where city sewer connections are not available. The area's Gulf Coast Prairie clay soils require careful drain field design, and the sandy loam near Spring Creek tributaries offers different options depending on your exact location. We handle all Harris County Public Health permitting and design systems appropriate for both the large-acreage rural properties and the newer developments in the Tomball area.</p>
+      <a href="/services/septic-installation/" class="btn-hero" style="display:inline-block;">More on Septic Tank Installation</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Inspection in {area.name}</h2>
+      <p>Tomball's older rural septic systems benefit from professional inspection before real estate transactions or as part of routine health monitoring, especially given the age of many installations on surrounding acreages. Our inspections cover tank condition, baffle integrity, sludge levels, drain field performance, and root intrusion assessment with reporting formatted to Harris County Public Health standards. We pay particular attention to age-related wear on systems installed when Tomball was a more rural community. Written reports with photos are delivered within 48 hours.</p>
+      <a href="/services/septic-inspection/" class="btn-hero" style="display:inline-block;">More on Septic Tank Inspection</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Maintenance in {area.name}</h2>
+      <p>Tomball's combination of older rural systems and clay-heavy soils makes preventive maintenance especially valuable for avoiding expensive emergency repairs. Our maintenance visits include sludge measurement, baffle inspection, effluent filter cleaning, root intrusion screening, and a drain field evaluation — all documented with a written report. Regular professional maintenance every 1 to 2 years helps Tomball acreage owners catch the baffle wear and drain field saturation that are common on aging systems in the area.</p>
+      <a href="/services/septic-maintenance/" class="btn-hero" style="display:inline-block;">More on Septic Tank Maintenance</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Emergency Septic Service in {area.name}</h2>
+      <p>Septic emergencies on Tomball's rural acreages can be especially disruptive when you are far from municipal sewer connections and have no backup option. We provide 24/7 emergency septic service across both Tomball ZIP codes with dispatch typically within 90 to 120 minutes throughout Harris County. Our emergency crews carry the equipment to diagnose and address baffle failures, root blockages, drain field overloads, and backup situations on the first visit.</p>
+      <a href="/services/emergency-septic/" class="btn-hero" style="display:inline-block;">More on Emergency Septic Service</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Services Available in {area.name}</h2>
+      <div class="grid grid-3">
+        {services.map(s => (
+          <ServiceCard slug={s.slug} name={s.name} icon={s.icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Nearby Service Areas</h2>
+      <div class="chips">
+        {nearby.map(n => (
+          <a href={`/areas/${n.slug}/`} class="chip">Septic Service in {n.fullName}</a>
+        ))}
+        <a href="/service-areas/" class="chip">View All Service Areas</a>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection heading={`Septic Service Questions for ${area.name}`} faqs={area.faqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <CTABand heading={`Need Septic Service in ${area.name}?`} text="Licensed, insured, and available 24/7 for emergencies. Free estimates." />
+</BaseLayout>

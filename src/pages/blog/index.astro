@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTABand from '../../components/CTABand.astro';
+
+const posts = [
+  { slug: 'septic-pumping-cost-houston', title: 'How Much Does Septic Pumping Cost in Houston?', excerpt: 'A complete breakdown of septic tank pumping costs in Houston, TX. What affects price, typical ranges, and how to avoid overpaying.' },
+  { slug: 'how-often-pump-septic-tank-texas', title: 'How Often Should You Pump a Septic Tank in Texas?', excerpt: 'Texas-specific guidance on septic pumping frequency. How climate, soil, and household size affect your pumping schedule.' },
+  { slug: 'signs-septic-tank-needs-repair', title: 'Signs Your Septic Tank Needs Repair', excerpt: 'Seven warning signs that your septic system needs professional repair. Do not wait until it becomes an emergency.' },
+  { slug: 'septic-pumping-vs-cleaning', title: 'Septic Pumping vs Cleaning: What Is the Difference?', excerpt: 'Pumping and cleaning are not the same thing. Learn when you need each one and why it matters for your system.' },
+  { slug: 'texas-septic-tank-regulations', title: 'Texas Septic Tank Regulations: What Houston Homeowners Need to Know', excerpt: 'TCEQ rules, county permits, and what you need to know before installing, repairing, or selling a home with a septic system in Texas.' },
+  { slug: 'emergency-septic-what-to-do', title: 'Emergency Septic Problems: What to Do Before Help Arrives', excerpt: 'Your septic system is backing up. Here is what to do right now, what not to do, and when to call for emergency service.' },
+  { slug: 'how-to-choose-septic-company-houston', title: 'How to Choose a Septic Company in Houston', excerpt: 'What to look for when hiring a septic company in Houston. Licensing, pricing, reviews, and red flags to watch for.' },
+  { slug: 'hurricane-season-septic-system-houston', title: 'Hurricane Season and Your Septic System in Houston', excerpt: 'How Houston hurricane season affects septic systems. Preparation tips, flood damage signs, and what to do after a storm.' },
+];
+---
+<BaseLayout
+  title="Septic Tank Blog | Houston Tips & Guides"
+  description="Expert septic tank tips and guides for Houston homeowners. Pumping schedules, repair signs, costs, regulations, and maintenance advice."
+  canonicalPath="/blog/"
+>
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Blog' }]} />
+
+  <section class="hero" style="padding:2.5rem 0;">
+    <div class="container">
+      <h1>Septic Tank Blog</h1>
+      <p class="lead">Expert tips and guides for Houston homeowners on septic tank repair, pumping, maintenance, and more.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        {posts.map(post => (
+          <div style="background:var(--color-white);border:1px solid var(--color-gray-200);border-radius:10px;padding:1.5rem;">
+            <h3 style="margin-bottom:0.5rem;"><a href={`/blog/${post.slug}/`}>{post.title}</a></h3>
+            <p style="color:var(--color-gray-600);font-size:0.9rem;margin-bottom:0.75rem;">{post.excerpt}</p>
+            <a href={`/blog/${post.slug}/`} style="color:var(--color-green);font-weight:600;font-size:0.9rem;">Read More &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABand heading="Need Septic Service in Houston?" text="Contact us for a free estimate on any septic service." />
+</BaseLayout>

@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import { services } from '../../data/services';
+import { areas } from '../../data/areas';
+
+const area = areas.find(a => a.slug === 'conroe-tx')!;
+const nearby = areas.filter(a => area.nearbyAreas.includes(a.slug));
+---
+
+<BaseLayout
+  title={`Septic Tank Service in ${area.fullName} | Pumping & Repair`}
+  description={`Professional septic tank service in ${area.fullName}. Pumping, repair, installation, and inspection. ${area.county} County. Licensed and insured. Free estimates.`}
+  canonicalPath={`/areas/${area.slug}/`}
+>
+  <SchemaHead type="LocalBusiness" data={{ areaServed: area.fullName }} />
+  <SchemaHead type="FAQPage" faqs={area.faqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }, { name: area.name }]} />
+
+  <Hero
+    h1={`Septic Tank Service in ${area.fullName}`}
+    lead={`Professional septic tank repair, pumping, installation, and inspection in ${area.fullName}. Serving ${area.county} County with same-day service and 24/7 emergency response.`}
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Systems in {area.name}</h2>
+      <p>{area.localContext}</p>
+      <p><strong>ZIP codes covered:</strong> {area.zipCodes.join(', ')}</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Pumping in {area.name}</h2>
+      <p>Conroe's mix of sandy loam and clay soils around Lake Conroe creates variable conditions that affect pumping needs — lakefront parcels with high water tables may need more frequent service to prevent system overload. We recommend pumping every 3 to 5 years for most Conroe households, with shorter intervals for lakefront properties. Our crews service all seven Conroe ZIP codes — 77301, 77302, 77303, 77304, 77306, 77384, and 77385 — with same-day scheduling for most addresses.</p>
+      <a href="/services/septic-pumping/" class="btn-hero" style="display:inline-block;">More on Septic Tank Pumping</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Repair in {area.name}</h2>
+      <p>Lakefront and near-lake properties in Conroe often face unique challenges from high water tables that can saturate drain fields and compromise system performance, especially during heavy rains. We handle drain field rehabilitation, baffle repair, distribution box replacement, and engineered system repairs across all of Montgomery County's Conroe addresses. Our technicians assess water table conditions on every call to ensure repairs account for the specific challenges of your Lake Conroe area property.</p>
+      <a href="/services/septic-repair/" class="btn-hero" style="display:inline-block;">More on Septic Tank Repair</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Installation in {area.name}</h2>
+      <p>Conroe's rapid growth on the western side near Lake Conroe means many new properties need septic systems designed for challenging conditions — high water tables, variable soils, and Montgomery County setback requirements from the lake. We install conventional gravity systems on suitable lots and engineered systems or aerobic treatment units where the water table makes conventional designs unworkable. All permitting is handled through Montgomery County Environmental Health from application through final inspection.</p>
+      <a href="/services/septic-installation/" class="btn-hero" style="display:inline-block;">More on Septic Tank Installation</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Inspection in {area.name}</h2>
+      <p>Conroe properties near Lake Conroe benefit from inspection that specifically evaluates water table impact on system performance, in addition to the standard tank condition, baffle, sludge, and drain field assessment. Our inspections are formatted to Montgomery County Environmental Health standards and include water table observations that are particularly important for lakefront and near-lake addresses. Written reports with photos are delivered within 48 hours for real estate transactions or routine system evaluations.</p>
+      <a href="/services/septic-inspection/" class="btn-hero" style="display:inline-block;">More on Septic Tank Inspection</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Maintenance in {area.name}</h2>
+      <p>Conroe's variable soil conditions — from sandy loam to clay — and the high water table near Lake Conroe make preventive maintenance especially important for catching problems before they escalate. Our maintenance visits include sludge measurement, baffle inspection, effluent filter cleaning, water table assessment, and a drain field evaluation, all documented with a written report. Regular professional maintenance every 1 to 2 years helps Conroe homeowners stay ahead of the environmental conditions that stress septic systems in Montgomery County.</p>
+      <a href="/services/septic-maintenance/" class="btn-hero" style="display:inline-block;">More on Septic Tank Maintenance</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Emergency Septic Service in {area.name}</h2>
+      <p>Septic emergencies in Conroe — especially on lakefront properties where high water tables can cause sudden system overload during heavy rains — need immediate response. We provide 24/7 emergency septic service across all seven Conroe ZIP codes with dispatch typically within 90 to 120 minutes. Our emergency crews carry the equipment to address water table-related failures, backup situations, and system overloads on the first visit throughout Montgomery County.</p>
+      <a href="/services/emergency-septic/" class="btn-hero" style="display:inline-block;">More on Emergency Septic Service</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Services Available in {area.name}</h2>
+      <div class="grid grid-3">
+        {services.map(s => (
+          <ServiceCard slug={s.slug} name={s.name} icon={s.icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Nearby Service Areas</h2>
+      <div class="chips">
+        {nearby.map(n => (
+          <a href={`/areas/${n.slug}/`} class="chip">Septic Service in {n.fullName}</a>
+        ))}
+        <a href="/service-areas/" class="chip">View All Service Areas</a>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection heading={`Septic Service Questions for ${area.name}`} faqs={area.faqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <CTABand heading={`Need Septic Service in ${area.name}?`} text="Licensed, insured, and available 24/7 for emergencies. Free estimates." />
+</BaseLayout>

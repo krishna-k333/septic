@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import AuthorBox from '../../components/AuthorBox.astro';
+import Hero from '../../components/Hero.astro';
+import FAQSection from '../../components/FAQSection.astro';
+
+const blogFaqs = [
+  {
+    question: 'What is the difference between septic pumping and septic cleaning?',
+    answer: 'Pumping removes the liquid and sludge from the tank through a vacuum hose. Cleaning includes pumping plus a high-pressure wash of the tank interior, baffle inspection, and effluent filter cleaning.',
+  },
+  {
+    question: 'How much more does cleaning cost than pumping?',
+    answer: 'Cleaning typically costs $100 to $200 more than pumping alone. If standard pumping is $350 to $600, expect cleaning to run $450 to $800 depending on tank size and condition.',
+  },
+  {
+    question: 'How often should I get a full cleaning vs just pumping?',
+    answer: 'We recommend a full cleaning every other pump. So if you pump every 3 years, you would get a cleaning every 6 years. If your system has not been serviced in more than 5 years, start with a cleaning.',
+  },
+  {
+    question: 'Does cleaning remove more waste than pumping?',
+    answer: 'Yes. Pumping removes most of the liquid and sludge, but residue clings to the walls and bottom of the tank. Cleaning washes that residue off and removes it, giving you a truly clean tank.',
+  },
+];
+
+const howToSteps = [
+  { name: 'Pumping', text: 'A vacuum hose is inserted into the tank. Liquid effluent and settled sludge are sucked out and hauled to a disposal facility.' },
+  { name: 'Wall Wash', text: 'After pumping, the tank walls are pressure washed to remove built-up residue and scum that pumping alone leaves behind.' },
+  { name: 'Baffle Inspection', text: 'The inlet and outlet baffles are visually inspected for cracks, deterioration, or blockages.' },
+  { name: 'Filter Cleaning', text: 'If the system has an effluent filter, it is removed, cleaned, and reinstalled.' },
+  { name: 'Report', text: 'You receive a written report with findings, photos, and recommendations.' },
+];
+---
+
+<BaseLayout
+  title="Septic Pumping vs Cleaning: What Is the Difference?"
+  description="Septic pumping vs cleaning. Pumping removes waste. Cleaning includes pumping plus wall wash, baffle check, and filter cleaning. Learn when you need each."
+  canonicalPath="/blog/septic-pumping-vs-cleaning/"
+>
+  <SchemaHead type="BlogPosting" blogTitle="Septic Pumping vs Cleaning: What Is the Difference?" blogDate="2025-07-26" />
+  <SchemaHead type="FAQPage" faqs={blogFaqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog/' }, { name: 'Septic Pumping vs Cleaning: What Is the Difference?' }]} />
+
+  <Hero
+    h1="Septic Pumping vs Cleaning: What Is the Difference?"
+    lead="Pumping and cleaning are not the same thing. Here is what each one does, what it costs, and how to know which one your system needs."
+  />
+
+  <section class="section">
+    <div class="container" style="max-width:780px;">
+      <AuthorBox datePublished="2025-07-26" dateModified="2025-07-26" />
+
+      <p>A lot of homeowners use "pumping" and "cleaning" interchangeably when talking about septic service. They are not the same thing, and the difference matters for your system. If you are calling around for quotes, knowing what you are actually getting will save you money and keep your system healthier.</p>
+
+      <h2>What Is Septic Pumping?</h2>
+      <p><a href="/services/septic-pumping/">Septic pumping</a> is the basic service. A truck arrives, inserts a large vacuum hose into your tank through the access lid, and sucks out the liquid effluent and settled sludge. The waste is hauled to a licensed disposal facility.</p>
+
+      <p>Pumping removes the bulk of what is in the tank. For most homes on a regular 3 to 5 year schedule, that is enough. The tank goes back to work collecting waste, bacteria start breaking down new solids, and the system continues functioning normally.</p>
+
+      <p>A standard pump takes 45 to 90 minutes from arrival to cleanup. The cost in the Houston area runs $350 to $600 depending on tank size and access.</p>
+
+      <h2>What Is Septic Cleaning?</h2>
+      <p>Cleaning includes everything in a pump, plus additional steps. After the tank is pumped, the technician pressure washes the interior walls and floor of the tank to remove built-up residue, scum, and any stuck-on solids. Then the baffles are inspected, and if the system has an effluent filter, it is removed, cleaned, and put back.</p>
+
+      <p>Think of it like this: pumping is like draining an oil pan. Cleaning is like draining it, flushing the system, and replacing the filter. Both remove old fluid, but cleaning gets the stuff that pumping leaves behind.</p>
+
+      <p>A full cleaning takes about 90 to 120 minutes. It costs $100 to $200 more than pumping alone, so expect $450 to $800 for most Houston-area homes.</p>
+
+      <h2>Side-by-Side Comparison</h2>
+      <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--color-gray-200);">
+            <th style="text-align:left;padding:0.75rem;">Service</th>
+            <th style="text-align:left;padding:0.75rem;">Pumping</th>
+            <th style="text-align:left;padding:0.75rem;">Cleaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--color-gray-200);">
+            <td style="padding:0.75rem;">Removes liquid and sludge</td>
+            <td style="padding:0.75rem;">Yes</td>
+            <td style="padding:0.75rem;">Yes</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-gray-200);">
+            <td style="padding:0.75rem;">Pressure wash tank walls</td>
+            <td style="padding:0.75rem;">No</td>
+            <td style="padding:0.75rem;">Yes</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-gray-200);">
+            <td style="padding:0.75rem;">Baffle inspection</td>
+            <td style="padding:0.75rem;">Visual only</td>
+            <td style="padding:0.75rem;">Full inspection with report</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-gray-200);">
+            <td style="padding:0.75rem;">Effluent filter cleaning</td>
+            <td style="padding:0.75rem;">No</td>
+            <td style="padding:0.75rem;">Yes</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-gray-200);">
+            <td style="padding:0.75rem;">Time on site</td>
+            <td style="padding:0.75rem;">45 to 90 minutes</td>
+            <td style="padding:0.75rem;">90 to 120 minutes</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--color-gray-200);">
+            <td style="padding:0.75rem;">Houston-area cost</td>
+            <td style="padding:0.75rem;">$350 to $600</td>
+            <td style="padding:0.75rem;">$450 to $800</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>When Is Pumping Enough?</h2>
+      <p>Pumping is the right choice when:</p>
+      <ul>
+        <li>Your tank has been pumped or cleaned within the last 3 to 5 years</li>
+        <li>You are on a regular <a href="/services/septic-maintenance/">maintenance</a> schedule</li>
+        <li>You have no active symptoms (no slow drains, no smells, no gurgling)</li>
+        <li>The last service report showed no issues with baffles or filters</li>
+      </ul>
+
+      <p>If your system is healthy and you have been keeping up with it, a standard pump every 3 years with a cleaning every 6 years is a solid plan.</p>
+
+      <h2>When Do You Need a Full Cleaning?</h2>
+      <p>Go with a cleaning when:</p>
+      <ul>
+        <li>It has been more than 5 years since the last service</li>
+        <li>You just bought the home and do not know the service history</li>
+        <li>You are noticing early warning signs like slow drains or mild odors</li>
+        <li>The last technician noted heavy sludge buildup or scum accumulation</li>
+        <li>You have a garbage disposal and pump every 3 years (clean every other pump at minimum)</li>
+      </ul>
+
+      <p>When a tank has not been serviced in years, there is hardened residue on the walls and floor that pumping alone will not remove. That residue reduces your tank's effective capacity and accelerates sludge buildup after the pump. A cleaning resets the tank to a near-new condition.</p>
+
+      <h2>A Common Houston Scenario</h2>
+      <p>We get calls every week from homeowners who say, "I just had my tank pumped six months ago and it is already backing up." Nine times out of ten, the previous company did a quick pump without inspecting anything. They did not check the baffles, did not clean the effluent filter, and did not tell the homeowner that the outlet baffle was cracked. Solids kept flowing into the drain field while the tank "looked" empty.</p>
+
+      <p>A proper cleaning with a full inspection catches these problems. The $100 to $200 difference between a pump and a cleaning can save you thousands in drain field damage.</p>
+
+      <h2>What About "Septic Tank Cleanout"?</h2>
+      <p>You might see the term "septic tank cleanout" when searching online. This is sometimes used interchangeably with cleaning, and sometimes it refers to the cleanout access point (the pipe or fitting that gives access to the tank). If a company quotes you for a "cleanout," ask specifically what is included. Is it just pumping? Is it a full cleaning with wall wash and baffle inspection? Get it in writing before the truck arrives.</p>
+
+      <h2>Our Recommendation</h2>
+      <p>For most Houston homeowners: alternate between pumping and cleaning. Here is what that looks like over a 15-year period:</p>
+      <ul>
+        <li><strong>Year 0:</strong> Full cleaning (baseline)</li>
+        <li><strong>Year 3:</strong> Pumping</li>
+        <li><strong>Year 6:</strong> Full cleaning</li>
+        <li><strong>Year 9:</strong> Pumping</li>
+        <li><strong>Year 12:</strong> Full cleaning</li>
+        <li><strong>Year 15:</strong> Pumping</li>
+      </ul>
+
+      <p>This schedule keeps your tank in good shape, catches problems early through regular inspections, and costs less over time than waiting for something to break. It is the same approach we use for our own homes.</p>
+
+      <h2>Need to Schedule?</h2>
+      <p>Whether you need a routine pump or a full cleaning, we serve the entire Houston metro. Flat-rate pricing, same-day scheduling, and a written report with every service. Call or fill out the form below to get started.</p>
+    </div>
+  </section>
+
+  <FAQSection heading="Pumping vs Cleaning FAQs" faqs={blogFaqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm heading="Schedule Septic Service" />
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Related Posts</h2>
+      <ul>
+        <li><a href="/blog/septic-pumping-cost-houston/">How Much Does Septic Pumping Cost in Houston?</a></li>
+        <li><a href="/blog/how-often-pump-septic-tank-texas/">How Often Should You Pump a Septic Tank in Texas?</a></li>
+        <li><a href="/blog/signs-septic-tank-needs-repair/">Signs Your Septic Tank Needs Repair</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <CTABand heading="Ready for Septic Service?" text="Pumping and cleaning with flat-rate pricing. Free estimates." />
+</BaseLayout>

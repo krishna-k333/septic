@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreas from '../../components/ServiceAreas.astro';
+import { services } from '../../data/services';
+
+const service = services.find(s => s.slug === 'septic-installation')!;
+
+const pageFaqs = [
+  ...service.faqs,
+  {
+    question: 'What is the difference between a conventional and aerobic septic system?',
+    answer: 'A conventional system uses gravity to move effluent from the tank to a drain field where soil does the final treatment. An aerobic treatment unit (ATU) injects oxygen into the treatment process, producing higher-quality effluent that can be dispersed over a smaller area. ATUs cost more to install and maintain but are often required on smaller lots or poor-soil conditions common in the Houston area.',
+  },
+  {
+    question: 'How long does a new septic system last in Houston?',
+    answer: 'A properly installed and maintained concrete septic tank can last 40 years or more. Drain field longevity depends on soil conditions and maintenance — typically 20 to 30 years with regular pumping. Aerobic system components may need replacement every 10 to 15 years.',
+  },
+  {
+    question: 'Do you handle soil testing for septic installation?',
+    answer: 'Yes. We coordinate percolation tests and soil evaluations as part of the installation process. Houston-area clay soils often require engineered drain fields or aerobic treatment units. The soil test determines what type of system your lot can support.',
+  },
+  {
+    question: 'Can you replace an existing septic system?',
+    answer: 'Yes. We handle both new installations for properties that have never had a septic system and full system replacements for failed systems. Replacement includes removing or abandoning the old tank, installing the new system, and all required permitting and inspections.',
+  },
+];
+
+const steps = [
+  { name: 'Consultation and Site Evaluation', text: 'We visit your property to assess lot size, soil conditions, setback requirements, and existing features. We discuss your needs and answer questions about system types.' },
+  { name: 'Soil Testing and System Design', text: 'A percolation test and soil evaluation determine what system type your lot can support. We design the system to meet county codes and your household needs.' },
+  { name: 'Permitting', text: 'We prepare and submit all permit applications to the appropriate county — Harris County Public Health, Fort Bend County, or Montgomery County Environmental Health — and manage the approval process.' },
+  { name: 'Excavation and Installation', text: 'Our crew excavates the tank location and drain field, installs the tank and all plumbing, constructs the drain field or installs the aerobic unit, and connects everything to your home.' },
+  { name: 'Inspection and Backfill', text: 'The county performs a final inspection. Once approved, we backfill, grade the site, and restore your property. You receive all permits, as-built drawings, and maintenance guidelines.' },
+];
+---
+<BaseLayout
+  title={service.title}
+  description={service.metaDescription}
+  canonicalPath="/services/septic-installation/"
+>
+  <SchemaHead
+    type="Service"
+    data={{ serviceType: 'Septic Tank Installation' }}
+  />
+  <SchemaHead
+    type="FAQPage"
+    faqs={pageFaqs}
+  />
+  <SchemaHead
+    type="HowTo"
+    data={{ name: 'Septic Tank Installation Process in Houston' }}
+    howToSteps={steps}
+  />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Services', href: '/services/' }, { name: 'Septic Tank Installation' }]} />
+
+  <Hero
+    h1={service.h1}
+    lead="Septic Tank Repair Houston provides professional septic tank installation in Houston, TX for new construction and system replacements. We handle every step — soil testing, system design, county permitting, excavation, installation, and final inspection. Whether you need a conventional gravity system, pressure distribution system, or aerobic treatment unit, our TCEQ-licensed team designs and installs the right system for your lot. Serving Houston, Katy, Sugar Land, Pearland, The Woodlands, and surrounding communities."
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Professional Septic Tank Installation for Houston Homes</h2>
+      <p>New septic tank installation is one of the most complex residential plumbing projects, and it is not something you want done by a contractor cutting corners. The system must be correctly sized for your household, designed for your specific soil conditions, and installed to meet all county health department codes. In the Houston metro area, this is especially challenging because Gulf Coast Prairie clay soils drain poorly, and many lots sit near floodplains, wetlands, or shallow water tables that limit what type of system you can install.</p>
+      <p>At Septic Tank Repair Houston, we install conventional gravity systems, pressure distribution systems, and aerobic treatment units (ATUs) depending on your lot conditions. Conventional gravity systems are the simplest and most affordable option — they work well on larger lots with adequate soil drainage. Pressure distribution systems use a pump to evenly distribute effluent across the drain field, which helps on lots with marginal soil. Aerobic treatment units process waste to a higher standard, producing effluent clean enough for surface dispersal on smaller or difficult lots where a conventional drain field will not work.</p>
+      <p>Every installation begins with a soil evaluation and percolation test to determine what your property can support. We then design the system, handle all county permitting, and manage the project from excavation through final inspection. Houston homeowners building on acreage in Katy, Cypress, Tomball, or Conroe often need septic because they are outside city sewer boundaries. We have installed hundreds of systems across the Houston metro and know the local soil conditions, county requirements, and common pitfalls that can delay your project.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>What Septic Tank Installation Costs in Houston</h2>
+      <p>Septic tank installation in Houston typically runs <strong>$4,500 to $15,000</strong> depending on system type, soil conditions, lot size, and tank material. A conventional gravity system with a concrete tank on a straightforward lot comes in at the lower end — usually <strong>$4,500 to $8,000</strong>. Pressure distribution systems add a pump and controls, bringing the range to <strong>$6,000 to $10,000</strong>. Aerobic treatment units are the most expensive option at <strong>$8,000 to $15,000</strong> due to the additional mechanical components, electrical work, and more complex drain field requirements.</p>
+      <p>These costs include the tank, all plumbing, drain field construction, permitting, and county inspection. Site conditions can affect pricing — rocky terrain, high water tables, long runs from the house, or lots that require engineered fill add to the base cost. We provide a detailed written estimate after the site evaluation and soil test so you know the full cost before we break ground. Permitting fees are typically <strong>$300 to $800</strong> depending on the county and are included in our estimate.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Our Septic Tank Installation Process</h2>
+      <div class="grid grid-3" style="margin-top:1.5rem;">
+        {steps.map((step, i) => (
+          <div style="background:var(--color-white);border:1px solid var(--color-gray-200);border-radius:10px;padding:1.25rem;">
+            <div style="font-size:1.5rem;font-weight:800;color:var(--color-green);margin-bottom:0.5rem;">{i + 1}</div>
+            <h3>{step.name}</h3>
+            <p style="font-size:0.9rem;color:var(--color-gray-600);margin-bottom:0;">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Signs You Need Septic Installation in Houston</h2>
+      <ol style="margin-top:1rem;line-height:1.9;">
+        <li><strong>Building a new home outside city sewer boundaries.</strong> If your lot in Katy, Cypress, Tomball, Conroe, or rural Harris County is not connected to municipal sewer, you need a private septic system.</li>
+        <li><strong>Your existing system has structurally failed.</strong> If the concrete tank is cracked beyond repair or collapsed, full replacement is the only safe option.</li>
+        <li><strong>Drain field failure across more than 50% of the field.</strong> When most of the drain field is biologically dead or compacted beyond rehabilitation, a new drain field installation is required.</li>
+        <li><strong>Code non-compliance on an older system.</strong> If your existing system was installed before current county codes or uses an outdated design, upgrading may be required — especially during a property sale or transfer.</li>
+        <li><strong>Major home addition or increased occupancy.</strong> Adding bedrooms or significantly increasing water usage may require upgrading to a larger tank or redesigned system to meet current code.</li>
+        <li><strong>Failed percolation test on your current drain field area.</strong> If the soil around your existing drain field can no longer absorb effluent, relocating the field or switching system types may be necessary.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Why Choose Septic Tank Repair Houston for Installation</h2>
+      <ul class="checks" style="margin-top:1rem;">
+        <li><strong>Complete turnkey service.</strong> We handle soil testing, design, permitting, installation, and county inspection — one contractor from start to finish.</li>
+        <li><strong>TCEQ licensed and code compliant.</strong> Every installation meets Texas Commission on Environmental Quality standards and local county health department requirements.</li>
+        <li><strong>Multiple system types available.</strong> We install conventional gravity, pressure distribution, and aerobic systems so you get the right design for your lot — not a one-size-fits-all solution.</li>
+        <li><strong>Local county permitting expertise.</strong> We work with Harris County, Fort Bend County, Montgomery County, Brazoria County, and Chambers County regularly and know their specific requirements.</li>
+        <li><strong>Concrete and plastic tank options.</strong> We recommend the right tank material for your soil conditions, water table, and budget.</li>
+        <li><strong>Warranty on all installations.</strong> Our installation work comes with a written warranty covering workmanship and materials.</li>
+        <li><strong>Free site evaluations and estimates.</strong> We visit your property, evaluate conditions, and provide a detailed estimate at no charge.</li>
+      </ul>
+    </div>
+  </section>
+
+  <ServiceAreas heading="Septic Tank Installation Near Me: Houston Metro" />
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices currentSlug="septic-installation" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <FAQSection heading="Septic Tank Installation Questions, Answered" faqs={pageFaqs} />
+  <CTABand heading="Planning a New Septic Installation?" text="Free site evaluations. We handle permitting, design, and installation. Licensed and insured." />
+</BaseLayout>

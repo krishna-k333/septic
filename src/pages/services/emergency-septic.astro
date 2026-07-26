@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreas from '../../components/ServiceAreas.astro';
+import { services } from '../../data/services';
+
+const service = services.find(s => s.slug === 'emergency-septic')!;
+
+const pageFaqs = [
+  ...service.faqs,
+  {
+    question: 'Do you charge extra for weekend or holiday emergency calls?',
+    answer: 'Emergency service rates include a flat dispatch fee that covers after-hours, weekend, and holiday response. We quote the full amount on the phone before dispatching. There are no additional surprise charges for nights, weekends, or holidays.',
+  },
+  {
+    question: 'Can I use water while waiting for emergency septic service?',
+    answer: 'No. Stop all water use immediately — no flushing toilets, running sinks, showers, washing machine, or dishwasher. Every gallon of water you use pushes more sewage into the backup. Keep everyone away from any sewage exposure and ventilate the area if possible.',
+  },
+  {
+    question: 'Is a sewage backup a health hazard?',
+    answer: 'Yes. Sewage contains bacteria, viruses, and parasites that can cause serious illness. Keep children, pets, and anyone with open wounds away from contaminated areas. Do not touch sewage with bare hands. If sewage has contacted living areas, professional remediation may be needed after the septic emergency is resolved.',
+  },
+  {
+    question: 'What causes sudden septic system failure?',
+    answer: 'The most common causes in Houston are a tank that has not been pumped in years reaching critical capacity, a collapsed baffle blocking the outlet, tree root intrusion breaking a pipe, a failed effluent pump on an aerobic system, or heavy rain flooding the drain field. Some failures are gradual; others happen suddenly during heavy water use or after storms.',
+  },
+];
+
+const steps = [
+  { name: 'Call for Emergency Dispatch', text: 'Call us immediately. Describe what you are experiencing — backups, overflows, no working drains, or alarm sounds. We quote the emergency rate on the phone and dispatch right away.' },
+  { name: 'Stop Using Water', text: 'While our crew is on the way, stop all water use in the home. No flushing, no showers, no laundry. Move people and pets away from any sewage exposure.' },
+  { name: 'Rapid On-Site Assessment', text: 'Our technician arrives within 90 to 120 minutes, locates the tank, opens it, and identifies the cause of the failure — full tank, blocked baffle, collapsed line, or drain field overflow.' },
+  { name: 'Immediate Stabilization', text: 'We pump the tank to relieve the backup, clear blockages, and stop the immediate crisis. If the system needs further repair, we stabilize it first and then discuss longer-term solutions.' },
+  { name: 'Repair and Prevention Plan', text: 'Once the emergency is resolved, we document the cause, perform any needed repairs, and provide a maintenance plan to prevent recurrence. You receive a full written report with photos.' },
+];
+---
+<BaseLayout
+  title={service.title}
+  description={service.metaDescription}
+  canonicalPath="/services/emergency-septic/"
+>
+  <SchemaHead
+    type="Service"
+    data={{ serviceType: 'Emergency Septic Service' }}
+  />
+  <SchemaHead
+    type="FAQPage"
+    faqs={pageFaqs}
+  />
+  <SchemaHead
+    type="HowTo"
+    data={{ name: 'Emergency Septic Service Process in Houston' }}
+    howToSteps={steps}
+  />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Services', href: '/services/' }, { name: 'Emergency Septic Service' }]} />
+
+  <Hero
+    h1={service.h1}
+    lead="Septic Tank Repair Houston provides 24/7 emergency septic service in Houston, TX for sewage backups, overflows, total system failures, and alarm conditions. Our emergency crew dispatches within 90 to 120 minutes anywhere in the Houston metro — including Katy, Sugar Land, Pearland, The Woodlands, Cypress, Spring, Conroe, Baytown, Humble, and Tomball. Flat-rate emergency pricing is quoted on the phone before we send a truck. No mystery charges, no waiting until Monday."
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Professional Emergency Septic Service for Houston Homes</h2>
+      <p>A septic emergency is one of the worst plumbing situations a homeowner can face. Sewage backing up into your tubs, showers, and floor drains is not just inconvenient — it is a health hazard and can cause thousands of dollars in property damage if not addressed immediately. When your septic system fails at 2 AM on a Saturday or during a holiday weekend, you cannot wait until regular business hours. You need a crew that answers the phone, dispatches fast, and arrives ready to work.</p>
+      <p>Septic Tank Repair Houston operates a dedicated emergency response team covering the entire Houston metro 24 hours a day, 7 days a week, 365 days a year. When you call our emergency line, you reach a real person — not a voicemail. We ask a few questions to understand the severity, quote the emergency rate before dispatching, and send a fully equipped crew to your address. Typical response time is 90 to 120 minutes from your call, with faster arrival for addresses closer to our dispatch points.</p>
+      <p>The most common septic emergencies we handle in Houston include sewage backing up into the home, sewage pooling in the yard, total drain failure with no working fixtures, aerobic system alarm conditions with failed effluent pumps, and storm-related system flooding. Houston's flat terrain, clay soils, and heavy rain events make flooding-related septic failures particularly common during hurricane season. Our crews carry commercial pumping equipment, camera inspection tools, and the parts needed to stabilize most emergencies on the first visit.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>What Emergency Septic Service Costs in Houston</h2>
+      <p>Emergency septic service in Houston carries a flat dispatch fee on top of standard service pricing. The emergency dispatch fee is <strong>$150 to $350</strong> depending on your location, time of day, and the severity of the situation. On top of that, standard service charges apply — pumping is <strong>$350 to $600</strong>, and any repair work is quoted separately after diagnosis.</p>
+      <p>We quote the full estimated cost on the phone before dispatching so you know exactly what you are paying. There are no mystery charges, no "we will figure it out when we get there" pricing, and no additional after-hours markups beyond the quoted emergency fee. A typical emergency call — dispatch fee plus pumping to clear a backup — runs <strong>$500 to $900</strong>. If the emergency reveals an underlying repair need, we stabilize the situation first and then provide a separate quote for any additional work.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Our Emergency Septic Service Process</h2>
+      <div class="grid grid-3" style="margin-top:1.5rem;">
+        {steps.map((step, i) => (
+          <div style="background:var(--color-white);border:1px solid var(--color-gray-200);border-radius:10px;padding:1.25rem;">
+            <div style="font-size:1.5rem;font-weight:800;color:var(--color-green);margin-bottom:0.5rem;">{i + 1}</div>
+            <h3>{step.name}</h3>
+            <p style="font-size:0.9rem;color:var(--color-gray-600);margin-bottom:0;">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Signs You Have a Septic Emergency in Houston</h2>
+      <ol style="margin-top:1rem;line-height:1.9;">
+        <li><strong>Sewage backing up into tubs, showers, or floor drains.</strong> This is the most urgent sign. Sewage inside the home is a health hazard and requires immediate emergency septic service.</li>
+        <li><strong>Multiple drains stopped working at the same time.</strong> When every drain in the house is backed up, the blockage is in the main sewer line or septic system — not an individual fixture.</li>
+        <li><strong>Sewage pooling in the yard.</strong> Effluent surfacing in the yard means the system is overwhelmed or failed. This is a health and environmental hazard that needs same-day attention.</li>
+        <li><strong>Aerobic system alarm sounding.</strong> If your aerobic treatment unit alarm is going off, the effluent pump may have failed. Continuing to use water will cause a backup.</li>
+        <li><strong>Strong sewage smell throughout the home.</strong> A pervasive sewage odor, especially combined with gurgling drains, indicates a serious blockage or overflow in progress.</li>
+        <li><strong>Standing water over the tank after heavy rain.</strong> Houston's heavy rain events can flood septic systems, especially in low-lying areas near bayous and floodplains. If the tank area is underwater and drains are backing up, call for emergency service.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Why Choose Septic Tank Repair Houston for Emergencies</h2>
+      <ul class="checks" style="margin-top:1rem;">
+        <li><strong>24/7/365 availability.</strong> Septic emergencies do not follow business hours. Neither do we. Call anytime — day, night, weekend, or holiday.</li>
+        <li><strong>90 to 120 minute response.</strong> From your call to our crew at your door. We cover the entire Houston metro with dedicated emergency trucks.</li>
+        <li><strong>Transparent emergency pricing.</strong> We quote the full cost on the phone before dispatching. No surprise charges when we arrive.</li>
+        <li><strong>Equipped to solve it on the first visit.</strong> Our emergency trucks carry pumping equipment, camera inspection tools, and common repair parts to stabilize most situations immediately.</li>
+        <li><strong>Real people answer the phone.</strong> You reach a trained team member who can assess the severity and dispatch the right crew — not an answering service.</li>
+        <li><strong>Full follow-up after stabilization.</strong> Once the immediate crisis is resolved, we document the cause, recommend preventive measures, and schedule any needed repairs.</li>
+        <li><strong>Licensed and insured.</strong> Full TCEQ licensing, septage hauler permits, and liability coverage protect your property and your family.</li>
+      </ul>
+    </div>
+  </section>
+
+  <ServiceAreas heading="Emergency Septic Service Near Me: Houston Metro" />
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices currentSlug="emergency-septic" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <FAQSection heading="Emergency Septic Service Questions, Answered" faqs={pageFaqs} />
+  <CTABand heading="Septic Emergency? Call Now." text="24/7 emergency dispatch. 90 to 120 minute response. Flat-rate pricing quoted before we roll." />
+</BaseLayout>

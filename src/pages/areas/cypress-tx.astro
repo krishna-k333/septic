@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import { services } from '../../data/services';
+import { areas } from '../../data/areas';
+
+const area = areas.find(a => a.slug === 'cypress-tx')!;
+const nearby = areas.filter(a => area.nearbyAreas.includes(a.slug));
+---
+
+<BaseLayout
+  title={`Septic Tank Service in ${area.fullName} | Pumping & Repair`}
+  description={`Professional septic tank service in ${area.fullName}. Pumping, repair, installation, and inspection. ${area.county} County. Licensed and insured. Free estimates.`}
+  canonicalPath={`/areas/${area.slug}/`}
+>
+  <SchemaHead type="LocalBusiness" data={{ areaServed: area.fullName }} />
+  <SchemaHead type="FAQPage" faqs={area.faqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }, { name: area.name }]} />
+
+  <Hero
+    h1={`Septic Tank Service in ${area.fullName}`}
+    lead={`Professional septic tank repair, pumping, installation, and inspection in ${area.fullName}. Serving ${area.county} County with same-day service and 24/7 emergency response.`}
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Systems in {area.name}</h2>
+      <p>{area.localContext}</p>
+      <p><strong>ZIP codes covered:</strong> {area.zipCodes.join(', ')}</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Pumping in {area.name}</h2>
+      <p>Many Cypress homes built during the 2000s to 2010s building boom are now hitting their first major service cycle, making routine pumping critical for preventing drain field saturation on Harris County's clay-heavy Gulf Coast Prairie soils. We recommend pumping every 3 to 5 years, with more frequent service for larger households. Our crews service both Cypress ZIP codes — 77429 and 77433 — with same-day scheduling for most addresses.</p>
+      <a href="/services/septic-pumping/" class="btn-hero" style="display:inline-block;">More on Septic Tank Pumping</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Repair in {area.name}</h2>
+      <p>Cypress properties along the Cypress Creek and Little Cypress Creek watersheds sit on clay-heavy soils that expand and contract with seasonal moisture, putting stress on tank walls, pipe joints, and drain field trenches. We handle baffle repair, distribution box replacement, drain field rehabilitation, and line jetting across both Harris County ZIP codes. Many drain fields that other companies recommend replacing can be rehabilitated for a fraction of the cost if addressed early.</p>
+      <a href="/services/septic-repair/" class="btn-hero" style="display:inline-block;">More on Septic Tank Repair</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Installation in {area.name}</h2>
+      <p>Cypress continues to grow as one of the Houston metro's fastest-expanding communities, with new construction on the Cypress Creek and Little Cypress Creek watersheds often requiring private septic systems. We design drain fields that account for the Gulf Coast Prairie clay soils common in Harris County, using engineered solutions where conventional gravity systems are not viable. All permitting is handled through Harris County Public Health from start to final inspection.</p>
+      <a href="/services/septic-installation/" class="btn-hero" style="display:inline-block;">More on Septic Tank Installation</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Inspection in {area.name}</h2>
+      <p>Many Cypress homes are approaching the age where their original septic systems need professional evaluation — whether for a real estate transaction or a routine health check. Our inspections cover tank condition, baffle integrity, sludge levels, drain field performance, and distribution box function, with all reporting formatted to Harris County Public Health standards. Written reports with photos are delivered within 48 hours so you have the information you need for your next steps.</p>
+      <a href="/services/septic-inspection/" class="btn-hero" style="display:inline-block;">More on Septic Tank Inspection</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Maintenance in {area.name}</h2>
+      <p>Cypress properties on Harris County clay-heavy soils benefit from preventive maintenance that catches developing problems before they become expensive drain field failures. Our maintenance service includes sludge measurement, baffle inspection, effluent filter cleaning, and a drain field evaluation — all documented with a written report. Regular professional maintenance every 1 to 2 years is especially valuable for Cypress homes built during the 2000s boom as their original systems enter the critical maintenance period.</p>
+      <a href="/services/septic-maintenance/" class="btn-hero" style="display:inline-block;">More on Septic Tank Maintenance</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Emergency Septic Service in {area.name}</h2>
+      <p>Sewage backups and system failures in Cypress cannot wait for a scheduled appointment — they need immediate attention from a licensed crew. We provide 24/7 emergency septic service across both Cypress ZIP codes with dispatch typically within 90 to 120 minutes. Our emergency teams carry the equipment to diagnose and resolve the most common urgent septic problems on the first visit throughout Harris County.</p>
+      <a href="/services/emergency-septic/" class="btn-hero" style="display:inline-block;">More on Emergency Septic Service</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Services Available in {area.name}</h2>
+      <div class="grid grid-3">
+        {services.map(s => (
+          <ServiceCard slug={s.slug} name={s.name} icon={s.icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Nearby Service Areas</h2>
+      <div class="chips">
+        {nearby.map(n => (
+          <a href={`/areas/${n.slug}/`} class="chip">Septic Service in {n.fullName}</a>
+        ))}
+        <a href="/service-areas/" class="chip">View All Service Areas</a>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection heading={`Septic Service Questions for ${area.name}`} faqs={area.faqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <CTABand heading={`Need Septic Service in ${area.name}?`} text="Licensed, insured, and available 24/7 for emergencies. Free estimates." />
+</BaseLayout>

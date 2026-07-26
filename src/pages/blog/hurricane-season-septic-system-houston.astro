@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import AuthorBox from '../../components/AuthorBox.astro';
+import Hero from '../../components/Hero.astro';
+import FAQSection from '../../components/FAQSection.astro';
+
+const blogFaqs = [
+  {
+    question: 'Can a hurricane damage my septic system?',
+    answer: 'Yes. Flooding can saturate drain fields, shift tanks, clog systems with debris, and contaminate the area with sewage. High water tables during storms put extra stress on systems that are already overdue for service.',
+  },
+  {
+    question: 'What should I do with my septic system before a hurricane?',
+    answer: 'Pump the tank if it is due. Clear debris from around the tank and drain field. Know where your tank and cleanout are located. Do not use the system during active flooding.',
+  },
+  {
+    question: 'How do I know if flooding damaged my septic system?',
+    answer: 'After floodwaters recede, look for standing water over the drain field, sewage odors, new soft spots in the yard, or drains that are not working properly. Schedule a professional inspection to assess the system.',
+  },
+  {
+    question: 'Is it safe to use my septic system during a flood?',
+    answer: 'No. If floodwater is covering your drain field or the ground around your tank is saturated, do not use the system. Water you send down the drain has nowhere to go and will back up into the house.',
+  },
+  {
+    question: 'How soon after a hurricane should I have my septic system inspected?',
+    answer: 'As soon as floodwaters recede and it is safe to access the area. Schedule an inspection within the first week after the storm. Do not wait for symptoms to appear, as hidden damage can get worse with continued use.',
+  },
+];
+
+const howToSteps = [
+  { name: 'Before the Storm', text: 'Pump the tank if due. Know where your tank and drain field are located. Clear loose debris from the yard.' },
+  { name: 'During the Storm', text: 'Do not use the septic system if floodwater is present. Minimize water use even if no flooding is visible.' },
+  { name: 'After the Storm', text: 'Wait for floodwaters to recede. Do not walk through standing sewage. Schedule a professional inspection.' },
+  { name: 'Inspection', text: 'Have a technician check the tank, baffles, drain field, and all components for flood damage.' },
+  { name: 'Repair', text: 'Address any damage found during inspection before normal system use resumes.' },
+];
+---
+
+<BaseLayout
+  title="Hurricane Season and Your Septic System in Houston | Preparation Guide"
+  description="How Houston hurricane season affects septic systems. Preparation tips, flood damage signs, and post-storm steps. Protect your system before the next storm."
+  canonicalPath="/blog/hurricane-season-septic-system-houston/"
+>
+  <SchemaHead type="BlogPosting" blogTitle="Hurricane Season and Your Septic System in Houston" blogDate="2025-07-26" />
+  <SchemaHead type="FAQPage" faqs={blogFaqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog/' }, { name: 'Hurricane Season and Your Septic System in Houston' }]} />
+
+  <Hero
+    h1="Hurricane Season and Your Septic System in Houston"
+    lead="Houston gets hit by hurricanes and tropical storms regularly. Here is how to protect your septic system before, during, and after a storm."
+  />
+
+  <section class="section">
+    <div class="container" style="max-width:780px;">
+      <AuthorBox datePublished="2025-07-26" dateModified="2025-07-26" />
+
+      <p>Houston is no stranger to hurricanes. Harvey, Ike, Allison, and countless tropical storms have flooded this city. If your home uses a septic system, storm flooding can cause serious damage, and the damage is not always obvious right away. Here is what you need to know to protect your system and what to do after the water recedes.</p>
+
+      <h2>Before the Storm: Preparation</h2>
+      <p>If a hurricane is heading toward Houston and you have time to prepare, here is what to do for your septic system:</p>
+
+      <h3>Pump the Tank If It Is Due</h3>
+      <p>If your tank is anywhere close to needing a pump, get it done before the storm. A full tank has no reserve capacity. When flooding saturates the drain field, a full tank means sewage has nowhere to go but back into your house. A freshly pumped tank gives you the most buffer possible.</p>
+
+      <p>If you are on a regular <a href="/services/septic-maintenance/">septic maintenance</a> schedule and recently had service, you are in better shape. But if it has been 3 or more years since your last pump, schedule one as soon as a storm is forecast.</p>
+
+      <h3>Know Where Your System Is</h3>
+      <p>You should know where your septic tank, drain field, and cleanout are located. After a storm, floodwater covers everything. If you know where the tank is, you can check for obvious damage (shifted lids, collapsed risers) when the water goes down. If you do not know, your septic service records should have a diagram. If you do not have records, a technician can locate the tank.</p>
+
+      <h3>Clear Loose Debris</h3>
+      <p>Patio furniture, lawn equipment, and yard debris can end up on top of your septic system during a storm. A heavy object on a tank lid or a piece of debris puncturing a riser can cause damage. Move anything loose away from the tank and drain field area before the storm hits.</p>
+
+      <h3>Minimize Water Use Before the Storm</h3>
+      <p>In the 24 to 48 hours before a hurricane arrives, reduce water use as much as possible. Run essential laundry and dishes early. Do not take long showers. The less water in the system when the storm hits, the more capacity you have if the drain field gets saturated.</p>
+
+      <h2>During the Storm</h2>
+      <p>Once the storm is active, there is not much you can do for the septic system. But there is one critical rule:</p>
+
+      <p><strong>If floodwater is present anywhere near your septic system, stop using the system entirely.</strong> That means no flushing, no showers, no laundry, no dishwasher. Water you send down the drain has nowhere to go when the drain field is underwater. It will back up into your home.</p>
+
+      <p>If your home is flooding and you are not sure whether the septic system is affected, treat it as if it is. The consequences of wrong are sewage in your living space.</p>
+
+      <h2>After the Storm: Assessment</h2>
+      <p>Once floodwaters recede and it is safe to go outside, here is what to look for:</p>
+
+      <h3>Standing Water Over the Drain Field</h3>
+      <p>Some standing water after a major flood is normal and will drain as the water table drops. But if standing water persists for more than 48 hours after surrounding areas have drained, your drain field may be damaged or saturated beyond recovery.</p>
+
+      <h3>New Soft Spots or Sinkholes</h3>
+      <p>Floodwater moving through the soil can erode material around the tank and drain field pipes. Soft spots, sunken areas, or small sinkholes near the tank or drain field indicate soil displacement. Do not walk on these areas. The ground may not support your weight.</p>
+
+      <h3>Shifted or Damaged Tank Components</h3>
+      <p>Check the visible parts of your system. Are the tank lids in place? Are risers intact? Has the ground around the tank shifted? Floating tanks are a real phenomenon in severe flooding. When the surrounding soil is saturated, the empty (or partially full) tank can literally float up out of the ground, breaking connections to pipes.</p>
+
+      <h3>Sewage Odor</h3>
+      <p>A strong sewage smell that was not there before the storm indicates that something has broken or shifted. Sewage may be surfacing from a damaged tank or drain field. Do not ignore it. The smell will not go away on its own.</p>
+
+      <h3>Drains Not Working</h3>
+      <p>If your drains are slow or backing up after the flood, the system is not processing wastewater. This could be a saturated drain field, a broken pipe, or sediment that has clogged the system. Stop using water and call for service.</p>
+
+      <h2>Post-Storm: What to Do</h2>
+
+      <h3>Schedule a Professional Inspection</h3>
+      <p>Even if everything looks fine from the surface, schedule a <a href="/services/septic-inspection/">septic inspection</a> within the first week after a major flood. A technician can open the tank, check for structural damage, measure sludge levels, inspect baffles, and evaluate the drain field. Hidden damage can take weeks or months to show symptoms, and by then it is more expensive to fix.</p>
+
+      <h3>Do Not Use the System Until Cleared</h3>
+      <p>Until a professional has inspected the system and cleared it for use, minimize water use as much as possible. If the system has obvious damage (backups, standing sewage, structural damage), do not use it at all until repairs are completed.</p>
+
+      <h3>Pump the Tank If It Flooded</h3>
+      <p>If floodwater entered the tank, it needs to be pumped. Floodwater introduces sediment, debris, and contaminated water into the tank. Pumping removes all of it and gives the system a fresh start. This is different from a routine pump. The technician needs to know the tank was flooded so they can check for additional issues.</p>
+
+      <h3>Check for Contamination</h3>
+      <p>Septic flooding can contaminate wells and nearby water sources. If you use a well for drinking water, have it tested after the flood. This is especially important if the well is within 100 feet of the septic system or drain field.</p>
+
+      <h2>Areas Most at Risk in Houston</h2>
+      <p>Some parts of the Houston metro are more vulnerable to septic flooding than others:</p>
+      <ul>
+        <li><strong>Low-lying areas near bayous and creeks.</strong> Properties along Buffalo Bayou, Brays Bayou, White Oak Bayou, and Spring Creek flood repeatedly.</li>
+        <li><strong>Properties near Lake Houston and the San Jacinto River.</strong> The Humble and Kingwood areas have a history of severe flooding.</li>
+        <li><strong>Baytown and the Ship Channel area.</strong> Flat terrain and high water tables make flooding worse. See our <a href="/areas/baytown-tx/">Baytown service area</a> page for local information.</li>
+        <li><strong>Katy Prairie corridor.</strong> West of Houston, the prairie drainage patterns can cause rapid flooding that overwhelms septic systems.</li>
+      </ul>
+
+      <p>If your property has flooded before, it will flood again. Having a plan for your septic system before the next storm is not pessimism. It is preparation.</p>
+
+      <h2>The Cost of Post-Storm Septic Repair</h2>
+      <p>Flood damage to septic systems ranges from minor to total replacement:</p>
+      <ul>
+        <li><strong>Pumping after flooding:</strong> $350 to $600</li>
+        <li><strong>Riser or lid replacement:</strong> $200 to $500</li>
+        <li><strong>Pipe repair:</strong> $300 to $1,200</li>
+        <li><strong>Drain field rehabilitation:</strong> $800 to $2,500</li>
+        <li><strong>Tank replacement (if floated or cracked):</strong> $3,000 to $8,000</li>
+        <li><strong>Full system replacement:</strong> $4,500 to $15,000</li>
+      </ul>
+
+      <p>Many homeowner insurance policies cover septic damage from storms, but flood insurance through FEMA/NFIP may be required for flood-specific damage. Document everything with photos and call your insurance company early. The sooner you file, the faster the process.</p>
+
+      <h2>Do Not Wait for Problems to Show Up</h2>
+      <p>After a hurricane, most homeowners are focused on roofs, drywall, and flooring. The septic system is underground and out of sight. But ignoring it can lead to a second wave of problems weeks or months later when a damaged drain field finally fails or a cracked pipe causes a backup.</p>
+
+      <p>Get the inspection done early. It is a fraction of the cost of a major repair, and it gives you peace of mind that the system you cannot see is working properly.</p>
+
+      <p>Need a post-storm septic inspection or <a href="/services/emergency-septic/">emergency service</a>? Call us. We serve the entire Houston metro and can schedule inspections quickly after a storm event.</p>
+    </div>
+  </section>
+
+  <FAQSection heading="Hurricane and Septic System FAQs" faqs={blogFaqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm heading="Schedule a Post-Storm Inspection" />
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Related Posts</h2>
+      <ul>
+        <li><a href="/blog/emergency-septic-what-to-do/">Emergency Septic Problems: What to Do Before Help Arrives</a></li>
+        <li><a href="/blog/signs-septic-tank-needs-repair/">Signs Your Septic Tank Needs Repair</a></li>
+        <li><a href="/blog/how-often-pump-septic-tank-texas/">How Often Should You Pump a Septic Tank in Texas?</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <CTABand heading="Storm Damage to Your Septic System?" text="Post-storm inspections. 24/7 emergency service. Licensed and insured." />
+</BaseLayout>

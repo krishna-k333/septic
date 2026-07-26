@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Hero from '../components/Hero.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTABand from '../components/CTABand.astro';
+import LeadForm from '../components/LeadForm.astro';
+import SchemaHead from '../components/SchemaHead.astro';
+import { areas } from '../data/areas';
+
+const hubFaqs = [
+  {
+    question: 'What areas does Septic Tank Repair Houston serve?',
+    answer: 'We serve the entire Houston metro area including Katy, Sugar Land, Pearland, The Woodlands, Cypress, Spring, Conroe, Baytown, Humble, Tomball, and surrounding communities across Harris, Fort Bend, Montgomery, Brazoria, Waller, and Chambers Counties.',
+  },
+  {
+    question: 'Do you offer the same services in every service area?',
+    answer: 'Yes. Every service area has access to our full range of services including septic tank pumping, repair, installation, inspection, maintenance, and 24/7 emergency service. Pricing and response times are consistent across all areas.',
+  },
+  {
+    question: 'How fast can you get to my area?',
+    answer: 'Routine service is typically same-day if you call before noon. Emergency dispatch arrives within 90 to 120 minutes across our entire Houston metro service area.',
+  },
+  {
+    question: 'What counties do you serve around Houston?',
+    answer: 'We serve Harris County, Fort Bend County, Montgomery County, Brazoria County, Waller County, and Chambers County. Our service area covers the greater Houston metropolitan region.',
+  },
+];
+
+const allCounties = [...new Set(areas.map(a => a.county).flatMap(c => c.split(' and ').flatMap(p => p.split(', '))))].filter(Boolean);
+---
+
+<BaseLayout
+  title="Septic Service Areas | Houston & Surrounding Cities"
+  description="Septic Tank Repair Houston serves the entire Houston metro. Pumping, repair, installation, and inspection in Katy, Sugar Land, Pearland, The Woodlands, and more. Free estimates."
+  canonicalPath="/service-areas/"
+>
+  <SchemaHead type="LocalBusiness" />
+  <SchemaHead type="FAQPage" faqs={hubFaqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas' }]} />
+
+  <Hero
+    h1="Our Septic Service Areas in the Houston Metro"
+    lead="Septic Tank Repair Houston provides professional septic tank pumping, repair, installation, inspection, maintenance, and 24/7 emergency service across the greater Houston metropolitan area. Find your city below to learn about local septic conditions and the services available in your area."
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Serving Houston and Surrounding Communities</h2>
+      <p>From the western suburbs in Katy and Cypress to the northern communities in The Woodlands, Spring, Conroe, and Tomball, and down to Pearland and Sugar Land in the south — our licensed and insured septic teams cover the full Houston metro. Whether you need routine pumping, emergency repair, a new system installation, or a real estate inspection, we have local crews dispatched across all service areas with same-day availability.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Our Service Areas</h2>
+      <div class="grid grid-3" style="margin-top:1.5rem;">
+        {areas.map(a => (
+          <div style="background:var(--color-white);border:1px solid var(--color-gray-200);border-radius:10px;padding:1.25rem;">
+            <h3 style="margin-bottom:0.5rem;">{a.fullName}</h3>
+            <p style="font-size:0.9rem;color:var(--color-gray-600);margin-bottom:0.75rem;"><strong>{a.county} County</strong> · ZIP codes: {a.zipCodes.join(', ')}</p>
+            <a href={`/areas/${a.slug}/`} class="btn-hero" style="display:inline-block;">View {a.name} Services</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Counties We Serve</h2>
+      <div class="chips" style="margin-top:1rem;">
+        {allCounties.map(c => (
+          <span class="chip">{c} County</span>
+        ))}
+      </div>
+      <p style="margin-top:1.25rem;">Our service area spans multiple counties across the Houston metro. We handle all county-specific permitting requirements, including Harris County Public Health, Fort Bend County Environmental Health, Montgomery County Environmental Health, Brazoria County Environmental Health, and Chambers County Environmental Health.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <FAQSection heading="Service Area Questions, Answered" faqs={hubFaqs} />
+  <CTABand heading="Need Septic Service in the Houston Area?" text="Licensed, insured, and available 24/7 for emergencies. Serving the entire Houston metro. Free estimates." />
+</BaseLayout>

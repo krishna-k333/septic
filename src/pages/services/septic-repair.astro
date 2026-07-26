@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreas from '../../components/ServiceAreas.astro';
+import { services } from '../../data/services';
+
+const service = services.find(s => s.slug === 'septic-repair')!;
+
+const pageFaqs = [
+  ...service.faqs,
+  {
+    question: 'What types of septic tank repair do you handle in Houston?',
+    answer: 'We handle baffle repair and replacement, cracked tank repair, broken or sunken lid replacement, riser installation, root intrusion removal, effluent filter replacement, distribution box repair, line jetting between tank and drain field, and partial drain field rehabilitation. If your septic system has a problem, we can most likely fix it without replacing the entire system.',
+  },
+  {
+    question: 'Will my homeowner insurance cover septic repair?',
+    answer: 'Some homeowner policies cover septic damage from sudden events like vehicle damage or tree falls, but most do not cover wear, deterioration, or neglect. We provide detailed documentation with photos that you can submit to your insurance company for claims review.',
+  },
+  {
+    question: 'Can you repair a septic tank that another company said needs replacing?',
+    answer: 'In many cases, yes. We routinely provide second opinions on septic repair vs. replacement quotes in Houston. Many systems quoted for replacement by other companies only need targeted repairs. We inspect, document the actual condition, and recommend only what the system truly needs.',
+  },
+];
+
+const steps = [
+  { name: 'Request an Inspection', text: 'Call us or submit a request online. Describe the symptoms — slow drains, odors, wet spots, or backups. We schedule a prompt on-site evaluation.' },
+  { name: 'System Inspection and Diagnosis', text: 'Our technician locates and opens the tank, inspects baffles, measures sludge, checks the distribution box, evaluates the drain field, and identifies the root cause of the problem.' },
+  { name: 'Photo Documentation and Quote', text: 'We document everything with photos and provide a detailed written quote explaining what needs repair, why, and what it costs. No pressure, no upselling.' },
+  { name: 'Perform the Repair', text: 'Once approved, we complete the repair — whether it is baffle replacement, line jetting, riser installation, or drain field work — using professional equipment and TCEQ-compliant methods.' },
+  { name: 'Verify and Report', text: 'We verify the repair is functioning correctly, backfill and restore the work area, and deliver a final report with before-and-after photos and maintenance recommendations.' },
+];
+---
+<BaseLayout
+  title={service.title}
+  description={service.metaDescription}
+  canonicalPath="/services/septic-repair/"
+>
+  <SchemaHead
+    type="Service"
+    data={{ serviceType: 'Septic Tank Repair' }}
+  />
+  <SchemaHead
+    type="FAQPage"
+    faqs={pageFaqs}
+  />
+  <SchemaHead
+    type="HowTo"
+    data={{ name: 'Septic Tank Repair Process in Houston' }}
+    howToSteps={steps}
+  />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Services', href: '/services/' }, { name: 'Septic Tank Repair' }]} />
+
+  <Hero
+    h1={service.h1}
+    lead="Septic Tank Repair Houston provides expert septic tank repair in Houston, TX for residential and commercial systems. From cracked baffles and broken lids to drain field rehabilitation and line jetting, our licensed technicians diagnose the real problem and fix it right — often at a fraction of the cost of full system replacement. We inspect before we quote and never push unnecessary work. Serving Houston, Katy, Sugar Land, Pearland, The Woodlands, and surrounding communities with 24/7 availability."
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Professional Septic Tank Repair for Houston Homes</h2>
+      <p>Most septic problems are repairable. That is the most important thing to know before you spend thousands on a replacement quote you may not need. Septic Tank Repair Houston has repaired tanks across the metro area that other companies declared beyond saving. The reality is that full septic system failure — where the tank itself is structurally compromised and the drain field is biologically dead — is far less common than the industry would have you believe.</p>
+      <p>The most common septic repairs we handle in Houston include cracked or deteriorated inlet and outlet baffles, broken or sunken tank lids, missing or damaged risers, root intrusion into tank or lines, clogged effluent filters, broken or collapsed distribution boxes, line breaks between the tank and drain field, and partial drain field saturation. Drain field repair in Houston is one of our specialties — we use jetting, aeration, and targeted biological treatments to rehabilitate drain fields that other companies would simply dig up and replace.</p>
+      <p>Houston-area clay-heavy soils put extra stress on septic systems. The ground shifts seasonally as clay expands and contracts, which can crack tank walls, separate pipe joints, and compact drain field trenches. Add in the aggressive root growth from the region's dense tree canopy and you have a recipe for recurring maintenance issues. Our repair work accounts for these local conditions so fixes last. We also recommend preventive measures — like root barriers and riser installations — that reduce the likelihood of repeat problems.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>What Septic Tank Repair Costs in Houston</h2>
+      <p>Most septic tank repairs in Houston run <strong>$500 to $2,500</strong> depending on the issue. Baffle repair and replacement typically costs <strong>$250 to $600</strong>. Riser installation runs <strong>$300 to $500</strong> per riser. Effluent filter replacement is usually under <strong>$200</strong>. Distribution box replacement ranges from <strong>$500 to $1,200</strong>. These are targeted fixes that address the specific failure point without disturbing the rest of the system.</p>
+      <p>Drain field repair and rehabilitation — which includes line jetting, aeration, and biological treatment — runs <strong>$800 to $2,500</strong> depending on the size and condition of the field. This is a fraction of the $5,000 to $15,000 cost of full drain field replacement. Emergency septic tank repair in Houston for active backups and system failures may carry a same-day dispatch fee on top of the repair cost. We quote the full number before we start work. If you are searching for "septic tank repair cost Houston" and comparing quotes, make sure every estimate includes the same scope of work — some companies quote low but exclude critical items like lid replacement or baffle repair.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Our Septic Tank Repair Process</h2>
+      <div class="grid grid-3" style="margin-top:1.5rem;">
+        {steps.map((step, i) => (
+          <div style="background:var(--color-white);border:1px solid var(--color-gray-200);border-radius:10px;padding:1.25rem;">
+            <div style="font-size:1.5rem;font-weight:800;color:var(--color-green);margin-bottom:0.5rem;">{i + 1}</div>
+            <h3>{step.name}</h3>
+            <p style="font-size:0.9rem;color:var(--color-gray-600);margin-bottom:0;">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Signs You Need Septic Repair in Houston</h2>
+      <ol style="margin-top:1rem;line-height:1.9;">
+        <li><strong>Slow drains in multiple fixtures.</strong> When more than one drain in the house is slow — kitchen, bathrooms, laundry — the issue is likely in the septic system, not an individual clog.</li>
+        <li><strong>Sewage odor indoors or in the yard.</strong> A rotten egg smell near drains, the tank area, or the drain field indicates a failing baffle, cracked lid, or overloaded system that needs immediate attention.</li>
+        <li><strong>Standing water or soggy ground over the drain field.</strong> Effluent surfacing means the drain field is saturated. This could be from solids clogging the field or from a distribution box failure.</li>
+        <li><strong>Unusually green or fast-growing grass over the drain field.</strong> While a healthy drain field supports some grass growth, patches of bright green grass indicate effluent is surfacing at that spot.</li>
+        <li><strong>Gurgling toilets and drains.</strong> Trapped air from a full tank or blocked outlet baffle causes gurgling, especially after running water or flushing.</li>
+        <li><strong>Sewage backing up into the home.</strong> Backups into tubs, showers, or floor drains indicate a serious blockage or full tank. This requires immediate emergency septic repair in Houston.</li>
+        <li><strong>High nitrate levels in your well water.</strong> If you are on a private well, elevated nitrate or coliform counts can indicate a septic system leak contaminating groundwater.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Why Choose Septic Tank Repair Houston</h2>
+      <ul class="checks" style="margin-top:1rem;">
+        <li><strong>We repair, not replace, when possible.</strong> We inspect first and recommend only what your system actually needs — no unnecessary replacements.</li>
+        <li><strong>Drain field rehabilitation experts.</strong> We save Houston homeowners thousands by rehabilitating drain fields that other companies want to dig up and replace.</li>
+        <li><strong>Photo-documented diagnosis.</strong> We show you exactly what is wrong with photos before quoting any work.</li>
+        <li><strong>TCEQ licensed and compliant.</strong> All repair work meets Texas Commission on Environmental Quality standards.</li>
+        <li><strong>Same-day dispatch for emergencies.</strong> Active backups, leaks, and system failures get same-day priority response.</li>
+        <li><strong>Second opinion inspections.</strong> Got a scary replacement quote from another company? We provide honest second opinions and often find that a targeted repair will solve the problem.</li>
+        <li><strong>Licensed and insured.</strong> Full liability coverage protects your property throughout the repair process.</li>
+      </ul>
+    </div>
+  </section>
+
+  <ServiceAreas heading="Septic Tank Repair Near Me: Houston Metro" />
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices currentSlug="septic-repair" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <FAQSection heading="Septic Tank Repair Questions, Answered" faqs={pageFaqs} />
+  <CTABand heading="Need Septic Repair in Houston?" text="We inspect before we quote. Honest pricing. Fast response. Free estimates for every repair." />
+</BaseLayout>

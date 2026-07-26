@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import { services } from '../../data/services';
+import { areas } from '../../data/areas';
+
+const area = areas.find(a => a.slug === 'the-woodlands-tx')!;
+const nearby = areas.filter(a => area.nearbyAreas.includes(a.slug));
+---
+
+<BaseLayout
+  title={`Septic Tank Service in ${area.fullName} | Pumping & Repair`}
+  description={`Professional septic tank service in ${area.fullName}. Pumping, repair, installation, and inspection. ${area.county} County. Licensed and insured. Free estimates.`}
+  canonicalPath={`/areas/${area.slug}/`}
+>
+  <SchemaHead type="LocalBusiness" data={{ areaServed: area.fullName }} />
+  <SchemaHead type="FAQPage" faqs={area.faqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }, { name: area.name }]} />
+
+  <Hero
+    h1={`Septic Tank Service in ${area.fullName}`}
+    lead={`Professional septic tank repair, pumping, installation, and inspection in ${area.fullName}. Serving ${area.county} County with same-day service and 24/7 emergency response.`}
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Systems in {area.name}</h2>
+      <p>{area.localContext}</p>
+      <p><strong>ZIP codes covered:</strong> {area.zipCodes.join(', ')}</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Pumping in {area.name}</h2>
+      <p>The Woodlands' sandy loam soils generally drain better than Houston-area clay, but the dense pine and hardwood canopy means tree roots are constantly seeking moisture around septic lines and tanks. Regular pumping every 3 to 5 years keeps the system healthy and lets us check for root intrusion early. We service all Woodlands ZIP codes — 77380, 77381, 77382, 77384, 77385, and 77389 — with same-day scheduling available for most addresses.</p>
+      <a href="/services/septic-pumping/" class="btn-hero" style="display:inline-block;">More on Septic Tank Pumping</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Repair in {area.name}</h2>
+      <p>Many homes in The Woodlands' older villages have septic systems that are 20 to 30 years old, making baffle deterioration, drain field saturation, and root intrusion the most common repair issues we see. The dense Montgomery County tree canopy drives aggressive root growth into tanks and lines year-round. We handle targeted repairs that address the specific failure point without replacing the entire system — saving Woodlands homeowners thousands compared to full replacement quotes.</p>
+      <a href="/services/septic-repair/" class="btn-hero" style="display:inline-block;">More on Septic Tank Repair</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Installation in {area.name}</h2>
+      <p>Homes on larger lots outside The Woodlands town center and in the older villages often require private septic systems where municipal sewer is unavailable. The sandy loam soils in Montgomery County generally accommodate conventional drain fields, though tree root management is an important part of any installation in this area. We handle all Montgomery County Environmental Health permitting and design systems that account for the dense tree cover surrounding most Woodlands properties.</p>
+      <a href="/services/septic-installation/" class="btn-hero" style="display:inline-block;">More on Septic Tank Installation</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Septic Tank Inspection in {area.name}</h2>
+      <p>Woodlands properties with older village homes benefit from inspection before buying or selling, especially given the 20 to 30 year age of many septic systems in the area. Our Montgomery County inspections cover tank condition, baffle integrity, root intrusion assessment, sludge levels, and drain field performance with reporting formatted to county standards. Written reports with photos are delivered within 48 hours for real estate transactions or routine system health checks.</p>
+      <a href="/services/septic-inspection/" class="btn-hero" style="display:inline-block;">More on Septic Tank Inspection</a>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Septic Tank Maintenance in {area.name}</h2>
+      <p>The Woodlands' dense pine and hardwood canopy means root intrusion is an ongoing concern that regular maintenance can catch before it becomes a major repair. Our maintenance visits include sludge measurement, baffle inspection, effluent filter cleaning, root intrusion screening, and a drain field walk-through — all documented for Montgomery County records. Preventive maintenance every 1 to 2 years is especially valuable for the area's aging village systems where early detection prevents costly failures.</p>
+      <a href="/services/septic-maintenance/" class="btn-hero" style="display:inline-block;">More on Septic Tank Maintenance</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Emergency Septic Service in {area.name}</h2>
+      <p>Sewage backups and system failures in The Woodlands need immediate response, especially in the older villages where aging systems are more prone to sudden failures. We dispatch emergency crews across all Woodlands ZIP codes within 90 to 120 minutes, 24 hours a day, 7 days a week. Our emergency teams carry the equipment to address root intrusion blockages, baffle failures, and drain field overloads on the first visit throughout Montgomery County.</p>
+      <a href="/services/emergency-septic/" class="btn-hero" style="display:inline-block;">More on Emergency Septic Service</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Services Available in {area.name}</h2>
+      <div class="grid grid-3">
+        {services.map(s => (
+          <ServiceCard slug={s.slug} name={s.name} icon={s.icon} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Nearby Service Areas</h2>
+      <div class="chips">
+        {nearby.map(n => (
+          <a href={`/areas/${n.slug}/`} class="chip">Septic Service in {n.fullName}</a>
+        ))}
+        <a href="/service-areas/" class="chip">View All Service Areas</a>
+      </div>
+    </div>
+  </section>
+
+  <FAQSection heading={`Septic Service Questions for ${area.name}`} faqs={area.faqs} />
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <CTABand heading={`Need Septic Service in ${area.name}?`} text="Licensed, insured, and available 24/7 for emergencies. Free estimates." />
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import { services } from '../data/services';
+
+interface Props {
+  heading?: string;
+}
+
+const { heading = 'Request a Free Estimate' } = Astro.props;
+---
+<div class="lead-form">
+  <h3>{heading}</h3>
+  <form name="contact" method="POST" data-netlify="false">
+    <div class="form-group">
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" required />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" />
+    </div>
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+    <div class="form-group">
+      <label for="service">Service Needed</label>
+      <select id="service" name="service">
+        <option value="">Select a service...</option>
+        {services.map(s => (
+          <option value={s.name}>{s.name}</option>
+        ))}
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Describe your septic issue or what you need..."></textarea>
+    </div>
+    <button type="submit" class="btn-submit">Submit Request</button>
+  </form>
+</div>

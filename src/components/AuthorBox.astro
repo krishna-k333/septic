@@ -1,0 +1,16 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  datePublished?: string;
+  dateModified?: string;
+}
+
+const { datePublished, dateModified } = Astro.props;
+const today = new Date().toISOString().split('T')[0];
+---
+<div class="author-box">
+  <span class="label">By {site.author}</span>
+  {datePublished && <span class="date">Published: {datePublished}</span>}
+  <span class="date">Updated: {dateModified || today}</span>
+</div>

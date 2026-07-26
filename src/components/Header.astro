@@ -1,0 +1,37 @@
+---
+import { services } from '../data/services';
+---
+<div class="topbar">
+  <div class="container">
+    <span>Serving Houston, TX and Surrounding Areas &middot; Licensed and Insured</span>
+    <span>24/7 Emergency Service Available</span>
+  </div>
+</div>
+
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <a href="/">Septic Tank Repair Houston</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu" id="navToggle">&#9776;</button>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/service-areas/">Service Areas</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/contact/" class="btn-cta">Free Estimate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle?.addEventListener('click', () => {
+    links?.classList.toggle('open');
+  });
+</script>

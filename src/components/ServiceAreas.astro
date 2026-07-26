@@ -1,0 +1,23 @@
+---
+import { areas } from '../data/areas';
+
+interface Props {
+  heading?: string;
+}
+
+const { heading = 'Septic Service Areas Near You' } = Astro.props;
+---
+<section class="section bg-light">
+  <div class="container">
+    <div class="section-head">
+      <h2>{heading}</h2>
+      <p>We provide local septic tank service across Houston and surrounding communities.</p>
+    </div>
+    <div class="chips">
+      {areas.map(a => (
+        <a href={`/areas/${a.slug}/`} class="chip">Septic Service in {a.fullName}</a>
+      ))}
+    </div>
+    <p style="text-align:center;margin-top:1rem;"><strong>Counties served:</strong> Harris, Fort Bend, Montgomery, Brazoria, Chambers, Waller, Liberty, and Galveston.</p>
+  </div>
+</section>

@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import RelatedServices from '../../components/RelatedServices.astro';
+import ServiceAreas from '../../components/ServiceAreas.astro';
+import { services } from '../../data/services';
+
+const service = services.find(s => s.slug === 'septic-pumping')!;
+
+const pageFaqs = [
+  ...service.faqs,
+  {
+    question: 'Can you pump my septic tank if I do not know where the lid is?',
+    answer: 'Yes. We locate the tank using probing equipment and county records if needed. Most Houston-area septic tanks have lids buried 6 to 12 inches below grade. We dig them up as part of the service and can install a riser to make future pumping easier.',
+  },
+  {
+    question: 'What happens if I never pump my septic tank?',
+    answer: 'Solids accumulate until they overflow into the drain field, clogging the soil and causing system failure. What starts as a $400 pumping job becomes a $2,000 to $5,000 drain field repair or replacement. Regular septic tank pumping in Houston is the cheapest way to avoid major septic expenses.',
+  },
+  {
+    question: 'Do you dispose of septic waste legally?',
+    answer: 'Yes. We are licensed septage haulers and dispose of all waste at TCEQ-approved treatment facilities. You receive a disposal receipt documenting legal compliance.',
+  },
+];
+
+const steps = [
+  { name: 'Schedule Service', text: 'Call us or fill out our form. Provide your address, tank size if known, and preferred scheduling. Same-day service is available for calls before noon.' },
+  { name: 'Locate and Access the Tank', text: 'Our technician locates your tank using probing tools and county records. We dig up the lid if needed and expose both compartments.' },
+  { name: 'Pump the Tank', text: 'We pump all liquid, sludge, and scum from both compartments using our vacuum truck. A thorough pump removes solids that have settled to the bottom.' },
+  { name: 'Inspect Key Components', text: 'While the tank is open, we inspect baffles, check the effluent filter, measure sludge residual, and look for cracks or deterioration.' },
+  { name: 'Cleanup and Report', text: 'We backfill the access point, clean up the work area, and provide a written service report with recommendations for your next pump cycle.' },
+];
+---
+<BaseLayout
+  title={service.title}
+  description={service.metaDescription}
+  canonicalPath="/services/septic-pumping/"
+>
+  <SchemaHead
+    type="Service"
+    data={{ serviceType: 'Septic Tank Pumping' }}
+  />
+  <SchemaHead
+    type="FAQPage"
+    faqs={pageFaqs}
+  />
+  <SchemaHead
+    type="HowTo"
+    data={{ name: 'Septic Tank Pumping Process in Houston' }}
+    howToSteps={steps}
+  />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Services', href: '/services/' }, { name: 'Septic Tank Pumping' }]} />
+
+  <Hero
+    h1={service.h1}
+    lead="Septic Tank Repair Houston provides professional septic tank pumping in Houston, TX with same-day scheduling, flat-rate pricing, and thorough waste removal. Our licensed crew pumps residential and commercial tanks across Houston, Katy, Sugar Land, Pearland, The Woodlands, and surrounding communities. Routine pumping every 3 to 5 years is the single most effective way to protect your septic system from expensive drain field failure."
+  />
+  <TrustBar />
+
+  <section class="section">
+    <div class="container">
+      <h2>Professional Septic Tank Pumping for Houston Homes</h2>
+      <p>Septic tank pumping is the most important maintenance task for any home on a private septic system. Over time, solids settle to the bottom of your tank and scum floats to the top. If these layers are not removed regularly, they build up until solids escape into your drain field, clogging the soil and causing system failure. In the Houston metro area, where clay-heavy Gulf Coast Prairie soils already limit drainage, a saturated drain field can turn into a five-figure repair bill fast.</p>
+      <p>Our pumping service removes all liquid, sludge, and scum from both tank compartments. We use commercial-grade vacuum trucks capable of handling tanks from 500 gallons to 2,500 gallons. While the tank is open, our technician inspects the inlet and outlet baffles, checks the effluent filter, and measures residual sludge to confirm the tank was fully pumped. We also look for cracks, root intrusion, and lid deterioration — catching small problems before they become big ones.</p>
+      <p>Most Houston homeowners call us for septic tank pumping when they notice slow drains or when it has been more than 3 years since their last service. Do not wait for a backup. Homes with garbage disposals, high water usage, or more than four occupants should lean toward a 3-year pumping interval. Smaller households on larger tanks can often go 4 to 5 years. We help you figure out the right schedule based on your specific situation.</p>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>What Septic Tank Pumping Costs in Houston</h2>
+      <p>Standard residential septic tank pumping in Houston runs <strong>$350 to $600</strong> depending on tank size, the number of compartments, and how accessible the lids are. A typical 1,000-gallon residential tank with accessible lids comes in around $375 to $450. Larger tanks, buried lids that require digging, or tanks located far from where the truck can park may run higher.</p>
+      <p>Full septic tank cleaning — which includes pumping plus a high-pressure wash of the tank walls, baffle inspection, and effluent filter cleaning — typically adds $75 to $150 to the base pumping price. We recommend a full cleaning every other pump cycle, or about every 6 to 10 years, to keep the tank in good condition. We confirm the final price before the truck leaves the yard. No surprise charges.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Our Septic Tank Pumping Process</h2>
+      <div class="grid grid-3" style="margin-top:1.5rem;">
+        {steps.map((step, i) => (
+          <div style="background:var(--color-white);border:1px solid var(--color-gray-200);border-radius:10px;padding:1.25rem;">
+            <div style="font-size:1.5rem;font-weight:800;color:var(--color-green);margin-bottom:0.5rem;">{i + 1}</div>
+            <h3>{step.name}</h3>
+            <p style="font-size:0.9rem;color:var(--color-gray-600);margin-bottom:0;">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <h2>Signs You Need Septic Tank Pumping in Houston</h2>
+      <ol style="margin-top:1rem;line-height:1.9;">
+        <li><strong>It has been more than 3 years since your last pump.</strong> This is the number one indicator. If you cannot remember when you last had the tank pumped, it is time.</li>
+        <li><strong>Slow drains throughout the house.</strong> When multiple fixtures drain slowly — not just one sink — the tank is likely full and solids are blocking the outlet.</li>
+        <li><strong>Sewage smell in the yard or near the tank.</strong> A full tank produces more gas, and overloaded systems can push odor through vents and ground surfaces.</li>
+        <li><strong>Standing water or unusually green grass over the drain field.</strong> This means effluent is surfacing because the drain field is saturated — often from solids that migrated out of an overdue tank.</li>
+        <li><strong>Gurgling sounds in the plumbing.</strong> Air trapped by rising sludge levels causes gurgling in toilets and drains, especially after running water in upper floors.</li>
+        <li><strong>Sewage backing up into tubs or floor drains.</strong> This is an emergency. Your tank is beyond full and needs immediate pumping. Call for emergency septic tank cleanout in Houston right away.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Why Choose Septic Tank Repair Houston for Pumping</h2>
+      <ul class="checks" style="margin-top:1rem;">
+        <li><strong>Same-day scheduling.</strong> Call before noon and we can usually pump your tank the same day across our Houston service area.</li>
+        <li><strong>Flat-rate pricing.</strong> We quote the price before the truck leaves. No hourly charges, no surprise fees for digging up lids.</li>
+        <li><strong>Thorough inspection included.</strong> Every pump includes a baffle check, sludge measurement, and visual drain field evaluation at no extra cost.</li>
+        <li><strong>Commercial-grade equipment.</strong> Our vacuum trucks handle any residential or commercial tank size efficiently.</li>
+        <li><strong>Proper disposal documentation.</strong> We dispose of waste at TCEQ-approved facilities and provide disposal receipts.</li>
+        <li><strong>Local Houston crews.</strong> Real local dispatch across Harris, Fort Bend, Montgomery, Brazoria, and Chambers counties.</li>
+        <li><strong>Riser installation available.</strong> We can install access risers during your pumping appointment to make future service faster and less expensive.</li>
+      </ul>
+    </div>
+  </section>
+
+  <ServiceAreas heading="Septic Tank Pumping Near Me: Houston Metro" />
+
+  <section class="section">
+    <div class="container">
+      <RelatedServices currentSlug="septic-pumping" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <FAQSection heading="Septic Tank Pumping Questions, Answered" faqs={pageFaqs} />
+  <CTABand heading="Schedule Your Septic Pumping Today" text="Same-day service available. Flat-rate pricing. Licensed and insured. Free estimates." />
+</BaseLayout>

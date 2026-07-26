@@ -1,0 +1,127 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  type: 'LocalBusiness' | 'WebSite' | 'Organization' | 'FAQPage' | 'Service' | 'HowTo' | 'AboutPage' | 'ContactPage' | 'CollectionPage' | 'BlogPosting';
+  data?: Record<string, any>;
+  faqs?: { question: string; answer: string }[];
+  howToSteps?: { name: string; text: string }[];
+  blogTitle?: string;
+  blogDate?: string;
+}
+
+const { type, data = {}, faqs, howToSteps, blogTitle, blogDate } = Astro.props;
+
+let schemas: any[] = [];
+
+if (type === 'LocalBusiness') {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${site.domain}/#business`,
+    "name": site.name,
+    "url": site.domain,
+    "description": site.defaultDescription,
+    "areaServed": [
+      "Houston, TX", "Katy, TX", "Sugar Land, TX", "Pearland, TX",
+      "The Woodlands, TX", "Cypress, TX", "Spring, TX", "Conroe, TX",
+      "Baytown, TX", "Humble, TX", "Tomball, TX"
+    ],
+    "serviceType": [
+      "Septic Tank Repair", "Septic Tank Pumping", "Septic Tank Installation",
+      "Septic Tank Inspection", "Septic Maintenance", "Emergency Septic Service"
+    ],
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    ...data,
+  });
+}
+
+if (type === 'WebSite') {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": site.name,
+    "url": site.domain,
+    ...data,
+  });
+}
+
+if (type === 'Organization') {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": site.name,
+    "url": site.domain,
+    ...data,
+  });
+}
+
+if (type === 'Service') {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": data.serviceType || "Septic Service",
+    "provider": { "@type": "LocalBusiness", "name": site.name, "@id": `${site.domain}/#business` },
+    "areaServed": { "@type": "City", "name": "Houston", "containedInPlace": { "@type": "State", "name": "Texas" } },
+    ...data,
+  });
+}
+
+if (type === 'HowTo' && howToSteps) {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": data.name || "Septic Service Process",
+    "step": howToSteps.map((s, i) => ({
+      "@type": "HowToStep",
+      "position": i + 1,
+      "name": s.name,
+      "text": s.text,
+    })),
+  });
+}
+
+if (type === 'BlogPosting') {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": blogTitle,
+    "author": { "@type": "Organization", "name": site.author },
+    "datePublished": blogDate,
+    "url": new URL(Astro.url.pathname, site.domain).href,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": new URL(Astro.url.pathname, site.domain).href },
+    ...data,
+  });
+}
+
+if (type === 'AboutPage' || type === 'ContactPage' || type === 'CollectionPage') {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": type,
+    "name": data.name || site.name,
+    "url": new URL(Astro.url.pathname, site.domain).href,
+    ...data,
+  });
+}
+
+if (faqs && faqs.length > 0) {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.answer },
+    })),
+  });
+}
+---
+{schemas.map(schema => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

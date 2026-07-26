@@ -1,0 +1,16 @@
+---
+import { services } from '../data/services';
+
+interface Props {
+  currentSlug: string;
+}
+
+const { currentSlug } = Astro.props;
+const related = services.filter(s => s.slug !== currentSlug);
+---
+<h2>Other Septic Services in Houston</h2>
+<div class="related-services">
+  {related.map(s => (
+    <a href={`/services/${s.slug}/`} class="related-link">{s.icon} {s.name}</a>
+  ))}
+</div>

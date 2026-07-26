@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import CTABand from '../../components/CTABand.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import SchemaHead from '../../components/SchemaHead.astro';
+import { services } from '../../data/services';
+
+const serviceDetails = [
+  {
+    slug: 'septic-pumping',
+    name: 'Septic Tank Pumping',
+    longDesc: 'Routine septic tank pumping is the most important service for keeping your system healthy. Our Houston crew removes accumulated sludge and wastewater, preventing solids from migrating into your drain field. We recommend pumping every 3 to 5 years for most Houston households. Same-day scheduling is available, and flat-rate pricing means no surprise charges when the truck arrives.',
+  },
+  {
+    slug: 'septic-repair',
+    name: 'Septic Tank Repair',
+    longDesc: 'Most septic problems are repairable. Our team handles cracked baffles, broken lids, root intrusion, drain field rehabilitation, distribution box repair, and line breaks between tank and field. We inspect before we quote, and we routinely repair systems that other Houston companies have told homeowners to replace entirely. Drain field repair, baffle replacement, and riser installation are just a few of the common septic tank repair services we perform every week.',
+  },
+  {
+    slug: 'septic-installation',
+    name: 'Septic Tank Installation',
+    longDesc: 'Whether you are building new or replacing a failed system, our team handles every step of septic tank installation in Houston — soil evaluation, system design, county permitting, excavation, tank placement, drain field construction, and final inspection. We install conventional gravity systems, pressure distribution systems, and aerobic treatment units depending on your lot conditions and local code requirements.',
+  },
+  {
+    slug: 'septic-inspection',
+    name: 'Septic Tank Inspection',
+    longDesc: 'A professional septic inspection is essential for real estate transactions and for homeowners who want to understand the current health of their system. Our inspection includes opening the tank, measuring sludge and scum levels, inspecting baffles, checking the effluent filter, evaluating the drain field, and delivering a written report with photos. We provide septic tank inspection in Houston for buyers, sellers, lenders, and proactive homeowners.',
+  },
+  {
+    slug: 'septic-maintenance',
+    name: 'Septic Tank Maintenance',
+    longDesc: 'Preventive septic maintenance extends the life of your system and catches small problems before they become expensive failures. Our maintenance service includes sludge level measurement, baffle inspection, effluent filter cleaning, drain field evaluation, and a written report with recommendations. Houston-area clay soils put extra stress on septic systems, making regular professional maintenance even more critical than in other regions.',
+  },
+  {
+    slug: 'emergency-septic',
+    name: 'Emergency Septic Service',
+    longDesc: 'Septic emergencies do not wait for business hours and neither do we. Our 24/7 emergency septic service covers sewage backups, overflows, total system failures, and failed effluent pumps. We dispatch within 90 to 120 minutes anywhere in the Houston metro. Flat-rate emergency pricing is quoted over the phone before we send a truck, so there are no mystery charges.',
+  },
+];
+
+const hubFaqs = [
+  {
+    question: 'What septic services do you offer in Houston?',
+    answer: 'We provide six core services: septic tank pumping, septic repair, septic installation, septic inspection, septic maintenance, and 24/7 emergency septic service. All services are available across Houston, Katy, Sugar Land, Pearland, The Woodlands, Cypress, Spring, Conroe, Baytown, Humble, Tomball, and surrounding communities.',
+  },
+  {
+    question: 'How do I know which septic service I need?',
+    answer: 'If your drains are slow or sewage is backing up, you likely need repair or emergency service. If it has been more than 3 years since your last pump, schedule pumping. Buying or selling a home requires an inspection. Not sure? Call us — we will help you figure it out over the phone.',
+  },
+  {
+    question: 'Do you provide free estimates for septic service?',
+    answer: 'Yes. We provide free estimates for every residential and commercial septic job in the Houston metro area. Call us or fill out the form on this page to get started.',
+  },
+  {
+    question: 'How much does septic service cost in Houston?',
+    answer: 'Pumping runs $350 to $600. Repairs run $500 to $2,500 depending on the issue. Inspections are $295 to $425. Installation starts at $4,500. We confirm all pricing before any work begins.',
+  },
+  {
+    question: 'Are you licensed and insured for septic work in Texas?',
+    answer: 'Yes. We are TCEQ licensed, fully insured, and carry proper septage hauler licensing. We follow all Texas Commission on Environmental Quality regulations for septic system service, installation, and waste disposal.',
+  },
+];
+---
+<BaseLayout
+  title="Septic Tank Services in Houston, TX | All Services"
+  description="Full-service septic tank company in Houston, TX. Pumping, repair, installation, inspection, maintenance, and 24/7 emergency service. Licensed and insured. Free estimates."
+  canonicalPath="/services/"
+>
+  <SchemaHead type="CollectionPage" data={{ name: 'Septic Tank Services in Houston, TX' }} />
+  <SchemaHead type="FAQPage" faqs={hubFaqs} />
+
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Services' }]} />
+
+  <Hero
+    h1="Septic Tank Services in Houston, TX"
+    lead="Septic Tank Repair Houston offers a full range of septic services for residential and commercial properties across the Houston metro. From routine pumping and preventive maintenance to emergency repairs and new system installation, our licensed and insured team handles it all with flat-rate pricing and 24/7 availability."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Our Septic Services</h2>
+        <p>Click any service below to learn more about pricing, our process, and what to expect.</p>
+      </div>
+      <div class="grid grid-3">
+        {services.map(s => (
+          <ServiceCard slug={s.slug} name={s.name} icon={s.icon} description={s.description} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {serviceDetails.map(s => (
+    <section class="section bg-light">
+      <div class="container">
+        <h2>{s.name} in Houston</h2>
+        <p>{s.longDesc}</p>
+        <a href={`/services/${s.slug}/`} class="btn-hero" style="display:inline-block;margin-top:0.5rem;">Learn More &rarr;</a>
+      </div>
+    </section>
+  ))}
+
+  <section class="section">
+    <div class="container" style="max-width:600px;">
+      <LeadForm />
+    </div>
+  </section>
+
+  <FAQSection heading="Septic Service Questions, Answered" faqs={hubFaqs} />
+  <CTABand heading="Need Septic Service in Houston?" text="Full-service septic company. Licensed, insured, and available 24/7. Free estimates for every job." />
+</BaseLayout>
