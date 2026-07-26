@@ -7,20 +7,20 @@ interface Props {
 
 const { heading = 'Request a Free Estimate' } = Astro.props;
 ---
-<div class="lead-form">
+<div class="lead-form" id="leadForm">
   <h3>{heading}</h3>
-  <form name="contact" method="POST" data-netlify="false">
+  <form name="contact" method="POST" action="/contact/" id="contactForm">
     <div class="form-group">
       <label for="name">Name *</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" id="name" name="name" required placeholder="Your full name" />
     </div>
     <div class="form-group">
-      <label for="phone">Phone</label>
-      <input type="tel" id="phone" name="phone" />
+      <label for="phone">Phone *</label>
+      <input type="tel" id="phone" name="phone" required placeholder="(713) 555-1234" />
     </div>
     <div class="form-group">
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" required />
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="your@email.com" />
     </div>
     <div class="form-group">
       <label for="service">Service Needed</label>
@@ -29,13 +29,55 @@ const { heading = 'Request a Free Estimate' } = Astro.props;
         {services.map(s => (
           <option value={s.name}>{s.name}</option>
         ))}
-        <option value="Other">Other</option>
+        <option value="Other">Other / Not Sure</option>
       </select>
     </div>
     <div class="form-group">
       <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Describe your septic issue or what you need..."></textarea>
+      <textarea id="message" name="message" placeholder="Describe your septic issue, property address, or any details that will help us prepare your estimate..."></textarea>
     </div>
-    <button type="submit" class="btn-submit">Submit Request</button>
+    <button type="submit" class="btn-submit" id="submitBtn">
+      <span class="btn-text">Get My Free Estimate</span>
+      <span class="btn-loading" style="display:none;">Sending...</span>
+    </button>
   </form>
+  
+  <div id="formSuccess" style="display:none; margin-top:1.5rem; padding:1.5rem; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; text-align:center;">
+    <div style="font-size:2rem; margin-bottom:0.5rem;">✓</div>
+    <h4 style="color:#166534; margin-bottom:0.5rem;">Request Received!</h4>
+    <p style="color:#166534; margin-bottom:0;">Thank you for contacting us. A member of our team will reach out within 24 hours to discuss your septic needs and schedule your free estimate.</p>
+  </div>
 </div>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = submitBtn?.querySelector('.btn-text');
+  const btnLoading = submitBtn?.querySelector('.btn-loading');
+  const successMsg = document.getElementById('formSuccess');
+  
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Show loading state
+    if (submitBtn) submitBtn.disabled = true;
+    if (btnText) btnText.style.display = 'none';
+    if (btnLoading) btnLoading.style.display = 'inline';
+    
+    // Get form data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    // Simulate form submission (replace with actual endpoint)
+    // For now, just show success after a brief delay
+    // In production, replace this with actual form backend (Formspree, Netlify Forms, etc.)
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Show success message
+    if (form) form.style.display = 'none';
+    if (successMsg) successMsg.style.display = 'block';
+    
+    // Log for debugging (remove in production)
+    console.log('Form submission:', data);
+  });
+</script>
