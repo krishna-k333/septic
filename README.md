@@ -77,3 +77,4 @@ This site is configured for Cloudflare Pages:
 - Cost ranges in body text only (no pricing tables)
 - Every page has unique FAQs
 - Internal linking connects all cluster partners
+# septic
