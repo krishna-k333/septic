@@ -35,11 +35,15 @@ Output is in `dist/` folder.
 
 ## Deployment
 
-This site is configured for Cloudflare Pages:
+This site is configured for Cloudflare Workers Static Assets:
 
-1. Build command: `npm run build`
-2. Build output: `dist`
-3. No server-side rendering needed
+```bash
+npm run deploy
+```
+
+The Wrangler configuration builds Astro first, then deploys `dist/` as static assets. In Cloudflare Workers Builds, set the build command to `npm run build` and the deploy command to `npx wrangler deploy`.
+
+If using Cloudflare Pages instead, use build command `npm run build` and output directory `dist`, and let Pages perform the deployment; do not use `npx wrangler deploy` as a Pages deploy command.
 
 ## Keywords Targeted
 

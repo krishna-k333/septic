@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CTABand from '../components/CTABand.astro';
+---
+
+<BaseLayout
+  title="Page Not Found | Septic Tank Repair Houston"
+  description="The requested page could not be found. Return to the Houston septic service homepage."
+  canonicalPath="/404/"
+>
+  <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Page Not Found' }]} />
+  <section class="section">
+    <div class="container" style="max-width:720px;text-align:center;">
+      <p class="section-label">404</p>
+      <h1>That page is not here.</h1>
+      <p class="lead">The link may be outdated or the address may have been entered incorrectly.</p>
+      <a href="/" class="btn-hero">Return to the homepage</a>
+    </div>
+  </section>
+  <CTABand heading="Looking for septic service?" text="Start with the Houston septic service overview or send a request with your property details." />
+</BaseLayout>
