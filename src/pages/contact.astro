@@ -5,36 +5,34 @@ import LeadForm from '../components/LeadForm.astro';
 import SchemaHead from '../components/SchemaHead.astro';
 ---
 <BaseLayout
-  title="Contact Septic Tank Repair Houston | Free Estimate"
-  description="Contact Septic Tank Repair Houston for a free estimate. Septic tank repair, pumping, installation, and emergency service in Houston, TX."
+  title="Request Septic Service in Houston | Repair & Pumping"
+  description="Request septic pumping, repair, inspection, installation, or urgent service in greater Houston. Get started with a free estimate."
   canonicalPath="/contact/"
 >
-  <SchemaHead type="ContactPage" data={{ name: "Contact Septic Tank Repair Houston" }} />
+  <SchemaHead type="ContactPage" data={{ name: "Request Septic Service in Houston" }} />
 
   <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Contact' }]} />
 
-  <section class="hero" style="padding:2.5rem 0;">
+  <section class="hero page-hero">
     <div class="container">
-      <h1>Contact Septic Tank Repair Houston</h1>
-      <p class="lead">Need septic service? Fill out the form below and we will get back to you fast. Free estimates for every job.</p>
+      <p class="eyebrow"><span aria-hidden="true"></span>Houston-area requests</p>
+      <h1>Tell us what your septic system is doing.</h1>
+      <p class="lead">Share the essential details so the service need, location, and timing are clear from the start.</p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container" style="max-width:600px;">
-      <LeadForm heading="Request Service" />
-
-      <div style="margin-top:2rem;padding:1.5rem;background:var(--color-gray-50);border:1px solid var(--color-gray-200);border-radius:10px;">
-        <h3>Service Area</h3>
-        <p style="margin-bottom:0.5rem;">We serve Houston, TX and surrounding communities including:</p>
-        <p style="margin-bottom:0;font-size:0.9rem;color:var(--color-gray-600);">Katy, Sugar Land, Pearland, The Woodlands, Cypress, Spring, Conroe, Baytown, Humble, Tomball, and surrounding Harris, Fort Bend, Montgomery, Brazoria, and Chambers County addresses.</p>
+  <section class="section form-section">
+    <div class="container form-layout">
+      <div class="form-side">
+        <span class="section-label">Before you submit</span>
+        <h2>Useful details make the next conversation easier.</h2>
+        <ul class="plain-checks">
+          <li><span aria-hidden="true">✓</span> Your city or ZIP code</li>
+          <li><span aria-hidden="true">✓</span> The warning signs you noticed</li>
+          <li><span aria-hidden="true">✓</span> When the issue started</li>
+        </ul>
       </div>
-
-      <div style="margin-top:1.5rem;padding:1.5rem;background:var(--color-gray-50);border:1px solid var(--color-gray-200);border-radius:10px;">
-        <h3>Hours</h3>
-        <p style="margin-bottom:0.25rem;"><strong>Routine service:</strong> 7 AM to 7 PM, 7 days a week</p>
-        <p style="margin-bottom:0;"><strong>Emergency service:</strong> 24/7, including nights, weekends, and holidays</p>
-      </div>
+      <LeadForm heading="Start your request" />
     </div>
   </section>
 </BaseLayout>

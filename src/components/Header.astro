@@ -1,28 +1,40 @@
 ---
-import { services } from '../data/services';
----
-<div class="topbar">
-  <div class="container">
-    <span>Serving Houston, TX and Surrounding Areas &middot; Licensed and Insured</span>
-    <span>24/7 Emergency Service Available</span>
-  </div>
-</div>
+const currentPath = Astro.url.pathname;
 
+const navItems = [
+  { href: '/services/', label: 'Services' },
+  { href: '/service-areas/', label: 'Service Areas' },
+  { href: '/about/', label: 'About' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/faq/', label: 'FAQ' },
+];
+---
 <header class="header">
   <div class="container">
     <div class="logo">
-      <a href="/">Septic Tank Repair Houston</a>
+      <a href="/">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="32" height="32">
+            <path d="M7 11.5h18v13H7z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 11.5V8h12v3.5M11 17h10M11 21h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="logo-copy"><strong>Septic Tank Repair</strong><small>Houston, Texas</small></span>
+      </a>
     </div>
-    <button class="nav-toggle" aria-label="Menu" id="navToggle">&#9776;</button>
-    <nav>
+    <button class="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks" id="navToggle">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <nav aria-label="Primary navigation">
       <ul class="nav-links" id="navLinks">
-        <li><a href="/">Home</a></li>
-        <li><a href="/services/">Services</a></li>
-        <li><a href="/service-areas/">Service Areas</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/faq/">FAQ</a></li>
-        <li><a href="/contact/" class="btn-cta">Get Free Estimate</a></li>
+        {navItems.map(item => (
+          <li>
+            <a href={item.href} aria-current={currentPath.startsWith(item.href) ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
+        <li><a href="/contact/#request-form" class="btn-cta">Get Free Estimate</a></li>
       </ul>
     </nav>
   </div>
@@ -31,7 +43,23 @@ import { services } from '../data/services';
 <script>
   const toggle = document.getElementById('navToggle');
   const links = document.getElementById('navLinks');
+  const closeNav = () => {
+    links?.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Open navigation');
+  };
   toggle?.addEventListener('click', () => {
-    links?.classList.toggle('open');
+    const isOpen = links?.classList.toggle('open') ?? false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+  });
+  links?.addEventListener('click', (event) => {
+    if ((event.target as HTMLElement).closest('a')) closeNav();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeNav();
+      toggle?.focus();
+    }
   });
 </script>

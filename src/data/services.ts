@@ -16,12 +16,12 @@ export const services: Service[] = [
     name: 'Septic Tank Pumping',
     shortName: 'Pumping',
     icon: '🚛',
-    title: 'Septic Tank Pumping Houston, TX | Same-Day Service',
+    title: 'Septic Tank Pumping in Houston, TX | Service Guide',
     description:
       'Professional septic tank pumping in Houston, TX. Same-day service, flat-rate pricing, and thorough waste removal for residential and commercial systems.',
     h1: 'Septic Tank Pumping in Houston, TX',
     metaDescription:
-      'Professional septic tank pumping in Houston, TX. Same-day service, flat-rate pricing. Residential and commercial. Licensed and insured. Free estimates.',
+      'Explore septic tank pumping in Houston, including service timing, tank access, maintenance intervals, and options for residential and commercial systems.',
     faqs: [
       {
         question: 'How often should a septic tank be pumped in Houston?',
@@ -60,7 +60,7 @@ export const services: Service[] = [
       'Expert septic tank repair in Houston, TX. Baffle repair, drain field rehabilitation, riser installation, and more. We inspect before we quote.',
     h1: 'Septic Tank Repair in Houston, TX',
     metaDescription:
-      'Expert septic tank repair in Houston, TX. Drain field repair, baffle replacement, riser installation. We inspect before we quote. Licensed and insured.',
+      'Explore septic tank repair in Houston, including drain field issues, baffle replacement, riser installation, warning signs, and inspection options.',
     faqs: [
       {
         question: 'How much does septic tank repair cost in Houston?',
@@ -99,7 +99,7 @@ export const services: Service[] = [
       'Professional septic tank installation in Houston, TX. New system design, permitting, and installation for residential and commercial properties.',
     h1: 'Septic Tank Installation in Houston, TX',
     metaDescription:
-      'Professional septic tank installation in Houston, TX. New system design, permits, and installation. TCEQ compliant. Licensed and insured. Free estimates.',
+      'Explore septic tank installation in Houston, including system design, site evaluation, permits, installation steps, and common system types.',
     faqs: [
       {
         question: 'How much does septic tank installation cost in Houston?',
@@ -133,7 +133,7 @@ export const services: Service[] = [
       'Professional septic tank inspection in Houston, TX. Real estate inspections, pre-purchase evaluations, and routine system health checks.',
     h1: 'Septic Tank Inspection in Houston, TX',
     metaDescription:
-      'Professional septic tank inspection in Houston, TX. Real estate inspections, pre-purchase evaluations, routine health checks. Licensed inspectors. Fast scheduling.',
+      'Explore septic tank inspection in Houston for real estate transactions, pre-purchase evaluations, routine health checks, and maintenance planning.',
     faqs: [
       {
         question: 'How much does a septic inspection cost in Houston?',
@@ -167,7 +167,7 @@ export const services: Service[] = [
       'Preventive septic tank maintenance in Houston, TX. Scheduled service plans, system health checks, and effluent filter cleaning to extend system life.',
     h1: 'Septic Tank Maintenance in Houston, TX',
     metaDescription:
-      'Preventive septic tank maintenance in Houston, TX. Scheduled service plans, system health checks, effluent filter cleaning. Extend your system life. Free estimates.',
+      'Explore septic tank maintenance in Houston, including system health checks, effluent filter cleaning, inspection intervals, and preventive care.',
     faqs: [
       {
         question: 'How often should septic maintenance be done in Houston?',
@@ -191,12 +191,12 @@ export const services: Service[] = [
     name: 'Emergency Septic Service',
     shortName: 'Emergency',
     icon: '🚨',
-    title: 'Emergency Septic Service Houston, TX | 24/7 Response',
+    title: 'Emergency Septic Service in Houston, TX | What to Do',
     description:
       '24/7 emergency septic service in Houston, TX. Fast response for sewage backups, overflows, and system failures. Dispatched within 2 hours.',
     h1: 'Emergency Septic Service in Houston, TX',
     metaDescription:
-      '24/7 emergency septic service in Houston, TX. Sewage backup, overflow, system failure. Dispatched within 2 hours. Licensed and insured. Call now.',
+      'Learn what to do during a septic backup, overflow, alarm, or system failure in Houston and how to request urgent septic service safely.',
     faqs: [
       {
         question: 'How fast can you respond to an emergency in Houston?',

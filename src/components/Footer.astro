@@ -6,11 +6,11 @@ import { areas } from '../data/areas';
   <div class="container">
     <div class="footer-grid">
       <div>
-        <h4>Septic Tank Repair Houston</h4>
-        <p>Professional septic tank repair, pumping, installation, and inspection services across Houston, TX and surrounding communities. Licensed and insured. 24/7 emergency service available.</p>
+        <p class="footer-heading">Septic Tank Repair Houston</p>
+        <p>Septic repair, pumping, installation, inspection, and maintenance across Houston and surrounding communities.</p>
       </div>
       <div>
-        <h4>Services</h4>
+        <p class="footer-heading">Services</p>
         <ul>
           {services.map(s => (
             <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>
@@ -18,7 +18,7 @@ import { areas } from '../data/areas';
         </ul>
       </div>
       <div>
-        <h4>Service Areas</h4>
+        <p class="footer-heading">Service Areas</p>
         <ul>
           {areas.map(a => (
             <li><a href={`/areas/${a.slug}/`}>{a.fullName}</a></li>
@@ -26,7 +26,7 @@ import { areas } from '../data/areas';
         </ul>
       </div>
       <div>
-        <h4>Company</h4>
+        <p class="footer-heading">Company</p>
         <ul>
           <li><a href="/about/">About Us</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -38,7 +38,7 @@ import { areas } from '../data/areas';
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; {new Date().getFullYear()} Septic Tank Repair Houston. All rights reserved. Serving Harris, Fort Bend, Montgomery, and surrounding counties.</p>
+      <p>&copy; {new Date().getFullYear()} Septic Tank Repair Houston. All rights reserved.</p>
     </div>
   </div>
 </footer>

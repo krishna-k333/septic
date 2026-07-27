@@ -1,0 +1,25 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  eager?: boolean;
+}
+
+const { src, alt, caption, eager = false } = Astro.props;
+const mobileSrc = src.replace(/\.webp$/, '-720.webp');
+---
+<figure class="blog-image">
+  <img
+    src={src}
+    srcset={`${mobileSrc} 720w, ${src} 1200w`}
+    sizes="(max-width: 820px) calc(100vw - 2rem), 780px"
+    alt={alt}
+    width="1200"
+    height="800"
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : 'auto'}
+    decoding="async"
+  />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

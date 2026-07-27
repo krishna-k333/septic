@@ -2,45 +2,30 @@
 import { site } from '../data/site';
 
 interface Props {
-  type: 'LocalBusiness' | 'WebSite' | 'Organization' | 'FAQPage' | 'Service' | 'HowTo' | 'AboutPage' | 'ContactPage' | 'CollectionPage' | 'BlogPosting';
+  type: 'WebSite' | 'Organization' | 'FAQPage' | 'Service' | 'HowTo' | 'AboutPage' | 'ContactPage' | 'CollectionPage' | 'BlogPosting';
   data?: Record<string, any>;
   faqs?: { question: string; answer: string }[];
   howToSteps?: { name: string; text: string }[];
   blogTitle?: string;
   blogDate?: string;
+  blogModified?: string;
+  blogDescription?: string;
+  blogImage?: string;
 }
 
-const { type, data = {}, faqs, howToSteps, blogTitle, blogDate } = Astro.props;
+const {
+  type,
+  data = {},
+  faqs,
+  howToSteps,
+  blogTitle,
+  blogDate,
+  blogModified,
+  blogDescription,
+  blogImage,
+} = Astro.props;
 
 let schemas: any[] = [];
-
-if (type === 'LocalBusiness') {
-  schemas.push({
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": `${site.domain}/#business`,
-    "name": site.name,
-    "url": site.domain,
-    "description": site.defaultDescription,
-    "areaServed": [
-      "Houston, TX", "Katy, TX", "Sugar Land, TX", "Pearland, TX",
-      "The Woodlands, TX", "Cypress, TX", "Spring, TX", "Conroe, TX",
-      "Baytown, TX", "Humble, TX", "Tomball, TX"
-    ],
-    "serviceType": [
-      "Septic Tank Repair", "Septic Tank Pumping", "Septic Tank Installation",
-      "Septic Tank Inspection", "Septic Maintenance", "Emergency Septic Service"
-    ],
-    "priceRange": "$$",
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
-    },
-    ...data,
-  });
-}
 
 if (type === 'WebSite') {
   schemas.push({
@@ -67,7 +52,6 @@ if (type === 'Service') {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": data.serviceType || "Septic Service",
-    "provider": { "@type": "LocalBusiness", "name": site.name, "@id": `${site.domain}/#business` },
     "areaServed": { "@type": "City", "name": "Houston", "containedInPlace": { "@type": "State", "name": "Texas" } },
     ...data,
   });
@@ -93,7 +77,11 @@ if (type === 'BlogPosting') {
     "@type": "BlogPosting",
     "headline": blogTitle,
     "author": { "@type": "Organization", "name": site.author },
+    "publisher": { "@type": "Organization", "name": site.name, "url": site.domain },
     "datePublished": blogDate,
+    "dateModified": blogModified || blogDate,
+    ...(blogDescription ? { "description": blogDescription } : {}),
+    ...(blogImage ? { "image": new URL(blogImage, site.domain).href } : {}),
     "url": new URL(Astro.url.pathname, site.domain).href,
     "mainEntityOfPage": { "@type": "WebPage", "@id": new URL(Astro.url.pathname, site.domain).href },
     ...data,

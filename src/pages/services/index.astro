@@ -67,7 +67,7 @@ const hubFaqs = [
 ---
 <BaseLayout
   title="Septic Tank Services in Houston, TX | All Services"
-  description="Full-service septic tank company in Houston, TX. Pumping, repair, installation, inspection, maintenance, and 24/7 emergency service. Licensed and insured. Free estimates."
+  description="Explore septic pumping, repair, installation, inspection, maintenance, and urgent service options for homes across the greater Houston area."
   canonicalPath="/services/"
 >
   <SchemaHead type="CollectionPage" data={{ name: 'Septic Tank Services in Houston, TX' }} />
@@ -94,15 +94,17 @@ const hubFaqs = [
     </div>
   </section>
 
-  {serviceDetails.map(s => (
-    <section class="section bg-light">
-      <div class="container">
-        <h2>{s.name} in Houston</h2>
-        <p>{s.longDesc}</p>
-        <a href={`/services/${s.slug}/`} class="btn-hero" style="display:inline-block;margin-top:0.5rem;">Learn More &rarr;</a>
-      </div>
-    </section>
-  ))}
+  <section class="service-detail-list" aria-label="Houston septic service details">
+    {serviceDetails.map(s => (
+      <article class="service-detail">
+        <div class="container">
+          <h2>{s.name} in Houston</h2>
+          <p>{s.longDesc}</p>
+          <a href={`/services/${s.slug}/`} class="btn-hero service-detail-link">Learn More <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    ))}
+  </section>
 
   <section class="section">
     <div class="container" style="max-width:600px;">

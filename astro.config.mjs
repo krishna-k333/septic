@@ -5,4 +5,7 @@ export default defineConfig({
   site: 'https://septictankrepairhouston.com',
   integrations: [sitemap()],
   output: 'static',
+  build: {
+    inlineStylesheets: 'always',
+  },
 });

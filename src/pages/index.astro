@@ -3,150 +3,123 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TrustBar from '../components/TrustBar.astro';
 import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
-import Testimonials from '../components/Testimonials.astro';
 import ServiceAreas from '../components/ServiceAreas.astro';
 import FAQSection from '../components/FAQSection.astro';
 import CTABand from '../components/CTABand.astro';
-import LeadForm from '../components/LeadForm.astro';
 import SchemaHead from '../components/SchemaHead.astro';
 import { services } from '../data/services';
 
+const serviceDescriptions: Record<string, string> = {
+  'septic-pumping': 'Routine tank pumping requests for homes and commercial properties.',
+  'septic-repair': 'Help for backups, damaged components, line issues, and field concerns.',
+  'septic-installation': 'Requests involving replacement systems, new builds, and permitting.',
+  'septic-inspection': 'System checks for ownership decisions, maintenance, or troubleshooting.',
+  'septic-maintenance': 'Preventive service requests to help keep a system working as intended.',
+  'emergency-septic': 'Urgent request routing for active backups, overflow, or system failure.',
+};
+
 const homepageFaqs = [
   {
-    question: 'How much does septic tank repair cost in Houston?',
-    answer: 'Most septic repairs in Houston run $500 to $2,500 depending on the issue. Baffle repair is typically $250 to $600. Drain field rehabilitation runs $800 to $2,500. Full system replacement is only needed when the tank is structurally failed, which is rarer than most homeowners are led to believe.',
+    question: 'What information should I include in a septic service request?',
+    answer: 'Include your city, the warning signs you have noticed, when the issue started, and whether wastewater is backing up inside. If you know the system type or last pumping date, add that too.',
   },
   {
-    question: 'How often should a septic tank be pumped in Houston?',
-    answer: 'Most Houston area homes should pump every 3 to 5 years. The exact interval depends on tank size and household size. Houston-area clay-heavy soils put extra stress on systems, so we recommend leaning toward the shorter end if you have more than 4 people in the home.',
+    question: 'What should I do if sewage is backing up?',
+    answer: 'Stop using water in the property, keep people and pets away from wastewater, and do not open or enter the tank. Submit an urgent service request and clearly describe where the backup is appearing.',
   },
   {
-    question: 'What are signs my septic tank needs repair?',
-    answer: 'Slow drains throughout the house, sewage smell indoors or in the yard, gurgling pipes, standing water or bright green grass over the drain field, or sewage backing up into tubs and floor drains. Any of these means you need septic service now, not later.',
+    question: 'Which septic services can I request?',
+    answer: 'You can request septic pumping, repair, inspection, maintenance, installation, and help with an urgent backup or overflow.',
   },
   {
-    question: 'Do you offer emergency septic service in Houston?',
-    answer: 'Yes. We provide 24/7 emergency septic service across the Houston metro. We typically dispatch within 90 to 120 minutes for emergency calls including sewage backups, overflows, and system failures.',
+    question: 'How much does septic service cost in Houston?',
+    answer: 'Cost depends on the system, tank access, service type, and what the inspection finds. Share the issue first, then confirm the scope and written estimate before work begins.',
   },
   {
-    question: 'Do you service both residential and commercial septic systems?',
-    answer: 'Yes. We handle residential septic in Houston plus commercial septic, grease trap pumping, and hydro-jetting for restaurants and businesses across the greater Houston area.',
-  },
-  {
-    question: 'What areas around Houston do you serve?',
-    answer: 'We serve Houston, Katy, Sugar Land, Pearland, The Woodlands, Cypress, Spring, Conroe, Baytown, Humble, Tomball, and surrounding Harris, Fort Bend, Montgomery, Brazoria, and Chambers County addresses.',
-  },
-  {
-    question: 'How do I know if I need septic repair or replacement?',
-    answer: 'Most septic problems are repairable. We inspect, document, and explain what is actually wrong before recommending any work. Only structural tank failure, drain field failure across more than 50% of its length, or code non-compliance typically requires full replacement.',
+    question: 'Which Houston-area communities are covered?',
+    answer: 'The website accepts requests from Houston and surrounding communities including Katy, Sugar Land, Pearland, The Woodlands, Cypress, Spring, Conroe, Baytown, Humble, and Tomball.',
   },
 ];
 
-const howToSteps = [
-  { name: 'Request Service', text: 'Contact us with your address, tank size if known, and any issues you are experiencing.' },
-  { name: 'Inspection', text: 'Our technician inspects the tank, measures sludge levels, checks baffles, and evaluates the drain field.' },
-  { name: 'Diagnosis', text: 'We document findings with photos and explain exactly what needs to be done and why.' },
-  { name: 'Service', text: 'We perform the repair, pumping, or maintenance with clear pricing confirmed before work begins.' },
-  { name: 'Follow-Up', text: 'You receive a written report, before and after photos, and recommendations for ongoing maintenance.' },
+const processSteps = [
+  { name: 'Tell us what is happening', text: 'Choose the closest service and share your city, warning signs, and timing.' },
+  { name: 'Schedule the right service', text: 'Use those details to confirm the service type, timing, and what happens next.' },
+  { name: 'Get your system handled', text: 'Review the scope and estimate, then move forward with the work you need.' },
 ];
 ---
 <BaseLayout
-  title="Septic Tank Repair Houston, TX | Pumping & Service"
-  description="Professional septic tank repair in Houston, TX. Pumping, installation, inspection & emergency service. Licensed, insured, free estimates. Call today."
+  title="Septic Service Requests in Houston, TX | Repair & Pumping"
+  description="Septic pumping, repair, inspection, installation, and emergency service across greater Houston. Request a free estimate."
   canonicalPath="/"
 >
-  <SchemaHead type="LocalBusiness" />
   <SchemaHead type="WebSite" />
   <SchemaHead type="Organization" />
-  <SchemaHead
-    type="FAQPage"
-    faqs={homepageFaqs}
-  />
-  <SchemaHead
-    type="HowTo"
-    data={{ name: "Septic Tank Repair Process in Houston" }}
-    howToSteps={howToSteps}
-  />
+  <SchemaHead type="FAQPage" faqs={homepageFaqs} />
+  <SchemaHead type="HowTo" data={{ name: 'How to Request Septic Service in Houston' }} howToSteps={processSteps} />
 
   <Hero
-    h1="Septic Tank Repair in Houston, TX"
-    lead="Septic Tank Repair Houston provides professional septic tank repair, pumping, installation, and inspection services across Houston, TX and surrounding Harris, Fort Bend, and Montgomery County communities. Whether you need emergency septic system repair, routine maintenance, or a full drain field rehabilitation, our licensed and insured team handles it all with 24/7 availability and free estimates for every residential and commercial job."
+    h1="Houston septic problems, handled the right way."
+    lead="From routine pumping to urgent backups, get the right septic service for your property with a clear process and straightforward next steps."
+    showForm
   />
   <TrustBar />
 
-  <section class="section">
+  <section class="section services-section">
     <div class="container">
       <div class="section-head">
-        <h2>Septic Tank Services in Houston, TX</h2>
-        <p>Septic Tank Repair Houston is your local team for septic tank repair, pumping, cleaning, installation, inspection, and emergency service. Real local crews. Honest pricing. Fast response across the Houston metro.</p>
+        <span class="section-label">Choose your service path</span>
+        <h2>What does your septic system need?</h2>
+        <p>Start with the closest match. If you are unsure, the request form lets you say that.</p>
       </div>
       <div class="grid grid-3">
-        {services.map(s => (
-          <ServiceCard slug={s.slug} name={s.name} icon={s.icon} description={s.description} />
+        {services.map(service => (
+          <ServiceCard
+            slug={service.slug}
+            name={service.name}
+            icon={service.icon}
+            description={serviceDescriptions[service.slug]}
+          />
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section bg-light">
-    <div class="container">
-      <div class="grid grid-2">
-        <div>
-          <h2>Septic Tank Repair in Houston</h2>
-          <p>Most septic problems are repairable. That is the headline you will not hear from companies that make more money selling you a full system replacement. We regularly repair tanks across Houston, Katy, Sugar Land, Pearland, and the surrounding suburbs that other companies have quoted as beyond repair.</p>
-          <p>Common repairs we handle every week: cracked inlet or outlet baffles, broken or sunken tank lids, missing or damaged risers, root intrusion, effluent filter replacement, distribution box repair, line breaks between tank and drain field, and partial drain field rehabilitation. Most of these come in under $2,500. Full system replacement only makes sense when the tank itself is structurally failed or the drain field is biologically dead, which is rarer than you have been led to believe.</p>
-          <p>Whether you are searching for <strong>septic tank repair in Houston</strong> or need a second opinion on a replacement quote, our team inspects first and recommends only what your system actually needs.</p>
-          <a href="/services/septic-repair/" class="btn-hero" style="display:inline-block;margin-top:0.5rem;">Septic Repair Details</a>
-        </div>
-        <div>
-          <h2>Septic Tank Pumping in Houston</h2>
-          <p>Routine septic tank pumping is the single most important service for keeping your system healthy. We recommend pumping every 3 to 5 years for most Houston households. Wait too long and solids migrate into your drain field, turning a routine pump into a major drain field repair.</p>
-          <p>Our local Houston crew dispatches same-day for most addresses, with flat-rate pricing confirmed before the truck leaves. Most jobs run $350 to $600 depending on tank size and access. We also provide full septic tank cleaning — wall wash-down, baffle inspection, effluent filter cleaning — for homes that have gone more than 4 years since their last service.</p>
-          <a href="/services/septic-pumping/" class="btn-hero" style="display:inline-block;margin-top:0.5rem;">Pumping Details</a>
-        </div>
+  <section class="section signal-section">
+    <div class="container signal-layout">
+      <div>
+        <span class="section-label">Know when to act</span>
+        <h2>Small warning signs can point to a larger septic issue.</h2>
+        <p>One slow drain may be plumbing. Multiple slow drains, wastewater odors, gurgling fixtures, wet ground over the system, or an indoor backup can indicate a septic problem.</p>
+        <a href="/blog/signs-septic-tank-needs-repair/" class="text-link">Review common warning signs <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="signal-list">
+        <div><span aria-hidden="true">01</span><p><strong>Stop water use</strong> if wastewater is backing up indoors.</p></div>
+        <div><span aria-hidden="true">02</span><p><strong>Keep people and pets away</strong> from pooling wastewater.</p></div>
+        <div><span aria-hidden="true">03</span><p><strong>Do not open the tank.</strong> Confined-space gases can be dangerous.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section process-section" id="how-it-works">
     <div class="container">
-      <h2>How Our Septic Repair Process Works</h2>
-      <div class="grid grid-3" style="margin-top:1.5rem;">
-        {howToSteps.map((step, i) => (
-          <div style="background:var(--color-white);border:1px solid var(--color-gray-200);border-radius:10px;padding:1.25rem;">
-            <div style="font-size:1.5rem;font-weight:800;color:var(--color-green);margin-bottom:0.5rem;">{i + 1}</div>
+      <div class="section-head section-head-left">
+        <span class="section-label">Simple from start to finish</span>
+        <h2>From septic problem to a working system.</h2>
+      </div>
+      <ol class="process-grid">
+        {processSteps.map((step, index) => (
+          <li class="process-card">
+            <span class="step-number">{String(index + 1).padStart(2, '0')}</span>
             <h3>{step.name}</h3>
-            <p style="font-size:0.9rem;color:var(--color-gray-600);margin-bottom:0;">{step.text}</p>
-          </div>
+            <p>{step.text}</p>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 
-  <section class="section bg-light">
-    <div class="container">
-      <h2>Why Choose Septic Tank Repair Houston</h2>
-      <ul class="checks" style="margin-top:1rem;">
-        <li><strong>Local Houston team.</strong> Real local dispatch across Harris, Fort Bend, and Montgomery counties.</li>
-        <li><strong>24/7 emergency response.</strong> Septic emergencies do not wait. Neither do we.</li>
-        <li><strong>Flat-rate pricing.</strong> Confirmed before we send a truck. No surprise charges.</li>
-        <li><strong>TCEQ licensed and compliant.</strong> We follow all Texas Commission on Environmental Quality regulations.</li>
-        <li><strong>Honest quotes.</strong> We inspect before we recommend repair vs. replacement.</li>
-        <li><strong>Licensed and insured.</strong> Full liability coverage and proper septage hauler licensing.</li>
-        <li><strong>Residential and commercial.</strong> From single-family homes to restaurants and commercial properties.</li>
-      </ul>
-    </div>
-  </section>
+  <ServiceAreas heading="Request septic service across greater Houston" />
 
-  <Testimonials />
-  <ServiceAreas heading="Septic Tank Service Near Me: Houston Metro" />
-
-  <section class="section">
-    <div class="container" style="max-width:600px;">
-      <LeadForm />
-    </div>
-  </section>
-
-  <FAQSection heading="Septic Service Questions, Answered" faqs={homepageFaqs} />
-  <CTABand heading="Reliable Septic Service in Houston" text="Real local team. Honest pricing. Fast response. Free estimates." />
+  <FAQSection heading="Questions before you request service" faqs={homepageFaqs} />
+  <CTABand heading="Ready to get your septic system handled?" text="Describe the issue and get started with the right Houston-area septic service." />
 </BaseLayout>

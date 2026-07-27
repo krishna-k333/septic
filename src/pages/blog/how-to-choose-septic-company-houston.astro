@@ -7,23 +7,27 @@ import SchemaHead from '../../components/SchemaHead.astro';
 import AuthorBox from '../../components/AuthorBox.astro';
 import Hero from '../../components/Hero.astro';
 import FAQSection from '../../components/FAQSection.astro';
+import BlogImage from '../../components/BlogImage.astro';
+
+const metaDescription = 'Choosing a Houston septic company takes more than checking stars. Use 8 questions to verify credentials, compare written scopes, and spot sales red flags.';
+const blogImage = '/images/blog/how-to-choose-septic-company-houston.webp';
 
 const blogFaqs = [
   {
     question: 'What license should a septic company have in Texas?',
-    answer: 'Septic installers must hold a TCEQ-registered OSSF (On-Site Sewage Facility) Installer license. Maintenance providers need a separate license. Always ask for the license number and verify it.',
+    answer: 'The required TCEQ license depends on the work. Installation, site evaluation, designated inspection, and aerobic maintenance are different roles. Ask who will perform or supervise the work and verify that individual.',
   },
   {
     question: 'How do I know if a septic company is overcharging me?',
-    answer: 'Get multiple quotes. Standard pumping in Houston runs $350 to $600. Repairs vary, but baffle repair is typically $250 to $600 and drain field work is $800 to $2,500. If a quote is dramatically outside those ranges, ask why.',
+    answer: 'Compare at least two written scopes for significant work. A total cannot be judged fairly until you know what each quote includes, excludes, and assumes about access, permits, disposal, and repairs.',
   },
   {
     question: 'Should I get a second opinion on a septic replacement quote?',
-    answer: 'Yes, always. Many septic problems that are quoted as replacement can be repaired. We routinely inspect systems that other companies have declared as needing full replacement and find that a repair is sufficient.',
+    answer: 'A second opinion is reasonable before an expensive replacement, especially when the first recommendation lacks photos, measurements, permit context, or a written explanation of the failed components.',
   },
   {
     question: 'How do I check septic company reviews in Houston?',
-    answer: 'Check Google Business Profile reviews, the Better Business Bureau, and Texas licensing databases. Look for patterns in reviews, not just star ratings. Multiple reviews mentioning the same issue is a red flag.',
+    answer: 'Read recent reviews for repeated details about the same type of work, then verify credentials independently. Reviews can reveal communication patterns, but they do not replace a license check or written scope.',
   },
   {
     question: 'What is the biggest red flag when hiring a septic company?',
@@ -42,59 +46,53 @@ const howToSteps = [
 
 <BaseLayout
   title="How to Choose a Septic Company in Houston | Hiring Guide"
-  description="How to choose a septic company in Houston. Licensing, pricing, reviews, and red flags. What to ask before hiring anyone for septic work."
+  description={metaDescription}
   canonicalPath="/blog/how-to-choose-septic-company-houston/"
+  ogImage={blogImage}
+  ogType="article"
 >
-  <SchemaHead type="BlogPosting" blogTitle="How to Choose a Septic Company in Houston" blogDate="2025-07-26" />
+  <SchemaHead type="BlogPosting" blogTitle="How to Choose a Septic Company in Houston" blogDate="2025-07-26" blogModified="2026-07-27" blogDescription={metaDescription} blogImage={blogImage} />
   <SchemaHead type="FAQPage" faqs={blogFaqs} />
 
   <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog/' }, { name: 'How to Choose a Septic Company in Houston' }]} />
 
   <Hero
     h1="How to Choose a Septic Company in Houston"
-    lead="Not all septic companies are the same. Here is how to tell the difference between a good one and one that will overcharge you or do bad work."
+    lead="Use license records, a written scope, and eight direct questions to compare Houston septic providers without relying on star ratings alone."
   />
 
   <section class="section">
     <div class="container" style="max-width:780px;">
-      <AuthorBox datePublished="2025-07-26" dateModified="2025-07-26" />
+      <AuthorBox datePublished="2025-07-26" dateModified="2026-07-27" />
+      <BlogImage src={blogImage} alt="Houston homeowner reviewing a septic inspection report with a technician" caption="A useful estimate explains the finding, proposed work, exclusions, and total price in writing." eager />
 
-      <p>When something goes wrong with your septic system, you need a company you can trust. The problem is, most homeowners do not know what to look for until after they have been burned. We have cleaned up after bad septic work across the Houston metro for years. Here is what we have learned about picking a good company.</p>
+      <p>A five-star average cannot tell you whether the person arriving is licensed for the proposed work. A low price cannot tell you what was left out. Start with facts you can verify, then use reviews to fill in the softer details.</p>
 
-      <h2>Licensing: The First Thing to Check</h2>
-      <p>In Texas, anyone who installs or repairs a septic system must hold a TCEQ-registered OSSF (On-Site Sewage Facility) Installer license. This is not optional. It is the law. A company that cannot provide their license number is operating without proper credentials.</p>
+      <h2>Which license applies to the work?</h2>
+      <p>TCEQ licenses individual OSSF roles, including site evaluators, Installer I and II, designated representatives, maintenance providers, and maintenance technicians. The right credential depends on the job.</p>
 
-      <p>Here is what to verify:</p>
+      <p>Verify these details before comparing bids:</p>
       <ul>
         <li><strong>TCEQ OSSF Installer license.</strong> Required for installation and major repair work.</li>
         <li><strong>Maintenance Provider license.</strong> Required for aerobic system maintenance contracts.</li>
-        <li><strong>Septage Hauler license.</strong> Required for pumping and waste disposal.</li>
+        <li><strong>Waste transporter registration.</strong> Ask how pumped material will be transported and disposed of lawfully.</li>
         <li><strong>General liability insurance.</strong> Protects you if something goes wrong during the job.</li>
       </ul>
 
       <p>Ask for the license number upfront. A legitimate company will provide it without hesitation. You can verify TCEQ licenses on the TCEQ website. If a company gets defensive about licensing questions, move on.</p>
 
-      <h2>Pricing: What Fair Looks Like</h2>
-      <p>Septic pricing in Houston is not standardized, but there are reasonable ranges. Here is what to expect for common services:</p>
-
-      <ul>
-        <li><strong>Septic pumping:</strong> $350 to $600 for a standard residential tank</li>
-        <li><strong>Septic inspection:</strong> $295 to $425</li>
-        <li><strong>Baffle repair:</strong> $250 to $600</li>
-        <li><strong>Drain field repair/rehabilitation:</strong> $800 to $2,500</li>
-        <li><strong>Riser installation:</strong> $200 to $400 per riser</li>
-        <li><strong>New system installation:</strong> $4,500 to $15,000</li>
-      </ul>
+      <h2>How should you compare pricing?</h2>
+      <p>Septic pricing is not standardized. Use the <a href="/blog/septic-pumping-cost-houston/">Houston pumping cost guide</a> as a quote-comparison worksheet, not as a promise that every tank fits one range.</p>
 
       <p>When you get a quote, ask what is included. Does the pumping price include lid removal? Does the repair price include the permit? Does the installation price include the site evaluation and county inspection? Hidden costs are how bad companies make their money.</p>
 
       <p>Get 2 to 3 quotes for anything over $1,000. But do not automatically go with the cheapest bid. A suspiciously low price can mean cut corners, unlicensed work, or bait-and-switch tactics where the price goes up after the truck arrives.</p>
 
-      <h2>Reviews: What to Look For</h2>
+      <h2>What can reviews actually tell you?</h2>
       <p>Google Business Profile reviews are the most useful. Look for:</p>
 
       <ul>
-        <li><strong>Volume.</strong> A company with 50+ reviews is more reliable than one with 3 reviews, even if all 3 are five stars.</li>
+        <li><strong>Relevant work.</strong> A detailed review about an aerobic repair is more useful for that job than dozens of generic pumping reviews.</li>
         <li><strong>Recency.</strong> Recent reviews tell you what the company is like now, not two years ago.</li>
         <li><strong>Specificity.</strong> Reviews that describe the actual work done are more useful than generic "great company!" reviews.</li>
         <li><strong>How they handle complaints.</strong> Every company gets a bad review eventually. Look at how they respond. Do they get defensive or do they try to make it right?</li>
@@ -102,7 +100,7 @@ const howToSteps = [
 
       <p>Check the Better Business Bureau too. A pattern of complaints about pricing, incomplete work, or failure to honor warranties is a serious red flag.</p>
 
-      <h2>Red Flags to Watch For</h2>
+      <h2>Which red flags deserve a pause?</h2>
       <p>These are signs that a company may not have your best interests in mind:</p>
 
       <h3>Quoting Major Work Without Inspecting</h3>
@@ -114,13 +112,10 @@ const howToSteps = [
       <h3>Refusing to Provide a Written Report</h3>
       <p>A professional <a href="/services/septic-repair/">septic repair</a> company should provide a written report with findings, photos, and a clear scope of work. If the technician just says "you need X" without documentation, you have no way to verify their diagnosis.</p>
 
-      <h3>No Physical Address</h3>
-      <p>A legitimate septic company has a physical office or yard, even if it is modest. A company that only lists a phone number and a P.O. box may be a fly-by-night operation that will not be around to honor warranties.</p>
+      <h3>No written scope or receipt</h3>
+      <p>Payment method is less important than documentation. Before work starts, get the scope, total, exclusions, and payment terms. After payment, keep the receipt and service report.</p>
 
-      <h3>Cash-Only Pricing</h3>
-      <p>Companies that only accept cash are likely not reporting income, which means they may not be carrying proper insurance or licensing. Accept credit cards or checks and provide a receipt.</p>
-
-      <h2>Questions to Ask Before Hiring</h2>
+      <h2>What eight questions should you ask?</h2>
       <p>Have these questions ready when you call any septic company:</p>
       <ul>
         <li>What is your TCEQ license number?</li>
@@ -135,19 +130,20 @@ const howToSteps = [
 
       <p>A good company answers these questions clearly and without defensiveness. If you get vague answers or pushback, that tells you something.</p>
 
-      <h2>Local vs. National Chains</h2>
-      <p>Houston has both local septic companies and national franchise operations. Neither is automatically better, but here is the difference:</p>
+      <h2>Does local versus national matter?</h2>
+      <p>Not by itself. A local operator may know the permitting office and soil conditions well. A larger company may have broader scheduling coverage. Verify the individual, written scope, and permit familiarity instead of treating company size as proof.</p>
 
-      <p><strong>Local companies</strong> tend to have lower overhead, shorter response times, and more knowledge of local soil conditions and county requirements. The technician who shows up is usually an owner or long-term employee, not a rotating franchise operator.</p>
+      <h2>How should you use this checklist?</h2>
+      <p>Save the same eight questions for every call. If you need <a href="/services/">septic service</a>, submit the same property details to each provider so the answers are comparable.</p>
 
-      <p><strong>National chains</strong> may have more resources, standardized processes, and broader warranties. But they also tend to have higher prices, less flexibility, and technicians who may not know the specifics of Houston-area clay soils or county permitting quirks.</p>
-
-      <p>For most Houston homeowners, a well-established local company is the better choice. They live and work here, their reputation depends on doing good work, and they are not going anywhere.</p>
-
-      <h2>About Us</h2>
-      <p>We are a local Houston septic company. We provide our TCEQ license number, carry full liability insurance, and give written reports with every service call. Our <a href="/about/">about page</a> has our full background. We cover the entire Houston metro area, from Katy to Baytown, and we offer free estimates on every job. No pressure, no bait-and-switch, no mystery charges.</p>
-
-      <p>Need <a href="/services/">septic service</a>? Call us or fill out the form below. We will give you a straight answer about what your system needs and what it costs.</p>
+      <div class="article-sources">
+        <h2>Sources</h2>
+        <ul>
+          <li><a href="https://www.tceq.texas.gov/licensing/licenses/ossflic">TCEQ, “Occupational Licenses: On-Site Sewage Facilities”</a> — Texas OSSF license roles and requirements; retrieved 2026-07-27.</li>
+          <li><a href="https://www.tceq.texas.gov/permitting/ossf/ossfmaintenance.html/">TCEQ, “Maintenance of On-Site Sewage Facilities”</a> — licensed maintenance-provider duties and contract terms; retrieved 2026-07-27.</li>
+          <li><a href="https://www.epa.gov/septic/how-care-your-septic-system">U.S. EPA, “How to Care for Your Septic System”</a> — what a service provider should inspect and record; retrieved 2026-07-27.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -155,7 +151,7 @@ const howToSteps = [
 
   <section class="section">
     <div class="container" style="max-width:600px;">
-      <LeadForm heading="Get a Free Estimate" />
+      <LeadForm heading="Request a Written Estimate" />
     </div>
   </section>
 
@@ -170,5 +166,5 @@ const howToSteps = [
     </div>
   </section>
 
-  <CTABand heading="Need a Septic Company You Can Trust?" text="Licensed. Insured. Local. Free estimates on every job." />
+  <CTABand heading="Ready to Compare a Written Scope?" text="Share the property details and ask the same eight questions before approving work." />
 </BaseLayout>

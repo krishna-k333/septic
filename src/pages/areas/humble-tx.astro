@@ -17,10 +17,9 @@ const nearby = areas.filter(a => area.nearbyAreas.includes(a.slug));
 
 <BaseLayout
   title={`Septic Tank Service in ${area.fullName} | Pumping & Repair`}
-  description={`Professional septic tank service in ${area.fullName}. Pumping, repair, installation, and inspection. ${area.county} County. Licensed and insured. Free estimates.`}
+  description={`Explore septic pumping, repair, installation, inspection, and maintenance options for ${area.fullName} and ${area.county} County property owners.`}
   canonicalPath={`/areas/${area.slug}/`}
 >
-  <SchemaHead type="LocalBusiness" data={{ areaServed: area.fullName }} />
   <SchemaHead type="FAQPage" faqs={area.faqs} />
 
   <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }, { name: area.name }]} />

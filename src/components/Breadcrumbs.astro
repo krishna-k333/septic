@@ -22,16 +22,18 @@ const schema = {
 };
 ---
 <nav class="breadcrumbs container" aria-label="Breadcrumb">
-  {crumbs.map((crumb, i) => (
-    <>
-      {i > 0 && <span>/</span>}
-      {crumb.href ? (
-        <a href={crumb.href}>{crumb.name}</a>
-      ) : (
-        <span aria-current="page">{crumb.name}</span>
-      )}
-    </>
-  ))}
+  <ol>
+    {crumbs.map((crumb, i) => (
+      <li>
+        {i > 0 && <span class="breadcrumb-separator" aria-hidden="true">/</span>}
+        {crumb.href ? (
+          <a href={crumb.href}>{crumb.name}</a>
+        ) : (
+          <span class="breadcrumb-current" aria-current="page">{crumb.name}</span>
+        )}
+      </li>
+    ))}
+  </ol>
 </nav>
 
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />

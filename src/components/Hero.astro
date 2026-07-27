@@ -1,18 +1,34 @@
 ---
+import LeadForm from './LeadForm.astro';
+
 interface Props {
   h1: string;
   lead: string;
+  eyebrow?: string;
+  showForm?: boolean;
 }
 
-const { h1, lead } = Astro.props;
+const { h1, lead, eyebrow = 'Houston septic repair & pumping', showForm = false } = Astro.props;
 ---
 <section class="hero">
-  <div class="container">
-    <h1>{h1}</h1>
-    <p class="lead">{lead}</p>
-    <div class="cta-group">
-      <a href="/contact/" class="btn-hero">Get Free Estimate</a>
-      <a href="/services/" class="btn-hero-outline">View Services</a>
+  <div class:list={['container', 'hero-grid', { 'hero-grid-single': !showForm }]}>
+    <div class="hero-copy">
+      <p class="eyebrow"><span aria-hidden="true"></span>{eyebrow}</p>
+      <h1>{h1}</h1>
+      <p class="lead">{lead}</p>
+      <div class="cta-group">
+        <a href={showForm ? '#request-form' : '/contact/#request-form'} class="btn-hero">
+          Get a free estimate
+          <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="m7 4 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/services/" class="btn-hero-outline">View all services</a>
+      </div>
+      <p class="hero-note">Repair, pumping, inspection, installation, and urgent septic help.</p>
     </div>
+    {showForm && (
+      <div class="hero-form">
+        <LeadForm heading="Get a Free Estimate" compact />
+      </div>
+    )}
   </div>
 </section>

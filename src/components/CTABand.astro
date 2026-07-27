@@ -6,13 +6,14 @@ interface Props {
 
 const {
   heading = 'Need Septic Service in Houston?',
-  text = 'Licensed, insured, and available 24/7 for emergencies. Free estimates for every job.',
+  text = 'Tell us what is happening and where. We will help you take the right next step.',
 } = Astro.props;
 ---
 <section class="cta-band">
   <div class="container">
+    <span class="section-label">Get started today</span>
     <h2>{heading}</h2>
     <p>{text}</p>
-    <a href="/contact/" class="btn-hero">Get Free Estimate</a>
+    <a href="/contact/#request-form" class="btn-hero">Get a free estimate</a>
   </div>
 </section>

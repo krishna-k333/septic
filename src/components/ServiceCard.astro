@@ -7,10 +7,23 @@ interface Props {
 }
 
 const { slug, name, icon, description } = Astro.props;
+
+const paths: Record<string, string[]> = {
+  'septic-pumping': ['M7 8h10v11H7z', 'M9 8V5h6v3', 'M10 13h4'],
+  'septic-repair': ['M14.5 6.5a4 4 0 0 0-5 5L4 17l3 3 5.5-5.5a4 4 0 0 0 5-5l-3 3-3-3z'],
+  'septic-installation': ['M4 20h16', 'M6 20V9l6-5 6 5v11', 'M9 20v-6h6v6'],
+  'septic-inspection': ['M9 4h6l1 2h3v14H5V6h3z', 'M9 11h6M9 15h4'],
+  'septic-maintenance': ['M12 3v3M12 18v3M3 12h3M18 12h3', 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'],
+  'emergency-septic': ['M12 3 3.5 20h17z', 'M12 9v5M12 17h.01'],
+};
 ---
 <a href={`/services/${slug}/`} class="service-card">
-  <div class="icon">{icon}</div>
+  <span class="icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="28" height="28">
+      {(paths[slug] ?? paths['septic-repair']).map(path => <path d={path} fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>)}
+    </svg>
+  </span>
   <h3>{name}</h3>
-  {description && <p style="font-size:0.85rem;color:var(--color-gray-600);margin-bottom:0.5rem;">{description}</p>}
-  <span class="more">Learn More &rarr;</span>
+  {description && <p>{description}</p>}
+  <span class="more">View service <span aria-hidden="true">→</span></span>
 </a>

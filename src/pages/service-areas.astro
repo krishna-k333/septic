@@ -33,10 +33,9 @@ const allCounties = [...new Set(areas.map(a => a.county).flatMap(c => c.split(' 
 
 <BaseLayout
   title="Septic Service Areas | Houston & Surrounding Cities"
-  description="Septic Tank Repair Houston serves the entire Houston metro. Pumping, repair, installation, and inspection in Katy, Sugar Land, Pearland, The Woodlands, and more. Free estimates."
+  description="Explore septic pumping, repair, installation, and inspection options across Houston, Katy, Sugar Land, Pearland, The Woodlands, and nearby cities."
   canonicalPath="/service-areas/"
 >
-  <SchemaHead type="LocalBusiness" />
   <SchemaHead type="FAQPage" faqs={hubFaqs} />
 
   <Breadcrumbs crumbs={[{ name: 'Home', href: '/' }, { name: 'Service Areas' }]} />

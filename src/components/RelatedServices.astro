@@ -7,6 +7,41 @@ interface Props {
 
 const { currentSlug } = Astro.props;
 const related = services.filter(s => s.slug !== currentSlug);
+
+const guideMap: Record<string, { href: string; label: string }[]> = {
+  'septic-pumping': [
+    { href: '/blog/how-often-pump-septic-tank-texas/', label: 'How often to pump a septic tank in Texas' },
+    { href: '/blog/septic-pumping-cost-houston/', label: 'How to compare Houston septic pumping costs' },
+    { href: '/blog/septic-pumping-vs-cleaning/', label: 'Septic pumping versus cleaning' },
+  ],
+  'septic-repair': [
+    { href: '/blog/signs-septic-tank-needs-repair/', label: 'Seven signs a septic tank may need repair' },
+    { href: '/blog/emergency-septic-what-to-do/', label: 'What to do during a septic backup' },
+    { href: '/blog/hurricane-season-septic-system-houston/', label: 'Checking a septic system after Houston flooding' },
+  ],
+  'septic-installation': [
+    { href: '/blog/texas-septic-tank-regulations/', label: 'Texas septic rules and local permits' },
+    { href: '/blog/how-to-choose-septic-company-houston/', label: 'How to compare Houston septic companies' },
+    { href: '/blog/hurricane-season-septic-system-houston/', label: 'Planning for hurricane and flood conditions' },
+  ],
+  'septic-inspection': [
+    { href: '/blog/texas-septic-tank-regulations/', label: 'Texas septic rules for homeowners' },
+    { href: '/blog/signs-septic-tank-needs-repair/', label: 'Warning signs worth inspecting' },
+    { href: '/blog/how-often-pump-septic-tank-texas/', label: 'Using inspections to set a pumping schedule' },
+  ],
+  'septic-maintenance': [
+    { href: '/blog/how-often-pump-septic-tank-texas/', label: 'Texas septic pumping intervals' },
+    { href: '/blog/septic-pumping-vs-cleaning/', label: 'What pumping and cleaning quotes include' },
+    { href: '/blog/hurricane-season-septic-system-houston/', label: 'Septic maintenance before and after storms' },
+  ],
+  'emergency-septic': [
+    { href: '/blog/emergency-septic-what-to-do/', label: 'Immediate septic backup safety steps' },
+    { href: '/blog/signs-septic-tank-needs-repair/', label: 'Seven warning signs before a backup' },
+    { href: '/blog/hurricane-season-septic-system-houston/', label: 'Flooded septic system precautions' },
+  ],
+};
+
+const guides = guideMap[currentSlug] || [];
 ---
 <h2>Other Septic Services in Houston</h2>
 <div class="related-services">
@@ -14,3 +49,14 @@ const related = services.filter(s => s.slug !== currentSlug);
     <a href={`/services/${s.slug}/`} class="related-link">{s.icon} {s.name}</a>
   ))}
 </div>
+
+{guides.length > 0 && (
+  <>
+    <h2>Helpful Septic Guides</h2>
+    <ul class="guide-links">
+      {guides.map(guide => (
+        <li><a href={guide.href}>{guide.label}</a></li>
+      ))}
+    </ul>
+  </>
+)}
